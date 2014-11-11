@@ -1,69 +1,5 @@
-<?php if(!defined('IN_DISCUZ')) exit('Access Denied'); 
-block_get('3');?>
-</div></div></div>
-<div class="g-footer">
-<div class="m-footer">
-    	<div class="container">
-    		<ul class="f-cb">
-            	<div class="row">
-                	<div class="span3"><h3>合作机构</h3></div>
-                    <div class="span3">
-                    	<h3>银行支持</h3>
-            			<ul class="foot-bank">
-                			<li><a href="javascript:void(0);" class="ico-icbc"></a></li>
-                    		<li><a href="javascript:void(0);" class="ico-cmb"></a></li>
-                    		<li><a href="javascript:void(0);" class="ico-ccb"></a></li>
-                    		<li><a href="javascript:void(0);" class="ico-abc"></a></li>
-                    		<li><a href="javascript:void(0);" class="ico-boc"></a></li>
-                    		<li><a href="javascript:void(0);" class="ico-cebb"></a></li>
-                    		<li><a href="javascript:void(0);" class="ico-boco"></a></li>
-                    		<li><a href="javascript:void(0);" class="ico-cmbc"></a></li>
-                    		<li><a href="javascript:void(0);" class="ico-ecitic"></a></li>
-                    		<li><a href="javascript:void(0);" class="ico-gdb"></a></li>
-                    		<li><a href="javascript:void(0);" class="ico-pingan"></a></li>
-                    		<li><a href="javascript:void(0);" class="ico-spdb"></a></li>
-                    		<li><a href="javascript:void(0);" class="ico-cib"></a></li>
-                    		<li><a href="javascript:void(0);" class="ico-fdbank"></a></li>
-                    		<li><a href="javascript:void(0);" class="ico-ynrcc"></a></li>
-                    		<li><a href="javascript:void(0);" class="ico-post"></a></li>
-                    		<li><a href="javascript:void(0);" class="ico-sdb"></a></li>
-                		</ul>
-                    </div>
-                    <div class="span3"><h3>新手指南</h3></div>
-                    <div class="span3">
-                    	<h3>最新公告</h3>
-                        <?php block_display('3');?>                    </div>
-                </div>
-
-        	</ul>
-            <div class="m-footitem-hr"></div>
-    		<div class="m-sitelink">
-    			<ul class="ui-link clearfix">
-            		<li class="ui-link-item" style="float:none;">
-<?php if($_G['setting']['site_qq']) { ?><a href="http://wpa.qq.com/msgrd?V=3&amp;Uin=<?php echo $_G['setting']['site_qq'];?>&amp;Site=<?php echo $_G['setting']['bbname'];?>&amp;Menu=yes&amp;from=discuz" target="_blank" title="QQ"><img src="<?php echo IMGDIR;?>/site_qq.jpg" alt="QQ" /></a><span class="pipe">|</span><?php } if(is_array($_G['setting']['footernavs'])) foreach($_G['setting']['footernavs'] as $nav) { if($nav['available'] && ($nav['type'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1)) ||
-!$nav['type'] && ($nav['id'] == 'stat' && $_G['group']['allowstatdata'] || $nav['id'] == 'report' && $_G['uid'] || $nav['id'] == 'archiver' || $nav['id'] == 'mobile' || $nav['id'] == 'darkroom'))) { ?><?php echo $nav['code'];?><span class="pipe">|</span><?php } } ?>
-<strong><a href="<?php echo $_G['setting']['siteurl'];?>" target="_blank"><?php echo $_G['setting']['sitename'];?></a></strong>
-<?php if($_G['setting']['icp']) { ?>( <a href="http://www.miitbeian.gov.cn/" target="_blank"><?php echo $_G['setting']['icp'];?></a> )<?php } ?>
-<?php if(!empty($_G['setting']['pluginhooks']['global_footerlink'])) echo $_G['setting']['pluginhooks']['global_footerlink'];?>
-<?php if($_G['setting']['statcode']) { ?><?php echo $_G['setting']['statcode'];?><?php } ?>
-                	</li>
-        		</ul>
-        	</div>
-        	<div class="m-auth">
-            	<ul class="m-auth-link inline">
-            		<li class="m-auth-link-item"><a href="http://webscan.360.cn/index/checkwebsite/url/www.finabao.com" title="360网站安全检测安全满分企业" target="_blank" class="icon icon-360">360网站安全检测安全满分企业</a></li>
-                	<li class="m-auth-link-item"><a href="" title="企业法人营业执照" target="_blank" class="icon icon-qyfr">企业法人营业执照</a></li>
-                	<li class="m-auth-link-item"><a href="" title="VerSign加密服务" class="icon icon-vsjmfw">VerSign加密服务</a></li>
-                	<li class="m-auth-link-item"><a href="http://www.365anfang.com/" title="安全防范网" target="_blank" class="icon icon-aqff">安全防范网</a></li>
-                	<li class="m-auth-link-item"><a href="http://61.159.214.200/" title="云南网警" target="_blank" class="icon icon-hzdt">云南网警</a></li>
-                	<li class="m-auth-link-item"><a href="https://ss.knet.cn/verifyseal.dll?sn=e13060811010041151el9r000000&amp;ct=df&amp;a=1&amp;pa=205225" title="电子商务协会认证诚信网" target="_blank" class="icon icon-rzcx">电子商务协会认证诚信网</a></li>
-            	</ul>
-        	</div>
-        </div>
-    </div>
-</div>
-
-
+<?php if(!defined('IN_DISCUZ')) exit('Access Denied'); ?>
+	</div>
 <?php if(empty($topic) || ($topic['usefooter'])) { $focusid = getfocus_rand($_G[basescript]);?><?php if($focusid !== null) { $focus = $_G['cache']['focus']['data'][$focusid];?><?php $focusnum = count($_G['setting']['focus'][$_G[basescript]]);?><div class="focus" id="sitefocus">
 <div class="bm">
 <div class="bm_h cl">
@@ -101,7 +37,37 @@ var focusautoshow = window.setInterval('showfocus(\'next\', 1);', 5000);
 <?php } if($_G['uid'] && $_G['member']['allowadmincp'] == 1 && $_G['setting']['showpatchnotice'] == 1) { ?>
 <div class="focus patch" id="patch_notice"></div>
 <?php } ?><?php echo adshow("footerbanner/wp a_f/1");?><?php echo adshow("footerbanner/wp a_f/2");?><?php echo adshow("footerbanner/wp a_f/3");?><?php echo adshow("float/a_fl/1");?><?php echo adshow("float/a_fr/2");?><?php echo adshow("couplebanner/a_fl a_cb/1");?><?php echo adshow("couplebanner/a_fr a_cb/2");?><?php echo adshow("cornerbanner/a_cn");?><?php if(!empty($_G['setting']['pluginhooks']['global_footer'])) echo $_G['setting']['pluginhooks']['global_footer'];?>
-<?php } if(!$_G['setting']['bbclosed']) { if($_G['uid'] && !isset($_G['cookie']['checkpm'])) { ?>
+<div id="ft" class="wp cl">
+<div id="flk" class="y">
+<p>
+<?php if($_G['setting']['site_qq']) { ?><a href="http://wpa.qq.com/msgrd?V=3&amp;Uin=<?php echo $_G['setting']['site_qq'];?>&amp;Site=<?php echo $_G['setting']['bbname'];?>&amp;Menu=yes&amp;from=discuz" target="_blank" title="QQ"><img src="<?php echo IMGDIR;?>/site_qq.jpg" alt="QQ" /></a><span class="pipe">|</span><?php } if(is_array($_G['setting']['footernavs'])) foreach($_G['setting']['footernavs'] as $nav) { if($nav['available'] && ($nav['type'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1)) ||
+!$nav['type'] && ($nav['id'] == 'stat' && $_G['group']['allowstatdata'] || $nav['id'] == 'report' && $_G['uid'] || $nav['id'] == 'archiver' || $nav['id'] == 'mobile' || $nav['id'] == 'darkroom'))) { ?><?php echo $nav['code'];?><span class="pipe">|</span><?php } } ?>
+<strong><a href="<?php echo $_G['setting']['siteurl'];?>" target="_blank"><?php echo $_G['setting']['sitename'];?></a></strong>
+<?php if($_G['setting']['icp']) { ?>( <a href="http://www.miitbeian.gov.cn/" target="_blank"><?php echo $_G['setting']['icp'];?></a> )<?php } ?>
+<?php if(!empty($_G['setting']['pluginhooks']['global_footerlink'])) echo $_G['setting']['pluginhooks']['global_footerlink'];?>
+<?php if($_G['setting']['statcode']) { ?><?php echo $_G['setting']['statcode'];?><?php } ?>
+</p>
+<p class="xs0">
+GMT<?php echo $_G['timenow']['offset'];?>, <?php echo $_G['timenow']['time'];?>
+<span id="debuginfo">
+<?php if(debuginfo()) { ?>, Processed in <?php echo $_G['debuginfo']['time'];?> second(s), <?php echo $_G['debuginfo']['queries'];?> queries
+<?php if($_G['gzipcompress']) { ?>, Gzip On<?php } if(C::memory()->type) { ?>, <?php echo ucwords(C::memory()->type); ?> On<?php } ?>.
+<?php } ?>
+</span>
+</p>
+</div>
+<div id="frt">
+<p>Powered by <strong><a href="http://www.discuz.net" target="_blank">Discuz!</a></strong> <em><?php echo $_G['setting']['version'];?></em><?php if(!empty($_G['setting']['boardlicensed'])) { ?> <a href="http://license.comsenz.com/?pid=1&amp;host=<?php echo $_SERVER['HTTP_HOST'];?>" target="_blank">Licensed</a><?php } ?></p>
+<p class="xs0">&copy; 2001-2013 <a href="http://www.comsenz.com" target="_blank">Comsenz Inc.</a></p>
+</div><?php updatesession();?><?php if($_G['uid'] && $_G['group']['allowinvisible']) { ?>
+<script type="text/javascript">
+var invisiblestatus = '<?php if($_G['session']['invisible']) { ?>隐身<?php } else { ?>在线<?php } ?>';
+var loginstatusobj = $('loginstatusid');
+if(loginstatusobj != undefined && loginstatusobj != null) loginstatusobj.innerHTML = invisiblestatus;
+</script>
+<?php } ?>
+</div>
+<?php } if(!$_G['setting']['bbclosed'] && !$_G['member']['freeze'] && !$_G['member']['groupexpiry']) { if($_G['uid'] && !isset($_G['cookie']['checkpm'])) { ?>
 <script src="home.php?mod=spacecp&ac=pm&op=checknewpm&rand=<?php echo $_G['timestamp'];?>" type="text/javascript"></script>
 <?php } if($_G['uid'] && helper_access::check_module('follow') && !isset($_G['cookie']['checkfollow'])) { ?>
 <script src="home.php?mod=spacecp&ac=follow&op=checkfeed&rand=<?php echo $_G['timestamp'];?>" type="text/javascript"></script>
@@ -120,7 +86,7 @@ var focusautoshow = window.setInterval('showfocus(\'next\', 1);', 5000);
 <?php } if($_G['uid'] && $_G['member']['allowadmincp'] == 1 && empty($_G['cookie']['pluginnotice'])) { ?>
 <div class="focus plugin" id="plugin_notice"></div>
 <script type="text/javascript">pluginNotice();</script>
-<?php } if(!$_G['setting']['bbclosed'] && $_G['setting']['disableipnotice'] != 1 && $_G['uid'] && !empty($_G['cookie']['lip'])) { ?>
+<?php } if(!$_G['setting']['bbclosed'] && !$_G['member']['freeze'] && !$_G['member']['groupexpiry'] && $_G['setting']['disableipnotice'] != 1 && $_G['uid'] && !empty($_G['cookie']['lip'])) { ?>
 <div class="focus plugin" id="ip_notice"></div>
 <script type="text/javascript">ipNotice();</script>
 <?php } if($_G['member']['newprompt'] && (empty($_G['cookie']['promptstate_'.$_G['uid']]) || $_G['cookie']['promptstate_'.$_G['uid']] != $_G['member']['newprompt']) && $_GET['do'] != 'notice') { ?>

@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="static/finabao/nec/login.css?201402" />
+<div id="main_messaqge_$loginhash">
+	<div id="layer_login_$loginhash">
+		<h3 class="flb" style="background-color:#555;">
+			<em id="returnmessage_$loginhash" style="color:#fff;">
+				<!--{if !empty($_GET['guestmessage'])}-->{lang login_guestmessage}<!--{elseif $auth}-->输入的登录信息有误 请检查后重新提交<!--{else}-->{lang login_member}<!--{/if}-->
+			</em>
+			<span><a href="javascript:;" class="flbc" onclick="hideWindow('$_GET[handlekey]', 0, 1);" title="{lang close}">{lang close}</a></span>
+		</h3>
+		<form method="post" autocomplete="off" name="login" id="loginform_$loginhash" class="cl" onsubmit="{if $this->setting['pwdsafety']}pwmd5('password3_$loginhash');{/if}pwdclear = 1;ajaxpost('loginform_$loginhash', 'returnmessage_$loginhash', 'returnmessage_$loginhash', 'onerror');return false;" action="member.php?mod=logging&action=login&loginsubmit=yes{if !empty($_GET['handlekey'])}&handlekey=$_GET[handlekey]{/if}{if isset($_GET['frommessage'])}&frommessage{/if}&loginhash=$loginhash">
+				<input type="hidden" name="formhash" value="{FORMHASH}" />
+				<input type="hidden" name="referer" value="{echo dreferer()}" />
+                <input type="hidden" name="questionid" id="questionid" value="0" />
+				<div class="isfloat m-loginbox f-cb" style="width:630px; background-color:#f9f9f9; border-top:2px solid #f60;">
+                	<div class="f-line"></div>
+                    <div class="f-line"></div>
+                	<div class="m-loginadv f-fl f-cb">
+                    	<img src="static/finabao/images/wireless.jpg?20140209" width="340" />
+                    </div>
+                    <div class="m-input f-fr f-cb">
+                    	<div class="infloat" style=" _margin-left:55px;">
+	                    	<div class="inplist" style="position:relative; margin-bottom:15px;"><input type="text" name="username" id="username_$loginhash" style="_background-repeat:no-repeat;_background-image:url('static/finabao/images/form_login.gif'); _padding-left:40px; _width:150px;" class="u-ipt user" value="" onblur="if(this.value=='') $('enter_name').style.display='';" onkeypress="$('enter_name').style.display='none';" onclick="$('enter_name').style.display='none';" tabindex="1" maxlength="20" autocomplete="off"><span class="enter_tips" style="position:absolute; top:10px; left:40px; color:#999;" id="enter_name" onclick="this.style.display='none'; $('username_$loginhash').focus();">用户名/手机号码/Email地址</span></div>
+	                    	<div class="inplist" style="position:relative; margin-bottom:15px;"><input type="password" id="password3_$loginhash" name="password" style="_background-repeat:no-repeat;_background-image:url('static/finabao/images/form_login.gif'); _background-position:0px -50px; _padding-left:40px; _width:150px;" class="u-ipt pass" onblur="if(this.value=='') $('enter_psw').style.display='';" onfocus="$('enter_psw').style.display='none'; this.value=''" onclick="$('enter_psw').style.display='none';" tabindex="2" maxlength="20"><span class="enter_tips" id="enter_psw" style="position:absolute; top:10px; left:40px; color:#999;" onclick="this.style.display='none'; $('password3_$loginhash').focus();">请输入密码</span></div>
+	                    	<div class="inplist" style="position:relative; margin-bottom:15px;"><input type="text" name="answer" id="loginanswer_$loginhash" style="_background-repeat:no-repeat;_background-image:url('static/finabao/images/form_login.gif'); _background-position:0px -75px; _padding-left:40px; _width:150px;" class="u-ipt skey" onblur="if(this.value=='') {$('enter_safekey').style.display='';}else{$('questionid').value='1';}" onfocus="$('enter_safekey').style.display='none';" onclick="$('enter_safekey').style.display='none';" tabindex="3" maxlength="20"><span class="enter_tips" id="enter_safekey" style="position:absolute; top:10px; left:40px; color:#999;" onclick="this.style.display='none'; $('loginanswer_$loginhash').focus();">请输入安全码 <i style="color:#39F">未设置请留空</i></span></div>
+  	                    	<div class="u-inplist checkbox" style="margin-bottom:5px; _position:relative; _left:-25px; _width:200px;">
+                            	<a href="javascript:;" class="f-fr" style="color:#39C">忘记密码？</a>
+								<label for="cookietime_$loginhash" style="color:#666; font-weight:normal;"><input type="checkbox" class="pc" name="cookietime" id="cookietime_$loginhash" value="2592000" $cookietimecheck />&nbsp;&nbsp;记住我的帐号</label>
+                            </div>
+                            <div class="u-inplist login_btn">
+                            	<button type="submit" name="loginsubmit" value="true" class="btn btn-info" tabindex="5" style="width:100%; _width:200px;">登 录</button>
+                            </div>
+                            <div class="inplist">
+                            </div>
+                            <div class="f-line"></div>
+                        </div>
+                    </div>
+                </div>
+		</form>
+	</div>
+	<!--{if $_G['setting']['pwdsafety']}-->
+		<script type="text/javascript" src="{$_G['setting']['jspath']}md5.js?{VERHASH}" reload="1"></script>
+	<!--{/if}-->
+
+</div>

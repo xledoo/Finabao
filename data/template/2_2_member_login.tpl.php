@@ -1,0 +1,1 @@
+<?php if(!defined('IN_DISCUZ')) exit('Access Denied'); hookscriptoutput('login');?><?php include template('common/header'); ?>login<?php include template('common/footer'); ?>

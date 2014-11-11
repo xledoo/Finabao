@@ -1,2 +1,5 @@
 phpmyadmin/
+data/
+install/
+
 .htaccess

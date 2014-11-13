@@ -1,0 +1,53 @@
+<div class="f-line"></div>
+<div class="f-line"></div>
+<style type="text/css">
+
+</style>
+<div class="container" style="height:600px;">
+	<div class="row">
+    	<div class="span8">
+        	<div class="f-line"></div>
+        	<img src="static/finabao/images/wireless.jpg" />
+        </div>
+        <div class="span4" style="position:relative;">
+        	<div style=" border:1px solid #ccc; height:420px; width:340px; background:#f7f7f7; _width:335px;"></div>
+			<form method="post" autocomplete="off" name="login" id="loginform_$loginhash" class="cl" onsubmit="{if $this->setting['pwdsafety']}pwmd5('password3_$loginhash');{/if}pwdclear = 1;ajaxpost('loginform_$loginhash', 'returnmessage_$loginhash', 'returnmessage_$loginhash', 'onerror');return false;" action="member.php?mod=logging&action=login&loginsubmit=yes{if !empty($_GET['handlekey'])}&handlekey=$_GET[handlekey]{/if}{if isset($_GET['frommessage'])}&frommessage{/if}&loginhash=$loginhash">
+				<input type="hidden" name="formhash" value="{FORMHASH}" />
+				<input type="hidden" name="referer" value="{echo dreferer()}" />        
+                    	<div class="W_login_form" style="width:280px; margin-top:50px; position:absolute; top:5px; right:10px;">
+	                    	<div class="u-inplist"><input type="text" class="u-ipt u-input" id="username" style="width:200px;background-image:('static/finabao/images/form_login.gif');" name="username" value="" onblur="if(this.value=='') $('enter_name').style.display='';" onkeypress="$('enter_name').style.display='none';" onclick="$('enter_name').style.display='none';" tabindex="1" maxlength="20" autocomplete="off"><span class="enter_name" id="enter_name" style=" position:absolute; left:45px; color:#999; top:10px;" onclick="this.style.display='none'; $('username').focus();">用户名/手机号码/Email地址</span></div>
+	                    	<div class="u-inplist"><input type="password" name="password" id="password" class="u-ipt u-input" style="width:200px;background-position:0px -50px;" onblur="if(this.value=='') $('enter_psw').style.display='';" onfocus="$('enter_psw').style.display='none';" onclick="$('enter_psw').style.display='none';" tabindex="2" maxlength="20"><span class="enter_psw" id="enter_psw" style=" position:absolute; left:45px; color:#999; top:10px;" onclick="this.style.display='none'; $('password').focus();">请输入密码</span></div>
+	                    	<div class="u-inplist">
+								<span class="u-ipt u-input" style=" display:block; width:200px;">
+                                	<span class="select_shelter">
+	                    			<select id="loginquestionid_$loginhash" style="_margin-top:10px; " class="u-inselect" name="questionid"{if !$questionexist} onchange="if($('loginquestionid_$loginhash').value > 0) {$('loginanswer_row_$loginhash').style.display='';$('loginanswer_$loginhash').focus();} else {$('loginanswer_row_$loginhash').style.display='none';}"<!--{/if}-->>
+										<option value="0"><!--{if $questionexist}-->{lang security_question_0}<!--{else}-->{lang security_question}<!--{/if}--></option>
+										<option value="1">{lang security_question_1}</option>
+										<option value="2">{lang security_question_2}</option>
+										<option value="3">{lang security_question_3}</option>
+										<option value="4">{lang security_question_4}</option>
+										<option value="5">{lang security_question_5}</option>
+										<option value="6">{lang security_question_6}</option>
+										<option value="7">{lang security_question_7}</option>
+									</select>
+                                   	</span>
+								</span>
+	                    	</div>
+                            
+	                    	<div class="u-inplist" id="loginanswer_row_$loginhash" {if !$questionexist} style="display:none"{/if}><input type="text" name="answer" id="loginanswer_$loginhash" autocomplete="off" size="30" class="u-ipt u-input" tabindex="1" /></div>
+	                    	<div class="u-inplist checkbox" style="margin-bottom:5px;">
+                            	<a href="javascript:;" class="f-fr" style="margin-right:20px; color:#39C">忘记密码？</a>
+								<label for="cookietime_$loginhash" style="color:#666; font-weight:normal;"><input type="checkbox" class="pc" name="cookietime" id="cookietime_$loginhash" tabindex="1" value="2592000" $cookietimecheck />&nbsp;&nbsp;记住我的帐号</label>
+                            </div>
+                            <div class="u-inplist login_btn">
+                            	<a href="" class="W_btn_g"><span class="submitStates" style="font-weight:bold; font-size:16px; width:244px; height:32px; padding-top:10px;">登 录</span></a>
+                            </div>
+                            <div class="u-inplist"><a href="" style="color:#F60; font-size:14px;">还没有金融宝帐号？ 注册一个吧！</a></div>
+                        </div>
+                                
+			</form>
+        </div>
+    </div>
+</div>
+</div>
+</div>

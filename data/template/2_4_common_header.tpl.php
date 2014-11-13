@@ -1,6 +1,10 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); 
 0
+<<<<<<< HEAD:data/template/2_4_common_header.tpl.php
 || checktplrefresh('./template/finabao/common/header.htm', './template/finabao/common/header_common.htm', 1415709255, '4', './data/template/2_4_common_header.tpl.php', './template/finabao', 'common/header')
+=======
+|| checktplrefresh('./template/finabao/common/header.htm', './template/finabao/common/header_common.htm', 1415847276, '2', './data/template/2_2_common_header.tpl.php', './template/finabao', 'common/header')
+>>>>>>> 5a2c3d79437f23538bd6b032de2d185b987c931c:data/template/2_2_common_header.tpl.php
 ;?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">

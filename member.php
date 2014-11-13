@@ -1,39 +1,18 @@
 <?php
 
-/**
- *      [Discuz!] (C)2001-2099 Comsenz Inc.
- *      This is NOT a freeware, use is subject to license terms
- *
- *      $Id: member.php 34253 2013-11-25 03:36:23Z nemohou $
- */
 
-define('APPTYPEID', 0);
-define('CURSCRIPT', 'member');
+define('FINA_NAME', 'finabao');
+define('FINA_VERSION', '1.0.0');
+define('FINA_RELEASE', '20141111');
 
-require './source/class/class_core.php';
-
+require_once './source/class/class_core.php';
 $discuz = C::app();
-
-$modarray = array('activate', 'emailverify', 'getpasswd',
-	'groupexpiry', 'logging', 'lostpasswd',
-	'register', 'regverify', 'switchstatus');
-
-
-$mod = !in_array($discuz->var['mod'], $modarray) && (!preg_match('/^\w+$/', $discuz->var['mod']) || !file_exists(DISCUZ_ROOT.'./source/module/member/member_'.$discuz->var['mod'].'.php')) ? 'register' : $discuz->var['mod'];
-
-define('CURMODULE', $mod);
-
 $discuz->init();
-if($mod == 'register' && $discuz->var['mod'] != $_G['setting']['regname']) {
-	showmessage('undefined_action');
-}
 
+$controller	=	in_array(getgpc('c'), array('activate', 'emailverify', 'getpasswd','groupexpiry', 'logging', 'lostpasswd','register', 'regverify', 'switchstatus')) ? getgpc('c') : 'register';
 
-require libfile('function/member');
-require libfile('class/member');
-runhooks();
+require_once libfile('function/finabao', FINA_NAME);
+require_once libfile('controller/'.$controller, FINA_NAME);
 
-
-require DISCUZ_ROOT.'./source/module/member/member_'.$mod.'.php';
 
 ?>

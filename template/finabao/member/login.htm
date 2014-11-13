@@ -1,3 +1,56 @@
 <!--{template common/header}-->
-login
+
+<!--{eval $loginhash = 'L'.random(4);}-->
+<!--{if empty($_GET['infloat'])}-->
+	<!--{template member/login_nofloat}-->
+<!--{else}-->
+	<!--{template member/login_infloat}-->
+<!--{/if}-->
+
+
+
+<div id="layer_message_$loginhash"{if empty($_GET['infloat'])} class="f_c blr nfl"{/if} style="display: none;">
+	<h3 class="flb" id="layer_header_$loginhash">
+		<!--{if !empty($_GET['infloat']) && !isset($_GET['frommessage'])}-->
+		<em>{lang login_member}</em>
+		<span><a href="javascript:;" class="flbc" onclick="hideWindow('login')" title="{lang close}">{lang close}</a></span>
+		<!--{/if}-->
+	</h3>
+	<div class="c"><div class="alert_right">
+		<div id="messageleft_$loginhash"></div>
+		<p class="alert_btnleft" id="messageright_$loginhash"></p>
+	</div>
+</div>
+<script type="text/javascript" reload="1">
+<!--{if !isset($_GET['viewlostpw'])}-->
+	var pwdclear = 0;
+	function initinput_login() {
+		document.body.focus();
+		<!--{if !$auth}-->
+			if($('loginform_$loginhash')) {
+				$('loginform_$loginhash').username.focus();
+			}
+			<!--{if !$this->setting['autoidselect']}-->
+				simulateSelect('loginfield_$loginhash');
+			<!--{/if}-->
+		<!--{/if}-->
+	}
+	initinput_login();
+	<!--{if $this->setting['sitemessage']['login']}-->
+	showPrompt('custominfo_login_$loginhash', 'mouseover', '<!--{echo trim($this->setting['sitemessage'][login][array_rand($this->setting['sitemessage'][login])])}-->', $this->setting['sitemessage'][time]);
+	<!--{/if}-->
+
+	function clearpwd() {
+		if(pwdclear) {
+			$('password3_$loginhash').value = '';
+		}
+		pwdclear = 0;
+	}
+<!--{else}-->
+	display('layer_login_$loginhash');
+	display('layer_lostpw_$loginhash');
+	$('lostpw_email').focus();
+<!--{/if}-->
+</script>
+<!--{eval updatesession();}-->
 <!--{template common/footer}-->

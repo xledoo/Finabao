@@ -10,9 +10,9 @@
 <script type="text/javascript" src="{$_G[setting][jspath]}common.js?{VERHASH}"></script>
 <script type="text/javascript" src="{$_G[setting][jspath]}logging.js?{VERHASH}"></script>
 <script type="text/javascript" src="static/finabao/javascript/json2.js?{VERHASH}"></script>
-<link rel="stylesheet" href="static/finabao/nec/bootstrap.css?20140209" />
-<link rel="stylesheet" href="static/finabao/nec/global.css?20140209" />
-<link rel="stylesheet" href="static/finabao/nec/login.css?20140209" />
+<link rel="stylesheet" href="static/finabao/bootstrap/css/bootstrap.css?20140209" />
+<link rel="stylesheet" href="static/finabao/global.css?20140209" />
+<link rel="stylesheet" href="static/finabao/login.css?20140209" />
 </head>
 <!--{csstemplate}-->
 <style type="text/css">
@@ -73,7 +73,7 @@ body	{ width: 270px; height: 310px; overflow:hidden; padding:0px; margin:0px;}
     </div>
 </div>
 <!--{/if}-->
-<div id="loginLoading" class="Loading"><img src="static/finabao/images/ajaxloading.gif" /><p>Loading...</p></div>
+<div id="loginLoading" class="Loading"><img src="static/finabao/fimages/ajaxloading.gif" /><p>Loading...</p></div>
 <script type="text/javascript">
 jQuery("#loginform_$loginhash").submit(function(){
 	var userName	=	jQuery("#username_$loginhash").val();

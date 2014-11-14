@@ -1,1 +1,0 @@
-<?php if(!defined('IN_DISCUZ')) exit('Access Denied'); hookscriptoutput('finabao');?><?php include template('common/header'); ?>finabao<?php include template('common/footer'); ?>

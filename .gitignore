@@ -1,5 +1,5 @@
 phpmyadmin/
-data/
+data/template/
 install/
 
 .htaccess

@@ -12,7 +12,7 @@ define('UC_DBTABLEPRE', '`finabao_new`.pre_ucenter_');
 define('UC_DBCONNECT', 0);
 
 define('UC_CHARSET', 'utf-8');
-define('UC_KEY', 'l5w8TfT3mbV6WcT5H9Uac4a5D8q8Zev0B058reDbX9m3haoaV9z6Qbx5YdO7d3uc');
+define('UC_KEY', 'ieRb14bfZ3A51bhdg9gf00Hbs0b8D8h7k4P38bv9CfzdK354K9X75553t4pc54K8');
 define('UC_API', 'http://localhost/uc_server');
 define('UC_APPID', '1');
 define('UC_IP', '');

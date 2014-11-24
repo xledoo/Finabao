@@ -1,5 +1,7 @@
 phpmyadmin/
 data/template/
+data/log/
+data/cache/
 install/
 
 .htaccess

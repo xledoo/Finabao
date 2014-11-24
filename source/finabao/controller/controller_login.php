@@ -1,6 +1,5 @@
 <?php
 
-
 	require_once libfile('function/member');
 	require_once './source/finabao/class/logging_ctl.php';
 
@@ -9,6 +8,5 @@
 	$method = 'on_'.$_GET['action'];
 	$ctl_obj->template = 'member/login';
 	$ctl_obj->on_login();
-
 
 ?>

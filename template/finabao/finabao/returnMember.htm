@@ -1,0 +1,85 @@
+<!--{template common/header}-->
+<style type="text/css">
+.sytbox		{ border:2px solid #ccc; min-height:120px; background:#e6efc2; }
+.sytbox .l	{ padding:20px; text-align:right;}
+.sytbox .r	{ padding:20px; text-align:left;}
+.sytbox ul	{ padding:10px 0px;}
+.sytbox li	{ list-style-type:none; float:left; padding-right:10px;}
+.sytbox .sp	{ color:#999; position:relative; top:-2px;}
+.sytbox li a	{ color:#069;}
+.sytbox tr	{ height:25px;}
+.sytbox:hover	{ border:2px solid #F63;}
+
+/** mod02 **/
+.m-mod-02 { margin-top: 30px;}
+.m-hd { height: 32px; border-bottom: 2px #dcdcdc solid;}
+.m-hd .title { float: left; padding:0px; line-height: 22px;  font-weight: normal;  font-size: 22px; font-family:"黑体"}
+.m-hd .title-01 { border-bottom: 2px #3b91ff solid;}
+.m-hd .title-02 { border-bottom: 2px #fc6f13 solid;}
+.m-hd .title-03 { border-bottom: 2px #658403 solid;}
+.m-hd .title-04 { border-bottom: 2px #fed247 solid;}
+.m-hd .title span { margin-left: 10px;}
+.m-hd .list { float: right; margin-top: 12px; margin-right: -8px;}
+.m-hd .list li { float: left; display: inline;}
+.m-hd .list li a { color: #666; padding-left: 8px; margin-right: 8px;}
+.m-hd .list li a:hover{ color:#Fd7700; text-decoration:none;}
+
+/** box **/
+.mod-bd { padding-bottom: 22px; overflow:hidden; background: #f8f8f8;}
+.m-box-bd { float: left; width: 169px; margin-top: 18px; padding: 0 18px;}
+.m-box-bd-02 { margin: 18px 0 0; padding: 0; padding-left:18px; border: 0 none; border-left: 1px #eaeaea solid;}
+.m-box-bd .box-div { padding-bottom: 22px; margin-bottom: 20px; border-bottom: 1px #eaeaea solid;}
+.m-box-bd .box-div-02 { margin: 0; padding: 0; border: 0 none;}
+.m-box-bd .box { display: block; position: relative; overflow: hidden;}
+.m-box-bd .box,.m-box-bd .bg,.m-box-bd .bd { width: 169px; height: 123px;}
+.m-box-bd img,.m-box-bd .bg,.m-box-bd .bd { position: absolute; left: 0;}
+.m-box-bd .bg,.m-box-bd .bd { top: 92px;}
+.m-box-bd img { display: block;}
+.m-box-bd .bg { background: #000; filter:alpha(opacity=50);opacity:0.5;}
+.m-box-bd .name { margin-top: 7px; text-align: center; font-size: 14px; color: #fff;}
+.m-box-bd .name,.m-box-bd .star,.m-box-bd .page { display: block;}
+.m-box-bd .star { margin: 8px 0 0 52px;}
+.m-box-bd .star span { float: left; width: 10px; height: 10px; overflow: hidden; margin-left: 2px; background: url("../imagesnew/star.png") 0 0 no-repeat; _background: url("../imagesnew/star-ie.png") 0 0 no-repeat;}
+.m-box-bd .star .grey { background-position: 0 -10px;}
+.m-box-bd .page { width: 146px; margin: 10px auto 0; line-height: 18px; color: #fff;}
+.m-box-bd .box:hover,.m-box-bd .name:hover,.m-box-bd .page:hover { text-decoration: none;}
+</style>
+<div class="lineH"></div>
+<div class="container">
+	<div class="row" style="min-height:600px;">
+    	<div class="span9" style="position:relative;">
+        	<div class="sytbox f-cb">
+            	<div style="height:26px; background:#fff; padding:8px 0px 0px 15px; border-bottom:1px solid #ccc; font-size:14px;">金融宝收银台</div>
+            	<div class="span2 f-fl" style="position:relative;top:30px; left:50px;"><img src="static/image/common/right.gif" /></div>
+                <div class="span7 f-fr" style="height:210px;">
+                	<span style="font-size:16px; font-weight:bold; font-family:'Arial Black', Gadget, sans-serif">恭喜你！充值成功了！</span>
+                    <div style=" padding:10px 0px;" class="f-cb">
+                    	<table>
+                        	<tr><td align="right">订单号：</td><td>$return['trade']</td></tr>
+                            <tr><td>订单金额：</td><td>$return['money'] 元</td></tr>
+                            <tr><td>成交时间：</td><td>$return['dateline']</td></tr>
+                        </table>
+                    </div>
+                    <ul class="f-cb">
+                    	<li>您可能需要转到：</li>
+                        <li><a href="index.php?mod=account">我的账户</a></li>
+                        <li class="sp">|</li>
+                        <li><a href="">交易详情</a></li>
+                        <li class="sp">|</li>
+                        <li><a href="">我的充值明细</a></li>
+                    </ul>
+                    <div style="padding-top:10px;">温馨提示：如果支付成功后，您的资金没有瞬时到账请不要担心，稍等几分钟就OK啦，嘿！</div>
+                </div>
+            </div>
+            <div style=" position:absolute; top:60px; right:40px; float:right;"><img src="static/finabao/images/qrcode_8.jpg" width="120" /></div>
+            <div class="lineH"></div>
+            <img src="static/finabao/images/kjzf.jpg" />
+        </div>
+        <div class="span3">
+        	<div class="m-hd">
+            	<h4 class="title title-02">金融宝学堂</h4>
+            </div>
+        </div>
+    </div>    
+</div>
+<!--{template common/footer}-->

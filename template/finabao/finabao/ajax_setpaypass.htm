@@ -1,0 +1,32 @@
+<!--{template common/header}-->
+<style type="text/css">
+
+</style>
+<div style="width:450px; min-height:200px;">
+	<h3 class="flb"><!--{if $_G[inajax]}--><span><a href="javascript:;" class="flbc" onclick="hideWindow('$_GET['handlekey']');" title="{lang close}">{lang close}</a></span><!--{/if}--></h3>
+	<form class="form-horizontal" role="form" method="post" action="index.php?mod=ajax&action=setpaypass" onsubmit="ajaxpost('loginform_$loginhash', 'returnmessage_$loginhash', 'returnmessage_$loginhash', 'onerror');return false;">
+    	<input type="hidden" name="formhash" value="{eval echo formhash();}" />
+    <!--{if !$iset}-->
+	<div class="form-group">
+		<label for="bank" class="col-sm-3 control-label" style="position:relative; top:12px;">旧支付密码</label>
+		<div class="col-sm-8">
+        	<input type="oldpaypass" class="form-control" name="oldpaypass" maxlength="25" style="width:200px; color:#333; font-size:14px;padding:4px 10px;" />
+        </div>
+	</div>
+    <hr width="90%" />  
+    <!--{/if}-->
+	<div class="form-group">
+		<label for="cardname" class="col-sm-3 control-label" style="position:relative; top:13px;">新支付密码</label>
+		<div class="col-sm-8"><input type="password" class="form-control" name="paypass" maxlength="25" style="width:250px; padding:3px 10px;" /></div>
+	</div>
+	<div class="form-group">
+		<label for="bank" class="col-sm-3 control-label">确认新密码</label>
+		<div class="col-sm-8"><input type="password" class="form-control" name="repaypass" maxlength="25" style="width:250px; padding:3px 10px;" /></div>
+	</div>
+	<div class="form-group">
+		<label for="" class="col-sm-3 control-label"></label>
+		<div class="col-sm-8"><input type="submit" class="btn btn-info" name="setpaypass_submit" value="确认提交" /></div>
+	</div>    
+</form>
+</div>
+<!--{template common/footer}-->

@@ -1,0 +1,106 @@
+<!--{template common/header}-->
+<div class="f-line"></div>
+<div class="container">
+    <div class="row">
+        <div class="span3">
+			<!--{subtemplate common/sidebar_common}-->
+        </div>
+        <div class="span9">
+        	<div class="f-line"></div>
+			<div class="m-hd m-hd-rt m-hd-ra" style="margin-top:5px;">
+    			<div class="f-fl">
+                	<div class="info">
+                    	<p style="font-size:14px; font-weight:bold; color:#666;">金融宝结算中心</p>
+                	</div>
+				</div>
+    			<ul>
+        			<li class="z-crt"><a href="index.php?mod=creditcard">我要提现</a></li>
+        			<li><a href="javascript:void(0);">提现历史记录</a></li>
+        			<li><a href="javascript:void(0);">提现退款帮助</a></li>
+
+    			</ul>
+			</div>
+            <div class="f-line"></div>
+			<div class="alert alert-info">
+        		<strong>提示信息:</strong>
+            	<ul>
+                	<li>禁止信用卡套现、虚假交易等行为,一经发现将予以处罚,包括但不限于：限制收款、冻结账户、永久停止服务,并有可能影响相关信用记录。</li>
+                    <li>当您申请退款时请从下面的列表中确认您有可以用来申请退款的额度。</li>
+                    <li>为防止套现，本站将对没有进行交易的资金提现收取部分手续费。实时到账 1%. 快速退款 0.6%.</li>
+                    <li class="text-danger">当天18点前的支付，选择实时退款的，当天1小时内为客户到账。</li>
+                    <li class="text-danger">当天18点-20点前选择实时退款的，当天3小时内为客户到账 。</li>
+                    <li class="text-danger">当天20点-24点后选择实时到账的，属于夜间打款，第二天早上12点前为客户到账。</li>
+                    <li>单笔退款的金额不得超过10万每笔。</li>
+                    <li class="text-danger">确保您的银行帐号的姓名和您的网站上的真实姓名一致。</li>
+                    <li>如提现有疑问请联系在线客服。</li>
+				</ul>
+			</div>
+            <style type="text/css">
+            .rebank li	{height:42px; overflow:hidden;border:2px solid #ccc; margin-bottom:10px;font-size:14px; position:relative;}
+			.rebank li:hover	{border:2px solid #f30;}
+			.rebank .check		{border:2px solid #060;}
+			.rebank label	{ padding:5px 0px; color:#666; width:100%;display:block;}
+			.rebank input	{position:relative; top:0px; left:20px; z-index:-999;}
+			.rebank a		{ color:#666;height:20px; width:40px; font-size:12px; padding:5px; z-index:999;}
+			
+			.retype li	{height:36px;border:1px solid #ccc; margin-bottom:10px;font-size:14px;width:265px;}
+			.retype li:hover	{border:1px solid #f30;}
+			.retype label	{ padding:0px 10px; color:#039; width:100%;display: block;}
+			.retype input	{position:relative; top:1px; left:0px; z-index:-999; }
+			.retype .askico	{background:url('static/finabao/images/global_png24.png')no-repeat;display:inline-block; position:absolute; top:2px; right:15px; width:16px; height:16px;overflow:hidden;line-height:999px;vertical-align:top;background-position:-234px -13px;}
+            .retype .askico:hover { cursor:help;}
+            </style>
+			<form class="m-form" role="form" method="post" action="index.php?mod=refund">
+            	<input type="hidden" name="formhash" value="{eval echo formhash();}" />
+                <input type="hidden" name="hash" value="{eval echo finahash();}" />
+                <fieldset>
+            		<div class="formitm">
+                		<label class="lab f-fs2">选择提现收款帐号：</label>
+                        <div class="ipt">
+                    	<ul class="rebank">
+                        	<!--{loop $banklist $key $var}-->
+                        	<li id="check_li_$var['banksign']_$key"><label class="f-cb"><input type="radio" name="rebank" value="$var['id']" /> <div class="f-fs2 bank_ico bank-$var['banksign']" id="bankdiv_$var['banksign']" style="position:relative; left:30px; _top:-18px;"></div> <span style="position:relative;_top:-48px; _left:180px;">尾号：$var['cardid'] 户名：$var['cardname']</span></label><span style="float:right; font-size:12px; position:absolute; right:20px; top:6px;"><a href="javascript:void(0);" class="btn">备注</a><a href="javascript:void(0);" class="btn">编辑</a> <a href="javascript:void(0);" class="btn">删除</a></span></li>
+                            <!--{/loop}-->
+                        </ul>
+                        <!--{if count($banklist) < 5}--><div class="" style="font-size:14px;"><a href="index.php?mod=ajax&action=addbank&referer={echo rawurlencode($dreferer)}" class="btn btn-danger" style="color:#fff;" onClick="showWindow('bankadd', this.href);return false;">添加新的银行卡</a></div><!--{/if}-->                        
+                        </div>
+					</div>
+            		<div class="formitm">
+                		<label class="lab f-fs2">输入提现金额：</label>
+                        <div class="ipt">
+                    		<input type="text" class="u-ipt" name="money" id="money" placeholder="0.00" onkeyup="this.value=this.value.replace(/[^\d\.]+?/g,'')" style="width:170px;" /><span style=" padding-left:20px; color:#666;" onclick="$('money').value='$settle['usable']'">您当前可提现的金额为<span style="color:#F60; font-size:16px; padding-left:10px;">$settle['usable']</span></span>                      
+                        </div>
+					</div>
+            		<div class="formitm f-cb">
+                		<label class="lab f-fs2">选择提现方式：</label>
+                        <div class="ipt">
+                    	<ul class="retype">
+                        	<!--{loop $retypelist $key $var}-->
+                            <!--{if $var['isoff'] == 1}-->
+                            <li><div class="radio" style="position:relative;"><label class="f-cb"><input type="radio" name="retype" value="$var['retype']" /><span style="position:absolute;top:-5px;">$var['title']</span></label><i class="askico"></i></div></li>
+                            <!--{/if}-->
+                            <!--{/loop}-->
+                    	</ul>
+                        </div>
+					</div>
+            		<div class="formitm f-cb" style="position:relative;">
+                		<label class="lab f-fs2">输入支付密码：</label>
+                        <div class="ipt"><input type="password" class="u-ipt" name="paypass" id="paypass" style="width:170px;" onblur="if(this.value==''){$('paypass_tips').style.display='';}" onfocus="this.value=''; $('paypass_tips').style.display='none';" /><span style="position:absolute; left:210px; color:#999;" id="paypass_tips" onclick="$('paypass').focus(); this.style.display='none';"><!--{if C::t('finabao_settle_member')->check_paypass($_G['uid'])}-->您已设置 请输入支付密码<!--{else}-->您未设置 请留空<!--{/if}--></span><!--{if !C::t('finabao_settle_member')->check_paypass($_G['uid'])}--><span style="color:#666; padding-left:20px;">您尚未设置支付密码，为保障资金安全，请点<a href="index.php?mod=paypass">这里进行设置</a></span><!--{/if}--></div>
+					</div>
+            		<div class="formitm">
+                		<label class="lab f-fs2"></label>
+                        <div class="ipt"><input type="submit" name="refund_submit" class="btn btn-info" value="提交提现申请" /></div>
+					</div>                  
+                </fieldset>
+			</form>
+        </div>
+	</div>
+</div>
+
+<script type="text/javascript">
+jQuery(".rebank > li").click(function(){
+	jQuery(".rebank > li").removeClass('check');
+	jQuery("#"+this.id).addClass('check');								   
+});
+</script>
+<!--{template common/footer}-->

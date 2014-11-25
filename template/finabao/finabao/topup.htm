@@ -1,0 +1,107 @@
+<!--{template common/header}-->
+<style type="text/css">
+#passage_choose		{}
+#passage_choose li	{ width:120px; height:45px; padding:0px 0px; margin-bottom:10px; float:left; position:relative; left:-20px;}
+.passage_ico		{ cursor:pointer; width:80px; height:32px; border:2px solid #CCC; position:relative; top:0px; left:0px; background:url("static/finabao/images/PrarBa94X.png") no-repeat; overflow:hidden;line-height:999px;vertical-align:top;background-position:0 50px;}
+.passage_ico:hover	{ border-color:#F63;}
+#passage_choose label	{ padding:0px 0px; color:#039; display: block; height:35px; position:relative;top:-10px; width:85px;}
+#passage_choose input	{ z-index:-999; display:block;position:relative; top:25px; left:15px;}
+.ico_baofoo			{ background-position:-310px -16px;}
+.ico_gopay			{ background-position:-310px -55px;}
+.ico_ecpss			{ background-position:-234px -17px;}
+blockquote span		{ font-weight:900; font-size:16px;}
+blockquote label	{ font-size:14px; }
+blockquote			{ padding-left:25px; margin-bottom:25px;}
+.choose_ok			{ border-color:#693;}
+#money:foucs		{ }
+blockquote			{ background-color:#f7f7f7; padding:20px;}
+#bank_choose li		{ width:160px; height:40px; padding:10px 0px 0px 0px; margin-bottom:5px; float:left; display:inline-block;}
+.bank_ico		{ cursor:pointer; width:135px; height:35px; border:2px solid #CCC;}
+.bank_ico:hover	{ border-color:#F63;}
+.bank_ok			{ border-color:#693;}
+</style>
+<div class="f-line"></div>
+<div class="container">
+    <div class="row">
+        <div class="span3" style="padding-right:0px;">
+			<!--{subtemplate common/sidebar_common}-->
+        </div>
+        <div class="span9">
+        	<div class="f-line" style="margin-top:5px;"></div>
+			<div class="m-hd m-hd-rt m-hd-ra">
+    			<div class="f-fl m-ccardl">
+                	<div class="info">
+                    	<p style="font-size:14px; font-weight:bold; color:#666;">信用卡管理中心</p>
+                	</div>
+				</div>
+    			<ul>
+        			<li class="z-crt"><a href="index.php?mod=creditcard">第三方支付通道</a></li>
+        			<li><a href="javascript:void(0);">网上银行</a></li>
+        			<li><a href="javascript:void(0);">线下转账</a></li>
+                    <li><a href="javascript:void(0);">充值记录</a></li>
+                    <li><a href="javascript:void(0);">充值帮助</a></li>
+    			</ul>
+			</div>
+
+
+            <div class="alert alert-info" style="margin-top:20px;"><b>警告信息:</b>禁止信用卡套现、虚假交易等行为,一经发现将予以处罚,包括但不限于：限制收款、冻结账户、永久停止服务,并有可能影响相关信用记录。</div>
+            <blockquote>
+            	<span class="text-danger">Setup 1.</span>
+                <label>请确认您充值的账户信息</label>
+                <p>$_G['username'] ($_G['member']['email'])</p>
+            </blockquote>
+            <form method="post" name="topup_form" id="topup_form" action="index.php?mod=topup">
+            	<input type="hidden" name="formhash" value="$formhash" />
+            	<input type="hidden" name="hash" value="$hash" />
+                <input type="hidden" name="key" value="$key" />
+                <input type="hidden" name="bank" id="input_bank" value="" />
+                <input type="hidden" name="passage" id="passage" value="">
+            <blockquote class="f-cb">
+            	<span class="text-danger">Setup 2.</span>
+                <label for="passage">选择充值的第三方支付通道</label>
+                <div id="ajax_choose">
+                <ul id="passage_choose" class="f-cb">
+                	<!--{loop $_G['finabao']['cache']['passage'] $var}-->
+                    <!--{if $var['usable']}-->
+                    <li title="$var['name']"><div class="checkbox"><label><div class="passage_ico ico_$var[sign]" id="$var[sign]" onclick="choosepassage(this.id);"></div></label></div></li>
+                    <!--{/if}-->
+                    <!--{/loop}-->
+                </ul>
+                <hr style="margin:5px 0px; margin-top:10px;" />
+                <ul>
+                    <p style="padding:5px 0px;"><h3>选择卡片所属的银行 查看充值限额情况</h3></p>
+                    <div id="bank_choose">
+					<!--{loop $banklist $var}-->
+						<li><a href="javascript:;" title="$var['name']"><div class="bank_ico bank-$var[sign]" id="bankdiv_$var[sign]"></div></a></li>
+					<!--{/loop}-->
+                    </div>
+                </ul>
+                </div>
+            </blockquote>
+            <blockquote>
+            	<span class="text-danger">Setup 3.</span>
+                <label for="money">输入要充值的金额</label>
+                <p><input type="text" name="money" id="money" maxlength="8" style="height:32px; color:#F30; font-size:16px; font-weight:bold; border:2px solid #ccc; padding-left:10px;" placeholder="0.00" onkeyup="this.value=this.value.replace(/[^\d\.]+?/g,'')" /></p>
+            	<p style="padding:5px 0px;"><div class="text-muted">单笔充值金额不能超过 20万</div></p>
+            </blockquote>
+            <div style="width:20%; text-align:center; margin:0px auto;"><input type="submit" class="btn btn-info btn-block" name="topup_submit" value="立即充值" /></div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+function choosepassage(id){
+    jQuery("#passage").val(id);
+}
+
+jQuery(".passage_ico").click(function(){
+	jQuery(".passage_ico").removeClass('choose_ok');
+	jQuery("#"+this.id).addClass('choose_ok');
+	ajaxget('index.php?mod=ajax&action=passagebank&hash=$hash&passage='+this.id, 'bank_choose');
+});
+
+jQuery('#topup_form').submit(function(){
+	jQuery("#btn-submit").attr({disabled:"disabled"});
+});
+</script>
+<!--{template common/footer}-->

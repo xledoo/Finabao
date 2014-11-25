@@ -1,0 +1,20 @@
+<!--{template common/header}-->
+<div style="width:550px; min-height:200px;" class="f-cb">
+	<h3 class="flb"><!--{if $_G[inajax]}--><span><a href="javascript:;" class="flbc" onclick="hideWindow('$_GET['handlekey']');" title="{lang close}">{lang close}</a></span><!--{/if}--></h3>
+    <div style="width:90%; text-align:left; margin:0px auto;">
+		<label>充值通道</label><div class="bank_ico bank-$bank" id="bankdiv_$bank" style="margin-left:25px; position:relative; top:-13px; _top:-32px; _left:50px;"></div>
+        <hr size="1" noshade style="margin:15px 0px;">
+        <table class="table table-condensed table-striped table-bordered">
+        	<thead bgcolor="e1e1e1"><th>类型</th><th>单笔限额(元)</th><th>日限额(元)</th><th>月限额(元)</th></thead>
+            <tbody>
+                <!--{loop $pbank $var}-->
+                <tr>
+                    <td>$var['mark']</td><td>$var['sec']</td><td>$var['day']</td><td>$var['month']</td>
+                </tr>
+                <!--{/loop}-->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!--{template common/footer}-->

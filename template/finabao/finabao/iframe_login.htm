@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" style="background-color:transparent;">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>金融宝登陆</title>
+<script type="text/javascript" src="static/finabao/javascript/jquery-1.10.2.min.js?{VERHASH}"></script>
+<script type="text/javascript" src="{$_G[setting][jspath]}common.js?{VERHASH}"></script>
+<script type="text/javascript" src="{$_G[setting][jspath]}logging.js?{VERHASH}"></script>
+<script type="text/javascript" src="static/finabao/javascript/json2.js?{VERHASH}"></script>
+
+</head>
+<!--{csstemplate}-->
+<style type="text/css">
+body	{ width: 270px; height: 310px; overflow:hidden; padding:0px; margin:0px;}
+.b		{ border:1px solid #ccc;}
+.login-box	{ font-size:12px; color:#fff; margin:5px 20px;}
+.login-box .title	{ font:17px/36px \5fae\8f6f\96c5\9ed1,\5b8b\4f53; color:#fff; text-align:left; color:#fff; *width:220px; border-bottom:2px solid #C63; margin-bottom:5px; padding-left:0px; }
+.control-group		{ padding:5px 0px; *width:220px;}
+.control-group	span{ float:right;}
+.control-group	span a{ text-decoration:none; color:#ccc;}
+.control-label		{ width:250px; text-align:left;}
+.control-label	input, select	{ width:223px; height:20px; margin-top:5px; border:1px solid #A09E99; color:#666}
+.control-label	select			{ width:230px; height:30px;}
+.ui-input{width:223px;padding:4px 0px;*padding-top:2px; _position:relative; _left:-18px; *position:relative; *left:0px;border-color:#aaa #DDDDDd #ddd #AAAAAA;border-width:1px;border-style:solid;line-height:1.2\0;height:14px;*height:16px;-moz-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;-moz-box-shadow:1px 1px 1px #ddd inset;-webkit-box-shadow:1px 1px 1px #ddd inset;box-shadow:1px 1px 1px #ddd inset;	font-weight:bold;}
+.ui-input:hover,.ui-input-hover{border-color:#999 #CCCCCc #ccc #999999}
+.ui-input:focus{-moz-box-shadow:none;-webkit-box-shadow:none;box-shadow:none; border:2px solid #09C; width:222px; height:18px;}
+.ui-form-error .ui-input{
+	border:2px solid #F30;
+	-moz-box-shadow:1px 1px 1px #faa inset;
+	-webkit-box-shadow:1px 1px 1px #faa inset;
+	box-shadow:1px 1px 1px #faa inset;
+	height:18px;
+}
+.ui-input-radio{vertical-align:middle;margin-right:5px; padding-left:0px;}
+.ui-button{display:-moz-inline-box;display:inline-block;*display:inline;vertical-align:middle;line-height:100%;text-align:left;font-size:12px;text-decoration:none;cursor:pointer;zoom:1}
+.ui-button,.ui-button .ui-button-text{background-image:url(https://apimg.alipay.com/sys/authcenter/style/renew_20110718/common.png);background-repeat:repeat-x;font-family:Tahoma;cursor:pointer;outline:0}
+.ui-button{font-family:SimSun}
+.ui-button:hover{text-decoration:none}
+.ui-button .ui-button-text{border:0;*border:0;*overflow:visible}
+input.btn-login{border:0; _position:relative; _left:-18px; cursor:pointer;display:block;text-indent:center;height:35px;line-height:35px;width:223px;background-size:cover;color:#f9f9f9;text-shadow:1px 1px 0 rgba(0,0,0,0.2);font-weight:normal;font-weight:bold\0;*font-weight:bold;_font-weight:bold;font-size:18px;background-color:#f5aa2b;background:-webkit-gradient(linear,left top,left bottom,from(#ffa600),to(#fe9200));background:-moz-linear-gradient(top,#ffa600,#fe9200);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFA600',endColorstr='#FE9200');background:-o-linear-gradient(top,#ffa600,#fe9200);background:-ms-linear-gradient(top,#ffa600 0,#fe9200 100%);background:linear-gradient(top,#ffa600,#fe9200);font:17px/36px \5fae\8f6f\96c5\9ed1,\5b8b\4f53;}
+
+.btn-login{cursor:pointer;display:block;text-indent:center;text-align:center;height:35px;line-height:35px;width:100%;background-size:cover;color:#f9f9f9;text-shadow:1px 1px 0 rgba(0,0,0,0.2);font-weight:normal;font-weight:bold\0;*font-weight:bold;_font-weight:bold;font-size:18px;background-color:#f5aa2b;background:-webkit-gradient(linear,left top,left bottom,from(#ffa600),to(#fe9200));background:-moz-linear-gradient(top,#ffa600,#fe9200);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFA600',endColorstr='#FE9200');background:-o-linear-gradient(top,#ffa600,#fe9200);background:-ms-linear-gradient(top,#ffa600 0,#fe9200 100%);background:linear-gradient(top,#ffa600,#fe9200);font:17px/36px \5fae\8f6f\96c5\9ed1,\5b8b\4f53;}
+.btn-login:hover{ font:17px/36px \5fae\8f6f\96c5\9ed1,\5b8b\4f53;text-decoration:none; text-align:center;background-color:#f5aa2b;background:-webkit-gradient(linear,left top,left bottom,from(#ffb91c),to(#ffa700));background:-moz-linear-gradient(top,#ffb91c,#ffa700);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFB91C',endColorstr='#FFA700');background:-o-linear-gradient(top,#ffb91c,#ffa700);background:-ms-linear-gradient(top,#ffb91c 0,#ffa700 100%);background:linear-gradient(top,#ffb91c,#ffa700);background-size:cover}
+</style>
+<body style="background-color:transparent; width: 270px; height: 310px; overflow:hidden; padding:0px; margin:0px;">
+
+<!--{if !$_G['uid']}-->
+<form method="post" autocomplete="off" name="login" id="loginform_$loginhash" class="cl" action="index.php?mod=iframe&action=login&loginhash=$loginhash">
+<input type="hidden" name="formhash" value="{FORMHASH}" />
+<input type="hidden" name="referer" value="{echo dreferer()}" />
+<input type="hidden" name="loginsubmit"	value="true" />
+<!--{if $auth}-->
+<input type="hidden" name="auth" value="$auth" />
+<!--{/if}-->
+
+<div class="login-box">
+	<div class="title">登陆金融宝</div>
+    <div id="login_noq">
+    <div class="control-group">
+    	<label for="username">用户名：</label>
+        <div class="control-label"><input type="text" name="u_$loginhash" id="username_$loginhash" class="ui-input" tabindex="1" value="$username" oncontextmenu="return false" onpaste="return false" oncopy="return false" oncut="return false" autocomplete="off" /></div>
+    </div>
+    <div class="control-group">
+    	<span style="float:right;"><a href="index.php?mod=iframe&act=lostpassword">忘记密码？</a></span><label for="password">登陆密码：</label>
+        <div class="control-label"><input type="password" name="p_$loginhash" id="password3_$loginhash" onfocus="this.value=''" class="ui-input" value="" tabindex="2" maxlength="20" /></div>
+    </div>
+    </div>
+    <div id="login_q" style="display:none;">
+    <div class="control-group">
+    	<label for="password">{lang security_q}：</label>
+        <div class="control-label"><select id="loginquestionid_$loginhash" width="213" style="_width:220px; _height:22px; height:30px;" class="u-ipt" name="questionid"{if !$questionexist} onchange="if($('loginquestionid_$loginhash').value > 0) {$('loginanswer_row_$loginhash').style.display='';} else {$('loginanswer_row_$loginhash').style.display='none';}"<!--{/if}-->>
+								<option value="0"><!--{if $questionexist}-->{lang security_question_0}<!--{else}-->{lang security_question}<!--{/if}--></option>
+								<option value="1">{lang security_question_1}</option>
+								<option value="2">{lang security_question_2}</option>
+								<option value="3">{lang security_question_3}</option>
+								<option value="4">{lang security_question_4}</option>
+								<option value="5">{lang security_question_5}</option>
+								<option value="6">{lang security_question_6}</option>
+								<option value="7">{lang security_question_7}</option>
+							</select></div>
+    </div>   
+    <div class="control-group">
+    	<label for="password">{lang security_a}：</label>
+        <div class="control-label"><input type="text" name="answer" id="loginanswer_$loginhash" autocomplete="off" size="30" class="ui-input" tabindex="1" /></div>
+    </div>
+    </div>
+    <div class="control-group">
+    <p><input type="checkbox" class="ui-input-radio" name="cookietime" id="cookietime_$loginhash" value="2592000" $cookietimecheck />{lang login_permanent}</p>
+    </div>
+    <div class="control-group">
+    	<input id="btn-submit" seed="B-login-button1" type="submit" tabindex="3" class="btn-login" value="登  录" />
+    </div>
+</div>
+<!--{else}-->
+<div class="login-box">
+	<div id="legend" class="title">我的用户信息</div>
+    <div class="control-group" style="padding-top:10px;">
+		<div style="width:170px; height:50px; float:right; vertical-align:top;"><span>[<a href="member.php?mod=logging&action=logout&formhash={FORMHASH}&referer=index.php" target="_parent" style="color:#fff">{lang logout}</a>]</span><h2 style="font-size:14px;"><a href="home.php?mod=space&uid=$_G['uid']" style="color:#fff" target="_parent">$_G['username']</a></h2><h2 style="font-size:14px;">$_G['member']['email']</h2></div>
+		<div style="width:50px; height:50px;overflow:hidden; vertical-align:middle;"><a href="home.php?mod=spacecp&ac=avatar" target="_parent"><!--{avatar($_G[uid],small)}--></a></div>
+    </div>
+    <div class="control-group">
+		<label>账户可用余额：</label>
+        <div class="control-label">
+			<div style=" font-size:16px; font-weight:bold; color:#C30;">$settle['usable']</div>
+        </div>
+    </div>
+    <div class="control-group"><hr style="border:1px dashed #ccc;" /></div>
+    <div class="control-group">
+        <a href="index.php?mod=account" class="btn-login" target="_parent">进入我的账户</a>
+    </div>
+    <div class="control-group">
+		<label>最后登陆：</label>
+        <div class="control-label">
+        	<ul>
+            	<li>$lastactivity</li>
+			</ul>
+        </div>
+    </div>
+</div>
+<!--{/if}-->
+<div id="loginLoading" class="Loading"><img src="static/finabao/fimages/ajaxloading.gif" /><p>Loading...</p></div>
+<script type="text/javascript">
+function ajaxLayer(str, d){
+	jQuery(".control-group").hide(1).delay(d).show(1);
+	jQuery("#loginLoading p").text(str);
+	jQuery("#loginLoading").show(1).delay(d).hide(1);	
+}
+
+jQuery("#loginform_$loginhash").submit(function(){
+	var userName	=	jQuery("#username_$loginhash").val();
+	var passWord	=	jQuery("#password3_$loginhash").val();
+	if(userName.length < 5 || passWord.length < 5){
+		ajaxLayer("用户名或密码输入错误", 1500);
+		return false;
+	}
+	jQuery.post(this.action, jQuery("#loginform_$loginhash").serialize(), function(data){																			  
+		if(data['return'] == -6){
+			jQuery('#login_noq').hide(1);
+			jQuery('#login_q').show(1);
+		}
+		ajaxLayer(data['message'], 1500);
+		if(data['reload']){
+			setTimeout('parent.location.reload()',1500);
+		}
+	}, "json");
+	return false;
+});
+
+jQuery(document).ready(function() {
+	jQuery("#loginLoading").hide(1);		
+});
+</script>
+<!--{eval updatesession();}-->
+</body>
+</html>

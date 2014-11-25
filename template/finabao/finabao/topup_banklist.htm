@@ -1,0 +1,15 @@
+<!--{template common/header}-->
+<!--{loop $banklist $key $var}-->
+<li><a href="javascript:;" onclick="showBBox('$key');"  title="$var['name']"><div class="bank_ico bank-$key" id="bankdiv_$key"></div></a></li>
+<!--{/loop}-->
+<script type="text/javascript">
+function showBBox(id){
+	var passage	=	'$passage';
+	showWindow('topup', 'index.php?mod=ajax&action=topupbank&hash=$hash&bank='+id+'&passage='+passage);
+	jQuery(".bank_ico").removeClass('bank_ok');
+	jQuery("#bankdiv_"+id).addClass('bank_ok');
+	jQuery("#input_bank").val(id);
+	return false;
+}
+</script>
+<!--{template common/footer}-->

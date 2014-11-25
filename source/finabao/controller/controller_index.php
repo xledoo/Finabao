@@ -1,5 +1,5 @@
 <?php
 
-// debug($_G['setting']);
-include template('finabao');
+
+include template('finabao/index');
 ?>

@@ -5,7 +5,7 @@ define('FINA_RELEASE', '20141111');
 require_once './source/class/class_core.php';
 $discuz = C::app();
 $discuz->init();
-$controller	=	in_array(getgpc('c'), array('index', 'topup', 'refund', 'account','register','login')) ? getgpc('c') : 'index';
+$controller	=	in_array(getgpc('c'), array('account', 'ajax', 'member', 'topup', 'refund', 'iframe', 'api', 'creditcard', 'paypass', 'risk', 'test','register','login')) ? getgpc('c') : 'index';
 require_once libfile('function/finabao', FINA_NAME);
 require_once libfile('controller/'.$controller, FINA_NAME);
 ?>

@@ -5,11 +5,11 @@
 </style>
 <div class="container" style="height:600px;">
 	<div class="row">
-    	<div class="span8">
+    	<div class="col-sm-8">
         	<div class="f-line"></div>
         	<img src="static/finabao/fimages/wireless.jpg" />
         </div>
-        <div class="span4" style="position:relative;">
+        <div class="col-sm-4" style="position:relative;">
         	<div style=" border:1px solid #ccc; height:420px; width:340px; background:#f7f7f7; _width:335px;"></div>
 			<form method="post" autocomplete="off" name="login" id="loginform_$loginhash" class="cl" onsubmit="{if $this->setting['pwdsafety']}pwmd5('password3_$loginhash');{/if}pwdclear = 1;ajaxpost('loginform_$loginhash', 'returnmessage_$loginhash', 'returnmessage_$loginhash', 'onerror');return false;" action="member.php?mod=logging&action=login&loginsubmit=yes{if !empty($_GET['handlekey'])}&handlekey=$_GET[handlekey]{/if}{if isset($_GET['frommessage'])}&frommessage{/if}&loginhash=$loginhash">
 				<input type="hidden" name="formhash" value="{FORMHASH}" />

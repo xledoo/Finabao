@@ -118,7 +118,7 @@ body		{ padding-top:25px;min-width:1100px;}
 .m-auth .icon-aqff{width:40px;height:27px;margin-right:12px;background-position:-406px -198px}
 .m-auth .icon-rzcx{width:75px;height:27px;background-position:-391px -225px}
 .m-auth .icon-360{width:125px;height:27px;background-position:-467px -225px}
-.icon-360, .icon-360:hover, .icon-qyfr, .icon-qyfr:hover, .icon-visayz, .icon-pcirk:hover, .icon-vsjmfw, .icon-vsjmfw:hover, .icon-zjwm, .icon-zjwm:hover, .icon-wlgs, .icon-wlgs:hover, .icon-ppaa, .icon-ppaa:hover, .icon-hzdt, .icon-hzdt:hover, .icon-aqff, .icon-aqff:hover, .icon-rzcx,  .icon-rzcx:hover { background-image:url("../../../static/finabao/images/PrarBa94X.png");}
+.icon-360, .icon-360:hover, .icon-qyfr, .icon-qyfr:hover, .icon-visayz, .icon-pcirk:hover, .icon-vsjmfw, .icon-vsjmfw:hover, .icon-zjwm, .icon-zjwm:hover, .icon-wlgs, .icon-wlgs:hover, .icon-ppaa, .icon-ppaa:hover, .icon-hzdt, .icon-hzdt:hover, .icon-aqff, .icon-aqff:hover, .icon-rzcx,  .icon-rzcx:hover { background-image:url("../../../static/finabao/fimages/PrarBa94X.png");}
 
 .row {margin-left: -20px;*zoom: 1; *margin-left: -10px; *margin-right:-10px;}
 .row:before,
@@ -186,7 +186,7 @@ body		{ padding-top:25px;min-width:1100px;}
 	display:block;
 	width:80px;
 	height:20px;
-	background:url("../../../static/finabao/images/level.png");
+	background:url("../../../static/finabao/fimages/level.png");
 	z-index:9999;
 }
 .m-ilev-d1	{ background-position:0px 0px;}
@@ -225,7 +225,7 @@ body		{ padding-top:25px;min-width:1100px;}
 .m-form .tip input{margin:0 5px 3px 0;}
 
 /* 文本输入框 */
-.u-ipt{width:180px;padding:5px;height:17px;border:1px solid #D9D9D9;border-top-color:#c0c0c0;line-height:17px;font-size:14px;color:#777;background:#fff;}
+.u-ipt{width:180px;padding:5px;height:27px;border:1px solid #D9D9D9;border-top-color:#c0c0c0;line-height:17px;font-size:14px;color:#777;background:#fff;}
 /* 文本输入框-窄 */
 .u-ipt-1{width:90px;}
 /* 文本输入框-出错 */
@@ -240,7 +240,7 @@ body		{ padding-top:25px;min-width:1100px;}
 .ico-ecitic, .ico-gdb, .ico-pingan, .ico-post, .ico-union,
 .ico-jsb,.ico-srcb,.ico-hkb,.ico-nbcb,.ico-njcb,.ico-bosh,.ico-hxb,.ico-hzb,.ico-hkbea,.ico-ordos,.ico-cbhb,.ico-jzb,
 .ico-gdrcu,.ico-nccb,.ico-glccb,.ico-bsb,.ico-ynrcc,.ico-gzcb,.ico-cqrcb,.ico-zjcb,.ico-sdrcu,.ico-jshbank,.ico-klb,.ico-hrbcb,.ico-crb,.ico-cqcb, .ico-sdebank, .ico-qlb, .ico-hangseng,  .ico-sznsh, .ico-zsxlc, .ico-hdcb, .ico-xxssh, .ico-nycbank, .ico-jjccb, .ico-bankofjdz, .ico-bek, .ico-zjtlcb, .ico-bocd, .ico-zjnx,
-.ico-ljbank, .ico-fdbank{background:url("../../../static/finabao/images/bank_ico.png?v=20130828") no-repeat;display:inline-block;position:relative;height:18px;width:18px;overflow:hidden;line-height:999px;vertical-align:top;}
+.ico-ljbank, .ico-fdbank{background:url("../../../static/finabao/fimages/bank_ico.png?v=20130828") no-repeat;display:inline-block;position:relative;height:18px;width:18px;overflow:hidden;line-height:999px;vertical-align:top;}
 .ico-icbc{background-position:0 0;}                       /* 中国工商银行 */
 .ico-cmb{background-position:-18px 0;}                    /* 招商银行 */
 .ico-ccb{background-position:-36px 0;}                    /* 中国建设银行 */
@@ -433,7 +433,7 @@ body		{ padding-top:25px;min-width:1100px;}
 .bank-ecitic, .bank-1003, .bank-1002, .bank-1005, .bank-1026, .bank-gdb, .bank-pingan, .bank-post, .bank-psbc, .bank-jsb,
 .ico-cop, .ico-ydt,.bank-srcb,.bank-bosh,.bank-hxb,.bank-hkbea,.bank-ordos,.bank-cbhb,.bank-jzb,.bank-njcb,.bank-nbcb,
 .bank-gdrcu,.bank-nccb,.bank-glccb,.bank-bsb,.bank-ynrcc,.bank-gzcb,.bank-cqrcb,.bank-zjcb,.bank-sdrcu,.bank-jshbank,.bank-klb,.bank-hrbcb,.bank-crb,.bank-cqcb, .bank-shbank, .bank-hzb, .bank-hkb, .bank-sdebank, .bank-qlb, .bank-hangseng,  .bank-sznsh, .bank-zsxlc, .bank-hdcb, .bank-xxssh, .bank-nycbank, .bank-jjccb, .bank-bankofjdz, .bank-bek, .bank-zjtlcb, .bank-bocd, .bank-zjnx,
-.bank-ljbank, .bank-fdbank{background:url("../../../static/finabao/images/bank.png?v=20130828") no-repeat;display:inline-block;position:relative;height:33px;width:141px;overflow:hidden;line-height:999px;vertical-align:top;}
+.bank-ljbank, .bank-fdbank{background:url("../../../static/finabao/fimages/bank.png?v=20130828") no-repeat;display:inline-block;position:relative;height:33px;width:141px;overflow:hidden;line-height:999px;vertical-align:top;}
 .bank-icbc{background-position:0 -35px;}            /* 中国工商银行 */
 .bank-1002{background-position:0 -35px;}            /* 中国工商银行 */
 .bank-cmb{background-position:0 -66px;}             /* 招商银行 */
@@ -516,7 +516,7 @@ body		{ padding-top:25px;min-width:1100px;}
 .bank-mini .bank-ecitic, .bank-mini .bank-gdb, .bank-mini .bank-pingan, .bank-mini .bank-post, .bank-mini .bank-jsb,
 .bank-mini .ico-cop, .bank-mini .ico-ydt,.bank-mini .bank-srcb,.bank-mini .bank-hkbea,.bank-mini .bank-ordos,.bank-mini .bank-gdrcu,
 .bank-mini .bank-nccb,.bank-mini .bank-glccb,.bank-mini .bank-bsb,.bank-mini .bank-ynrcc,.bank-mini .bank-gzcb,.bank-mini .bank-cqrcb,.bank-mini .bank-zjcb,.bank-mini .bank-sdrcu,.bank-mini .bank-jshbank,.bank-mini  .bank-klb,.bank-mini .bank-hrbcb,.bank-mini .bank-crb,.bank-mini .bank-cqcb, .bank-mini .bank-shbank, .bank-mini .bank-hzb, .bank-mini .bank-hkb, .bank-mini .bank-sdebank, .bank-mini .bank-qlb, .bank-mini .bank-hangseng,  .bank-mini .bank-sznsh, .bank-mini .bank-zsxlc, .bank-mini .bank-hdcb, .bank-mini .bank-xxssh, .bank-mini .bank-nycbank, .bank-mini .bank-jjccb, .bank-mini .bank-bankofjdz, .bank-mini .bank-bek,
-.bank-mini .bank-ljbank, .bank-mini .bank-fdbank{background:url("../../../static/finabao/images/bank_mini.png?v=20130828") no-repeat;display:inline-block;position:relative;height:22px;width:99px;overflow:hidden;line-height:999px;vertical-align:top;}
+.bank-mini .bank-ljbank, .bank-mini .bank-fdbank{background:url("../../../static/finabao/fimages/bank_mini.png?v=20130828") no-repeat;display:inline-block;position:relative;height:22px;width:99px;overflow:hidden;line-height:999px;vertical-align:top;}
 .bank-mini .bank-icbc{background-position:0 -22px;}
 .bank-mini .bank-cmb{background-position:0 -44px;}
 .bank-mini .bank-ccb{background-position:0 -66px;}

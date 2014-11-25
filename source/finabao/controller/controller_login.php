@@ -1,7 +1,7 @@
 <?php
 
 	require_once libfile('function/member');
-	require_once './source/finabao/class/logging_ctl.php';
+	require_once libfile('class/logging', 'finabao');
 
 	$ctl_obj = new logging_ctl();
 	$ctl_obj->setting = $_G['setting'];

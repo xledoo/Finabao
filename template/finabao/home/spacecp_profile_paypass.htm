@@ -1,0 +1,73 @@
+<!--{template common/header}-->
+<style type="text/css">
+.m-form .lab { width:120px; text-align:left;}
+.m-form .formitm{padding:10px 0px;line-height:15px;}
+.m-form .ipt{margin-left:140px;}
+.u-ipt		{ width:270px;}
+</style>
+<link rel="stylesheet" href="static/finabao/nec/login.css?20140209" />
+<script type="text/javascript" src="{$_G[setting][jspath]}register.js?{VERHASH}"></script>
+<!--{eval if(!$op && !getgpc('mod')) $op = 'base';}-->
+<div class="f-line"></div>
+<div class="container">
+    <div class="row">
+        <div class="span3" style="padding-right:0px;">
+			<!--{subtemplate common/sidebar_common}-->
+        </div>
+        <div class="span9">
+        	<div class="f-line" style="margin-top:5px;"></div>
+			<div class="m-hd m-hd-rt m-hd-ra">
+				<!--{template home/spacecp_navtable}-->
+			</div>
+            <div class="f-line"></div>
+			<p class="bbda pbm mbm" style="line-height:25px;">支付密码用于保证您的资金安全，在资金发生转移的情况下需要输入进行验证。<br /><span style="color:#F30;">修改支付密码时，系统将自动发送提醒信息到您的微信帐号或预留的手机。</span></p>
+			<form action="index.php?mod=paypass" id="paypass_form" method="post" autocomplete="off">
+				<input type="hidden" value="{FORMHASH}" name="formhash" />
+				<table summary="{lang memcp_profile}" cellspacing="0" cellpadding="0" class="tfm isprofile">
+					<!--{if !$_G['setting']['connect']['allow'] || !$conisregister}-->
+						<tr>
+							<th><span class="rq" title="{lang required}">*</span>旧支付密码</th>
+							<td style="position:relative;"><input type="password" name="oldpaypass" id="oldpaypass" class="u-ipt pass"  maxlength="18" onfocus="$('paypass_tips').style.display='none';" onblur="if(this.value==''){$('paypass_tips').style.display=''; }" /><span id="paypass_tips" style="position:absolute; left:50px; top:15px; color:#999;" onclick="$('oldpaypass').focus();"><!--{if C::t('finabao_settle_member')->check_paypass($_G['uid'])}-->您已设置 请输入原支付密码<!--{else}-->您未设置 请留空<!--{/if}--></span><p class="d">修改支付密码必须输入原支付密码进行验证</p></td>
+                            
+						</tr>
+					<!--{/if}-->
+					<tr>
+						<th>新支付密码</th>
+						<td>
+							<input type="password" name="newpaypass" id="newpaypass" class="u-ipt pass" maxlength="18" />
+							<p class="d" id="chk_newpaypass">{lang memcp_profile_passwd_comment}</p>
+						</td>
+					</tr>
+					<tr>
+						<th>确认新支付密码</th>
+						<td>
+							<input type="password" name="newpaypass2" id="newpaypass2"class="u-ipt pass" maxlength="18" />
+							<p class="d" id="chk_newpaypass2">{lang memcp_profile_passwd_comment}</p>
+						</td>
+					</tr>
+					<!--{if $secqaacheck || $seccodecheck}-->
+					</table>
+						<!--{eval $sectpl = '<table cellspacing="0" cellpadding="0" class="tfm"><tr><th><sec></th><td><sec><p class="d"><sec></p></td></tr></table>';}-->
+						<!--{subtemplate common/seccheck}-->
+					<table summary="{lang memcp_profile}" cellspacing="0" cellpadding="0" class="tfm">
+					<!--{/if}-->
+					<tr>
+						<th>&nbsp;</th>
+						<td><button type="submit" name="paypass_submit" value="true" class="btn btn-info" style="width:120px;" /><strong>{lang save}</strong></button></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+</div>
+			<script type="text/javascript">
+				var strongpw = new Array();
+				<!--{if $_G['setting']['strongpw']}-->
+					<!--{loop $_G['setting']['strongpw'] $key $val}-->
+					strongpw[$key] = $val;
+					<!--{/loop}-->
+				<!--{/if}-->
+				var pwlength = <!--{if $_G['setting']['pwlength']}-->$_G['setting']['pwlength']<!--{else}-->0<!--{/if}-->;
+				checkPwdComplexity($('newpaypass'), $('newpaypass2'), true);
+			</script>
+<!--{template common/footer}-->

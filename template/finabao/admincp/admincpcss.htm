@@ -1,0 +1,1172 @@
+<style type="text/css">
+/* 文本输入框 */
+.u-ipt{width:180px;padding:5px;height:17px;border:1px solid #D9D9D9;border-top-color:#c0c0c0;line-height:17px;font-size:14px;color:#777;background:#fff;}
+/* 文本输入框-窄 */
+.u-ipt-1{width:90px;}
+/* 文本输入框-出错 */
+.u-ipt-err{border-color:#c00 #e00 #e00;}
+.u-ipt-succeed{ border:1px solid #390;}
+table {
+  max-width: 100%;
+  background-color: transparent;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  border-top: 1px solid #dddddd;
+}
+
+.table th {
+  font-weight: bold;
+}
+
+.table thead th {
+  vertical-align: bottom;
+}
+
+.table caption + thead tr:first-child th,
+.table caption + thead tr:first-child td,
+.table colgroup + thead tr:first-child th,
+.table colgroup + thead tr:first-child td,
+.table thead:first-child tr:first-child th,
+.table thead:first-child tr:first-child td {
+  border-top: 0;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dddddd;
+}
+
+.table .table {
+  background-color: #ffffff;
+}
+
+.table-condensed th,
+.table-condensed td {
+  padding: 4px 5px;
+}
+
+.table-bordered {
+  border: 1px solid #dddddd;
+  border-collapse: separate;
+  *border-collapse: collapse;
+  border-left: 0;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+
+.table-bordered th,
+.table-bordered td {
+  border-left: 1px solid #dddddd;
+}
+
+.table-bordered caption + thead tr:first-child th,
+.table-bordered caption + tbody tr:first-child th,
+.table-bordered caption + tbody tr:first-child td,
+.table-bordered colgroup + thead tr:first-child th,
+.table-bordered colgroup + tbody tr:first-child th,
+.table-bordered colgroup + tbody tr:first-child td,
+.table-bordered thead:first-child tr:first-child th,
+.table-bordered tbody:first-child tr:first-child th,
+.table-bordered tbody:first-child tr:first-child td {
+  border-top: 0;
+}
+
+.table-bordered thead:first-child tr:first-child > th:first-child,
+.table-bordered tbody:first-child tr:first-child > td:first-child,
+.table-bordered tbody:first-child tr:first-child > th:first-child {
+  -webkit-border-top-left-radius: 4px;
+          border-top-left-radius: 4px;
+  -moz-border-radius-topleft: 4px;
+}
+
+.table-bordered thead:first-child tr:first-child > th:last-child,
+.table-bordered tbody:first-child tr:first-child > td:last-child,
+.table-bordered tbody:first-child tr:first-child > th:last-child {
+  -webkit-border-top-right-radius: 4px;
+          border-top-right-radius: 4px;
+  -moz-border-radius-topright: 4px;
+}
+
+.table-bordered thead:last-child tr:last-child > th:first-child,
+.table-bordered tbody:last-child tr:last-child > td:first-child,
+.table-bordered tbody:last-child tr:last-child > th:first-child,
+.table-bordered tfoot:last-child tr:last-child > td:first-child,
+.table-bordered tfoot:last-child tr:last-child > th:first-child {
+  -webkit-border-bottom-left-radius: 4px;
+          border-bottom-left-radius: 4px;
+  -moz-border-radius-bottomleft: 4px;
+}
+
+.table-bordered thead:last-child tr:last-child > th:last-child,
+.table-bordered tbody:last-child tr:last-child > td:last-child,
+.table-bordered tbody:last-child tr:last-child > th:last-child,
+.table-bordered tfoot:last-child tr:last-child > td:last-child,
+.table-bordered tfoot:last-child tr:last-child > th:last-child {
+  -webkit-border-bottom-right-radius: 4px;
+          border-bottom-right-radius: 4px;
+  -moz-border-radius-bottomright: 4px;
+}
+
+.table-bordered tfoot + tbody:last-child tr:last-child td:first-child {
+  -webkit-border-bottom-left-radius: 0;
+          border-bottom-left-radius: 0;
+  -moz-border-radius-bottomleft: 0;
+}
+
+.table-bordered tfoot + tbody:last-child tr:last-child td:last-child {
+  -webkit-border-bottom-right-radius: 0;
+          border-bottom-right-radius: 0;
+  -moz-border-radius-bottomright: 0;
+}
+
+.table-bordered caption + thead tr:first-child th:first-child,
+.table-bordered caption + tbody tr:first-child td:first-child,
+.table-bordered colgroup + thead tr:first-child th:first-child,
+.table-bordered colgroup + tbody tr:first-child td:first-child {
+  -webkit-border-top-left-radius: 4px;
+          border-top-left-radius: 4px;
+  -moz-border-radius-topleft: 4px;
+}
+
+.table-bordered caption + thead tr:first-child th:last-child,
+.table-bordered caption + tbody tr:first-child td:last-child,
+.table-bordered colgroup + thead tr:first-child th:last-child,
+.table-bordered colgroup + tbody tr:first-child td:last-child {
+  -webkit-border-top-right-radius: 4px;
+          border-top-right-radius: 4px;
+  -moz-border-radius-topright: 4px;
+}
+
+.table-striped tbody > tr:nth-child(odd) > td,
+.table-striped tbody > tr:nth-child(odd) > th {
+  background-color: #f9f9f9;
+}
+
+.table-hover tbody tr:hover > td,
+.table-hover tbody tr:hover > th {
+  background-color: #f5f5f5;
+  cursor:pointer;
+}
+.table tbody tr.success > td {
+  background-color: #dff0d8;
+}
+
+.table tbody tr.error > td {
+  background-color: #f2dede;
+}
+
+.table tbody tr.warning > td {
+  background-color: #fcf8e3;
+}
+
+.table tbody tr.info > td {
+  background-color: #d9edf7;
+}
+
+.table-hover tbody tr.success:hover > td {
+  background-color: #d0e9c6;
+}
+
+.table-hover tbody tr.error:hover > td {
+  background-color: #ebcccc;
+}
+
+.table-hover tbody tr.warning:hover > td {
+  background-color: #faf2cc;
+}
+
+.table-hover tbody tr.info:hover > td {
+  background-color: #c4e3f3;
+}
+.text-warning {
+  color: #c09853;
+}
+
+a.text-warning:hover,
+a.text-warning:focus {
+  color: #a47e3c;
+}
+
+.text-error {
+  color: #b94a48;
+}
+
+a.text-error:hover,
+a.text-error:focus {
+  color: #953b39;
+}
+
+.text-info {
+  color: #3a87ad;
+}
+
+a.text-info:hover,
+a.text-info:focus {
+  color: #2d6987;
+}
+
+.text-success {
+  color: #468847;
+}
+
+a.text-success:hover,
+a.text-success:focus {
+  color: #356635;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+[class^="icon-"],
+[class*=" icon-"] {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-top: 1px;
+  *margin-right: .3em;
+  line-height: 14px;
+  vertical-align: text-top;
+  background-image: url("static/finabao/images/glyphicons-halflings.png");
+  background-position: 14px 14px;
+  background-repeat: no-repeat;
+}
+
+/* White icons with optional class, or on hover/focus/active states of certain elements */
+
+.icon-white,
+.nav-pills > .active > a > [class^="icon-"],
+.nav-pills > .active > a > [class*=" icon-"],
+.nav-list > .active > a > [class^="icon-"],
+.nav-list > .active > a > [class*=" icon-"],
+.navbar-inverse .nav > .active > a > [class^="icon-"],
+.navbar-inverse .nav > .active > a > [class*=" icon-"],
+.dropdown-menu > li > a:hover > [class^="icon-"],
+.dropdown-menu > li > a:focus > [class^="icon-"],
+.dropdown-menu > li > a:hover > [class*=" icon-"],
+.dropdown-menu > li > a:focus > [class*=" icon-"],
+.dropdown-menu > .active > a > [class^="icon-"],
+.dropdown-menu > .active > a > [class*=" icon-"],
+.dropdown-submenu:hover > a > [class^="icon-"],
+.dropdown-submenu:focus > a > [class^="icon-"],
+.dropdown-submenu:hover > a > [class*=" icon-"],
+.dropdown-submenu:focus > a > [class*=" icon-"] {
+  background-image: url("../img/glyphicons-halflings-white.png");
+}
+
+.icon-glass {
+  background-position: 0      0;
+}
+
+.icon-music {
+  background-position: -24px 0;
+}
+
+.icon-search {
+  background-position: -48px 0;
+}
+
+.icon-envelope {
+  background-position: -72px 0;
+}
+
+.icon-heart {
+  background-position: -96px 0;
+}
+
+.icon-star {
+  background-position: -120px 0;
+}
+
+.icon-star-empty {
+  background-position: -144px 0;
+}
+
+.icon-user {
+  background-position: -168px 0;
+}
+
+.icon-film {
+  background-position: -192px 0;
+}
+
+.icon-th-large {
+  background-position: -216px 0;
+}
+
+.icon-th {
+  background-position: -240px 0;
+}
+
+.icon-th-list {
+  background-position: -264px 0;
+}
+
+.icon-ok {
+  background-position: -288px 0;
+}
+
+.icon-remove {
+  background-position: -312px 0;
+}
+
+.icon-zoom-in {
+  background-position: -336px 0;
+}
+
+.icon-zoom-out {
+  background-position: -360px 0;
+}
+
+.icon-off {
+  background-position: -384px 0;
+}
+
+.icon-signal {
+  background-position: -408px 0;
+}
+
+.icon-cog {
+  background-position: -432px 0;
+}
+
+.icon-trash {
+  background-position: -456px 0;
+}
+
+.icon-home {
+  background-position: 0 -24px;
+}
+
+.icon-file {
+  background-position: -24px -24px;
+}
+
+.icon-time {
+  background-position: -48px -24px;
+}
+
+.icon-road {
+  background-position: -72px -24px;
+}
+
+.icon-download-alt {
+  background-position: -96px -24px;
+}
+
+.icon-download {
+  background-position: -120px -24px;
+}
+
+.icon-upload {
+  background-position: -144px -24px;
+}
+
+.icon-inbox {
+  background-position: -168px -24px;
+}
+
+.icon-play-circle {
+  background-position: -192px -24px;
+}
+
+.icon-repeat {
+  background-position: -216px -24px;
+}
+
+.icon-refresh {
+  background-position: -240px -24px;
+}
+
+.icon-list-alt {
+  background-position: -264px -24px;
+}
+
+.icon-lock {
+  background-position: -287px -24px;
+}
+
+.icon-flag {
+  background-position: -312px -24px;
+}
+
+.icon-headphones {
+  background-position: -336px -24px;
+}
+
+.icon-volume-off {
+  background-position: -360px -24px;
+}
+
+.icon-volume-down {
+  background-position: -384px -24px;
+}
+
+.icon-volume-up {
+  background-position: -408px -24px;
+}
+
+.icon-qrcode {
+  background-position: -432px -24px;
+}
+
+.icon-barcode {
+  background-position: -456px -24px;
+}
+
+.icon-tag {
+  background-position: 0 -48px;
+}
+
+.icon-tags {
+  background-position: -25px -48px;
+}
+
+.icon-book {
+  background-position: -48px -48px;
+}
+
+.icon-bookmark {
+  background-position: -72px -48px;
+}
+
+.icon-print {
+  background-position: -96px -48px;
+}
+
+.icon-camera {
+  background-position: -120px -48px;
+}
+
+.icon-font {
+  background-position: -144px -48px;
+}
+
+.icon-bold {
+  background-position: -167px -48px;
+}
+
+.icon-italic {
+  background-position: -192px -48px;
+}
+
+.icon-text-height {
+  background-position: -216px -48px;
+}
+
+.icon-text-width {
+  background-position: -240px -48px;
+}
+
+.icon-align-left {
+  background-position: -264px -48px;
+}
+
+.icon-align-center {
+  background-position: -288px -48px;
+}
+
+.icon-align-right {
+  background-position: -312px -48px;
+}
+
+.icon-align-justify {
+  background-position: -336px -48px;
+}
+
+.icon-list {
+  background-position: -360px -48px;
+}
+
+.icon-indent-left {
+  background-position: -384px -48px;
+}
+
+.icon-indent-right {
+  background-position: -408px -48px;
+}
+
+.icon-facetime-video {
+  background-position: -432px -48px;
+}
+
+.icon-picture {
+  background-position: -456px -48px;
+}
+
+.icon-pencil {
+  background-position: 0 -72px;
+}
+
+.icon-map-marker {
+  background-position: -24px -72px;
+}
+
+.icon-adjust {
+  background-position: -48px -72px;
+}
+
+.icon-tint {
+  background-position: -72px -72px;
+}
+
+.icon-edit {
+  background-position: -96px -72px;
+}
+
+.icon-share {
+  background-position: -120px -72px;
+}
+
+.icon-check {
+  background-position: -144px -72px;
+}
+
+.icon-move {
+  background-position: -168px -72px;
+}
+
+.icon-step-backward {
+  background-position: -192px -72px;
+}
+
+.icon-fast-backward {
+  background-position: -216px -72px;
+}
+
+.icon-backward {
+  background-position: -240px -72px;
+}
+
+.icon-play {
+  background-position: -264px -72px;
+}
+
+.icon-pause {
+  background-position: -288px -72px;
+}
+
+.icon-stop {
+  background-position: -312px -72px;
+}
+
+.icon-forward {
+  background-position: -336px -72px;
+}
+
+.icon-fast-forward {
+  background-position: -360px -72px;
+}
+
+.icon-step-forward {
+  background-position: -384px -72px;
+}
+
+.icon-eject {
+  background-position: -408px -72px;
+}
+
+.icon-chevron-left {
+  background-position: -432px -72px;
+}
+
+.icon-chevron-right {
+  background-position: -456px -72px;
+}
+
+.icon-plus-sign {
+  background-position: 0 -96px;
+}
+
+.icon-minus-sign {
+  background-position: -24px -96px;
+}
+
+.icon-remove-sign {
+  background-position: -48px -96px;
+}
+
+.icon-ok-sign {
+  background-position: -72px -96px;
+}
+
+.icon-question-sign {
+  background-position: -96px -96px;
+}
+
+.icon-info-sign {
+  background-position: -120px -96px;
+}
+
+.icon-screenshot {
+  background-position: -144px -96px;
+}
+
+.icon-remove-circle {
+  background-position: -168px -96px;
+}
+
+.icon-ok-circle {
+  background-position: -192px -96px;
+}
+
+.icon-ban-circle {
+  background-position: -216px -96px;
+}
+
+.icon-arrow-left {
+  background-position: -240px -96px;
+}
+
+.icon-arrow-right {
+  background-position: -264px -96px;
+}
+
+.icon-arrow-up {
+  background-position: -289px -96px;
+}
+
+.icon-arrow-down {
+  background-position: -312px -96px;
+}
+
+.icon-share-alt {
+  background-position: -336px -96px;
+}
+
+.icon-resize-full {
+  background-position: -360px -96px;
+}
+
+.icon-resize-small {
+  background-position: -384px -96px;
+}
+
+.icon-plus {
+  background-position: -408px -96px;
+}
+
+.icon-minus {
+  background-position: -433px -96px;
+}
+
+.icon-asterisk {
+  background-position: -456px -96px;
+}
+
+.icon-exclamation-sign {
+  background-position: 0 -120px;
+}
+
+.icon-gift {
+  background-position: -24px -120px;
+}
+
+.icon-leaf {
+  background-position: -48px -120px;
+}
+
+.icon-fire {
+  background-position: -72px -120px;
+}
+
+.icon-eye-open {
+  background-position: -96px -120px;
+}
+
+.icon-eye-close {
+  background-position: -120px -120px;
+}
+
+.icon-warning-sign {
+  background-position: -144px -120px;
+}
+
+.icon-plane {
+  background-position: -168px -120px;
+}
+
+.icon-calendar {
+  background-position: -192px -120px;
+}
+
+.icon-random {
+  width: 16px;
+  background-position: -216px -120px;
+}
+
+.icon-comment {
+  background-position: -240px -120px;
+}
+
+.icon-magnet {
+  background-position: -264px -120px;
+}
+
+.icon-chevron-up {
+  background-position: -288px -120px;
+}
+
+.icon-chevron-down {
+  background-position: -313px -119px;
+}
+
+.icon-retweet {
+  background-position: -336px -120px;
+}
+
+.icon-shopping-cart {
+  background-position: -360px -120px;
+}
+
+.icon-folder-close {
+  width: 16px;
+  background-position: -384px -120px;
+}
+
+.icon-folder-open {
+  width: 16px;
+  background-position: -408px -120px;
+}
+
+.icon-resize-vertical {
+  background-position: -432px -119px;
+}
+
+.icon-resize-horizontal {
+  background-position: -456px -118px;
+}
+
+.icon-hdd {
+  background-position: 0 -144px;
+}
+
+.icon-bullhorn {
+  background-position: -24px -144px;
+}
+
+.icon-bell {
+  background-position: -48px -144px;
+}
+
+.icon-certificate {
+  background-position: -72px -144px;
+}
+
+.icon-thumbs-up {
+  background-position: -96px -144px;
+}
+
+.icon-thumbs-down {
+  background-position: -120px -144px;
+}
+
+.icon-hand-right {
+  background-position: -144px -144px;
+}
+
+.icon-hand-left {
+  background-position: -168px -144px;
+}
+
+.icon-hand-up {
+  background-position: -192px -144px;
+}
+
+.icon-hand-down {
+  background-position: -216px -144px;
+}
+
+.icon-circle-arrow-right {
+  background-position: -240px -144px;
+}
+
+.icon-circle-arrow-left {
+  background-position: -264px -144px;
+}
+
+.icon-circle-arrow-up {
+  background-position: -288px -144px;
+}
+
+.icon-circle-arrow-down {
+  background-position: -312px -144px;
+}
+
+.icon-globe {
+  background-position: -336px -144px;
+}
+
+.icon-wrench {
+  background-position: -360px -144px;
+}
+
+.icon-tasks {
+  background-position: -384px -144px;
+}
+
+.icon-filter {
+  background-position: -408px -144px;
+}
+
+.icon-briefcase {
+  background-position: -432px -144px;
+}
+
+.icon-fullscreen {
+  background-position: -456px -144px;
+}
+
+/* 银行ico */
+.tid-bank-ico, .ico-icbc, .ico-cmb, .ico-ccb, .ico-abc,
+.ico-boc, .ico-spdb, .ico-sdb, .ico-cib,
+.ico-bob, .ico-cebb, .ico-boco, .ico-cmbc,
+.ico-ecitic, .ico-gdb, .ico-pingan, .ico-post, .ico-union,
+.ico-jsb,.ico-srcb,.ico-hkb,.ico-nbcb,.ico-njcb,.ico-bosh,.ico-hxb,.ico-hzb,.ico-hkbea,.ico-ordos,.ico-cbhb,.ico-jzb,
+.ico-gdrcu,.ico-nccb,.ico-glccb,.ico-bsb,.ico-ynrcc,.ico-gzcb,.ico-cqrcb,.ico-zjcb,.ico-sdrcu,.ico-jshbank,.ico-klb,.ico-hrbcb,.ico-crb,.ico-cqcb, .ico-sdebank, .ico-qlb, .ico-hangseng,  .ico-sznsh, .ico-zsxlc, .ico-hdcb, .ico-xxssh, .ico-nycbank, .ico-jjccb, .ico-bankofjdz, .ico-bek, .ico-zjtlcb, .ico-bocd, .ico-zjnx,
+.ico-ljbank, .ico-fdbank{background:url("static/finabao/images/bank_ico.png?v=20130828") no-repeat;display:inline-block;position:relative;height:18px;width:18px;overflow:hidden;line-height:999px;vertical-align:top;}
+.ico-icbc{background-position:0 0;}                       /* 中国工商银行 */
+.ico-cmb{background-position:-18px 0;}                    /* 招商银行 */
+.ico-ccb{background-position:-36px 0;}                    /* 中国建设银行 */
+.ico-abc{background-position:-54px 0;}                    /* 中国农业银行 */
+.ico-boc{background-position:-72px 0;}                    /* 中国银行 */
+.ico-spdb{background-position:-54px -18px;}               /* 上海浦东发展银行 */
+.ico-sdb{background-position:-108px -18px;}               /* 深圳发展银行   */
+.ico-cib{background-position:0 -18px;}                    /* 兴业银行 */
+.ico-bob{background-position:-126px -18px;}               /* 北京银行 */
+.ico-cebb{background-position:-90px 0;}                   /* 中国光大银行 */
+.ico-boco{background-position:-36px -18px;}               /* 交通银行 */
+.ico-cmbc{background-position:-90px -18px;}               /* 中国民生银行 */
+.ico-ecitic{background-position:-126px 0;}                /* 中信银行 */
+.ico-gdb{background-position:-72px -18px;}                /* 广发银行 */
+.ico-pingan{background-position:0 -36px;}                 /* 平安银行 */
+.ico-post{background-position:-18px -18px;}               /* 中国邮政储蓄银行 */
+.ico-union{background-position:-27px -36px;width:27px;}   /* 银联 */
+.ico-jsb{background-position:-54px -36px;}                /* 江苏银行 */
+.ico-srcb{background-position:-72px -37px;}               /* 上海农商行 */
+.ico-nbcb{background-position:-90px -36px;}               /* 宁波银行 */
+.ico-njcb{background-position:-108px -36px;}               /* 南京银行 */
+.ico-hkb{background-position:-126px -36px;}               /* 汉口银行 */
+.ico-bosh{background-position:0 -54px;}                   /* 上海银行 */
+.ico-hxb{background-position:-18px -54px;}                /* 华夏银行 */
+.ico-hzb{background-position:-36px -54px;}                /* 杭州银行 */
+.ico-hkbea{background-position:-54px -54px;}              /* 东亚银行 */
+.ico-ordos{background-position:-72px -54px;}              /* 鄂尔多斯银行 */
+.ico-cbhb{background-position:-108px -54px;}              /* 渤海银行 */
+.ico-jzb{background-position:-90px -54px;}                /* 晋中商业银行 */
+.ico-gdrcu{background-position:0 -73px;}                  /* 广东农村信用社 */
+.ico-nccb{background-position:-18px -73px;}               /* 南昌银行 */
+.ico-glccb{background-position:-36px -73px;}              /* 桂林银行 */
+.ico-bsb{background-position:-54px -73px;}                /* 包商银行 */
+.ico-ynrcc{background-position:-72px -73px;}              /* 云南省农村信用社 */
+.ico-gzcb{background-position:-90px -73px;}               /* 广州银行 */
+.ico-cqrcb{background-position:-108px -73px;}              /* 重庆农村商业银行 */
+.ico-zjcb{background-position:-126px -73px;}              /*广东南粤银行*/
+.ico-sdrcu{background-position:0 -91px;}                  /* 山东省农村信用社 */
+.ico-jshbank{background-position:-18px -91px;}            /*晋商银行*/
+.ico-klb{background-position:-35px -91px;}                /*昆仑银行*/
+.ico-hrbcb{background-position:-54px -91px;width:20px;}   /*哈尔滨银行*/
+.ico-crb{background-position:-74px -91px;width:16px;}     /*华润银行*/
+.ico-cqcb{background-position:-90px -91px;}               /*重庆银行*/
+.ico-sdebank{background-position:-126px -91px;}
+.ico-qlb{background-position:0 -109px;}
+.ico-hangseng{background-position:-18px -109px;}
+.ico-sznsh{background-position:-36px -109px;}
+.ico-zsxlc{background-position:-54px -109px;}
+.ico-hdcb{background-position:-72px -109px;}
+.ico-xxssh{background-position:-90px -109px;}
+.ico-nycbank{background-position:-108px -109px;}
+.ico-jjccb{background-position:-126px -109px}
+.ico-bankofjdz{background-position:0 -127px;}
+.ico-bek{background-position:-18px -127px;}
+.ico-zjtlcb{background-position:-36px -127px;}
+.ico-bocd{background-position:-54px -128px}
+.ico-zjnx{background-position:-72px -127px;}
+.ico-ljbank{background-position:-90px -128px;}                /*  龙江银行  */
+.ico-fdbank{background-position:-108px -128px;}                /*  富滇银行  */
+
+
+/*
+   灰色银行ico
+   用法： 给银行列表父节点加class "bank-gray"
+*/
+.bank-gray .ico-icbc{background-position:-144px 0;}                      /* 中国工商银行 */
+.bank-gray .ico-icbc:hover{background-position:0 0;}
+.bank-gray .ico-cmb{background-position:-162px 0;}                       /* 招商银行 */
+.bank-gray .ico-cmb:hover{background-position:-18px 0;}
+.bank-gray .ico-ccb{background-position:-180px 0;}                       /* 中国建设银行 */
+.bank-gray .ico-ccb:hover{background-position:-36px 0;}
+.bank-gray .ico-abc{background-position:-198px 0;}                       /* 中国农业银行 */
+.bank-gray .ico-abc:hover{background-position:-54px 0;}
+.bank-gray .ico-boc{background-position:-216px 0;}                       /* 中国银行 */
+.bank-gray .ico-boc:hover{background-position:-72px 0;}
+.bank-gray .ico-spdb{background-position:-198px -18px;}                  /* 上海浦东发展银行 */
+.bank-gray .ico-spdb:hover{background-position:-54px -18px;}
+.bank-gray .ico-sdb{background-position:-252px -18px;}                   /* 深圳发展银行   */
+.bank-gray .ico-sdb:hover{background-position:-108px -18px;}
+.bank-gray .ico-cib{background-position:-144px -18px;}                   /* 兴业银行 */
+.bank-gray .ico-cib:hover{background-position:0 -18px;}
+.bank-gray .ico-bob{background-position:-270px -18px;}                   /* 北京银行 */
+.bank-gray .ico-bob:hover{background-position:-126px -18px;}
+.bank-gray .ico-cebb{background-position:-234px 0;}                      /* 中国光大银行 */
+.bank-gray .ico-cebb:hover{background-position:-90px 0;}
+.bank-gray .ico-boco{background-position:-180px -18px;}                  /* 交通银行 */
+.bank-gray .ico-boco:hover{background-position:-36px -18px;}
+.bank-gray .ico-cmbc{background-position:-234px -18px;}                  /* 中国民生银行 */
+.bank-gray .ico-cmbc:hover{background-position:-90px -18px;}
+.bank-gray .ico-ecitic{background-position:-270px 0;}                    /* 中信银行 */
+.bank-gray .ico-ecitic:hover{background-position:-126px 0;}
+.bank-gray .ico-gdb{background-position:-216px -18px;}                   /* 广发银行 */
+.bank-gray .ico-gdb:hover{background-position:-72px -18px;}
+.bank-gray .ico-pingan{background-position:-144px -36px;}                /* 平安银行 */
+.bank-gray .ico-pingan:hover{background-position:0 -36px;}
+.bank-gray .ico-post{background-position:-162px -18px;}                  /* 中国邮政储蓄银行 */
+.bank-gray .ico-post:hover{background-position:-18px -18px;}
+.bank-gray .ico-union{background-position:-171px -36px;width:27px;}      /* 银联 */
+.bank-gray .ico-union:hover{background-position:-27px -36px;width:27px;}
+.bank-gray .ico-jsb{background-position:-198px -36px;}                   /* 江苏银行 */
+.bank-gray .ico-jsb:hover{background-position:-54px -36px;}
+.bank-gray .ico-srcb{background-position:-216px -37px;}                  /* 上海农商行 */
+.bank-gray .ico-srcb:hover{background-position:-72px -37px;}
+.bank-gray .ico-nbcb{background-position:-234px -36px;}                  /* 宁波银行 */
+.bank-gray .ico-nbcb:hover{background-position:-90px -36px;}
+.bank-gray .ico-njcb{background-position:-252px -36px;}                  /* 南京银行 */
+.bank-gray .ico-njcb:hover{background-position:-108px -36px;}
+.bank-gray .ico-hkb{background-position:-270px -36px;}                   /* 汉口银行 */
+.bank-gray .ico-hkb:hover{background-position:-126px -36px;}
+.bank-gray .ico-bosh{background-position:-144px -54px;}                  /* 上海银行 */
+.bank-gray .ico-bosh:hover{background-position:0 -54px;}
+.bank-gray .ico-hxb{background-position:-162px -54px;}                   /* 华夏银行 */
+.bank-gray .ico-hxb:hover{background-position:-18px -54px;}
+.bank-gray .ico-hzb{background-position:-180px -54px;}                   /* 杭州银行 */
+.bank-gray .ico-hzb:hover{background-position:-36px -54px;}
+.bank-gray .ico-hkbea{background-position:-198px -54px;}                 /* 东亚银行 */
+.bank-gray .ico-hkbea:hover{background-position:-54px -54px;}
+.bank-gray .ico-ordos{background-position:-216px -54px;}                 /* 鄂尔多斯银行 */
+.bank-gray .ico-ordos:hover{background-position:-72px -54px;}
+.bank-gray .ico-cbhb{background-position:-234px -54px}                  /* 渤海银行 */
+.bank-gray .ico-cbhb:hover{background-position:-108px -54px}
+.bank-gray .ico-jzb{background-position:-252px -54px}                 /* 晋中商业银行 */
+.bank-gray .ico-jzb:hover{background-position:-90px -54px}
+.bank-gray .ico-gdrcu{background-position:-144px -73px;}                 /* 广东农村信用社 */
+.bank-gray .ico-gdrcu:hover{background-position:0 -73px;}
+.bank-gray .ico-nccb{background-position:-162px -73px}                   /* 南昌银行 */
+.bank-gray .ico-nccb:hover{background-position:-18px -73px}
+.bank-gray .ico-glccb{background-position:-180px -73px}                  /* 桂林银行 */
+.bank-gray .ico-glccb:hover{background-position:-36px -73px;}
+.bank-gray .ico-bsb{background-position:-198px -73px;}                   /* 包商银行 */
+.bank-gray .ico-bsb:hover{background-position:-54px -73px;}
+.bank-gray .ico-ynrcc{background-position:-216px -73px;}                 /* 云南省农村信用社 */
+.bank-gray .ico-ynrcc:hover{background-position:-72px -73px;}
+.bank-gray .ico-gzcb{background-position:-234px -73px;}                   /* 广州银行 */
+.bank-gray .ico-gzcb:hover{background-position:-90px -73px;}
+.bank-gray .ico-cqrcb{background-position:-252px -73px;}                   /* 重庆农村商业银行 */
+.bank-gray .ico-cqrcb:hover{background-position:-108px -73px;}
+.bank-gray .ico-zjcb{background-position:-270px -73px;}                   /* 广东南粤银行 */
+.bank-gray .ico-zjcb:hover{background-position:-126px -73px;}
+.bank-gray .ico-sdrcu{background-position:-144px -91px;}                   /* 山东省农村信用社 */
+.bank-gray .ico-sdrcu:hover{background-position:0px -91px;}
+.bank-gray .ico-jshbank{background-position:-162px -91px;}              /*晋商银行*/
+.bank-gray .ico-jshbank:hover{background-position:-18px -91px;}
+.bank-gray .ico-klb{background-position:-179px -91px;}					 /*昆仑银行*/
+.bank-gray .ico-klb:hover{background-position:-35px -91px;}
+.bank-gray .ico-hrbcb{background-position:-199px -92px;width:19px;}      /*哈尔滨银行*/
+.bank-gray .ico-hrbcb:hover{background-position:-54px -91px;width:20px;}
+.bank-gray .ico-crb{background-position:-218px -91px;width:16px;}                    /*华润银行*/
+.bank-gray .ico-crb:hover{background-position:-74px -91px;width:16px;}
+.bank-gray .ico-cqcb{background-position:-234px -91px;}                   /*重庆银行*/
+.bank-gray .ico-cqcb:hover{background-position:-90px -91px;}
+.bank-gray .ico-sdebank{background-position:-270px -91px;}
+.bank-gray .ico-sdebank:hover{background-position:-126px -91px;}
+.bank-gray .ico-qlb{background-position:-144px -109px;}
+.bank-gray .ico-qlb:hover{background-position:0 -109px;}
+.bank-gray .ico-hangseng{background-position:-162px -109px;}
+.bank-gray .ico-hangseng:hover{background-position:-18px -109px;}
+.bank-gray .ico-sznsh{background-position:-180px -109px;}
+.bank-gray .ico-sznsh:hover{background-position:-36px -109px;}
+.bank-gray .ico-zsxlc{background-position:-198px -109px;}
+.bank-gray .ico-zsxlc:hover{background-position:-54px -109px;}
+.bank-gray .ico-hdcb{background-position:-216px -109px;}
+.bank-gray .ico-hdcb:hover{background-position:-72px -109px;}
+.bank-gray .ico-xxssh{background-position:-234px -109px;}
+.bank-gray .ico-xxssh:hover{background-position:-90px -109px;}
+.bank-gray .ico-nycbank{background-position:-252px -109px;}
+.bank-gray .ico-nycbank:hover{background-position:-108px -109px;}
+.bank-gray .ico-jjccb{background-position:-270px -109px}
+.bank-gray .ico-jjccb:hover{background-position:-126px -109px}
+.bank-gray .ico-bankofjdz{background-position:-144px -127px;}
+.bank-gray .ico-bankofjdz:hover{background-position:0 -127px;}
+.bank-gray .ico-bek{background-position:-162px -127px;}
+.bank-gray .ico-bek:hover{background-position:-18px -127px;}
+.bank-gray .ico-zjtlcb{background-position:-180px -127px;}
+.bank-gray .ico-zjtlcb:hover{background-position:-36px -127px;}
+.bank-gray .ico-bocd{background-position:-198px -128px;}
+.bank-gray .ico-bocd:hover{background-position:-54px -128px}
+.bank-gray .ico-zjnx{background-position:-216px -127px;}
+.bank-gray .ico-zjnx:hover{background-position:-72px -127px;}
+.bank-gray .ico-ljbank{background-position:-234px -128px;}                				/*  龙江银行  */
+.bank-gray .ico-ljbank:hover{background-position:-90px -128px;}
+.bank-gray .ico-fdbank{background-position:-252px -128px;}                				/*  富滇银行  */
+.bank-gray .ico-fdbank:hover{background-position:-108px -128px;}
+
+
+/* 银行logo */
+.tid-bank-logo, .bank-icbc, .bank-cmb, .bank-ccb, .bank-abc, .bank-pab,
+.bank-boc, .bank-bocsh, .bank-spdb, .bank-sdb, .bank-cib, .bank-ceb,
+.bank-bob, .bank-cebb, .bank-boco, .bank-bocom, .bank-cmbc, .bank-cncb,
+.bank-ecitic, .bank-1003, .bank-1002, .bank-1005, .bank-1026, .bank-gdb, .bank-pingan, .bank-post, .bank-psbc, .bank-jsb,
+.ico-cop, .ico-ydt,.bank-srcb,.bank-bosh,.bank-hxb,.bank-hkbea,.bank-ordos,.bank-cbhb,.bank-jzb,.bank-njcb,.bank-nbcb,
+.bank-gdrcu,.bank-nccb,.bank-glccb,.bank-bsb,.bank-ynrcc,.bank-gzcb,.bank-cqrcb,.bank-zjcb,.bank-sdrcu,.bank-jshbank,.bank-klb,.bank-hrbcb,.bank-crb,.bank-cqcb, .bank-shbank, .bank-hzb, .bank-hkb, .bank-sdebank, .bank-qlb, .bank-hangseng,  .bank-sznsh, .bank-zsxlc, .bank-hdcb, .bank-xxssh, .bank-nycbank, .bank-jjccb, .bank-bankofjdz, .bank-bek, .bank-zjtlcb, .bank-bocd, .bank-zjnx,
+.bank-ljbank, .bank-fdbank{background:url("static/finabao/images/bank.png?v=20130828") no-repeat;display:inline-block;position:relative;height:33px;width:141px;overflow:hidden;line-height:999px;vertical-align:top;}
+.bank-icbc{background-position:0 -35px;}            /* 中国工商银行 */
+.bank-1002{background-position:0 -35px;}            /* 中国工商银行 */
+.bank-cmb{background-position:0 -66px;}             /* 招商银行 */
+.bank-ccb{background-position:0 -99px;}             /* 中国建设银行 */
+.bank-1003{background-position:0 -99px;}             /* 中国建设银行 */
+.bank-abc{background-position:0 -132px;}            /* 中国农业银行 */
+.bank-1005{background-position:0 -132px;}            /* 中国农业银行 */
+.bank-boc{background-position:0 -166px;}            /* 中国银行 */
+.bank-bocsh{background-position:0 -166px;}
+.bank-1026{background-position:0 -166px;}
+.bank-spdb{background-position:0 -198px;}           /* 上海浦东发展银行 */
+.bank-sdb{background-position:0 -231px;}            /* 深圳发展银行   */
+.bank-cib{background-position:0 -264px;}            /* 兴业银行 */
+.bank-bob{background-position:0 -297px;}            /* 北京银行 */
+.bank-cebb{background-position:0 -330px;}           /* 中国光大银行 */
+.bank-ceb{background-position:0 -330px;}           /* 中国光大银行 */
+.bank-boco{background-position:0 -363px;}           /* 交通银行 */
+.bank-bocom{background-position:0 -363px;}           /* 交通银行 */
+.bank-cmbc{background-position:0 -396px;}           /* 中国民生银行 */
+
+.bank-ecitic{background-position:0 -429px;}         /* 中信银行 */
+.bank-cncb{background-position:0 -429px;}         /* 中信银行 */
+.bank-gdb{background-position:0 -462px;}            /* 广发银行 */
+.bank-pingan{background-position:0 -495px;}         /* 平安银行 */
+.bank-pab{background-position:0 -495px;}         /* 平安银行 */
+.bank-post{background-position:0 -528px;}           /* 中国邮政储蓄银行 */
+.bank-psbc{background-position:0 -528px;}           /* 中国邮政储蓄银行 */
+.bank-jsb{background-position:0 -561px;}            /* 江苏银行 */
+.bank-srcb{background-position:0 -594px;}           /* 上海农商行 */
+.bank-bosh{background-position:0 -627px;}           /* 上海银行 */
+.bank-hxb{background-position:0 -660px;}            /* 华夏银行 */
+.bank-hkbea{background-position:0 -693px;}          /* 香港东亚银行 */
+.bank-ordos{background-position:0 -726px;}          /* 鄂尔多斯银行 */
+.bank-cbhb{background-position:0 -825px;}           /* 渤海银行 */
+.bank-jzb{background-position:0 -858px;}            /* 晋中商业银行 */
+.bank-njcb{background-position:0 -759px;}           /* 南京银行 */
+.bank-nbcb{background-position:0 -792px;}           /* 宁波银行 */
+.bank-gdrcu{background-position:0 -891px;}          /* 广东农村信用社 */
+.bank-nccb{background-position:0 -924px;}           /* 南昌银行 */
+.bank-glccb{background-position:0 -957px;}          /* 桂林银行 */
+.bank-bsb{background-position:0  -990px;}           /* 包商银行 */
+.bank-ynrcc{background-position:0 -1023px;}         /* 云南农村信用社 */
+.bank-gzcb{background-position:0  -1056px;}         /* 广州银行 */
+.bank-cqrcb{background-position:0 -1089px;}         /* 重庆农村商业银行 */
+.bank-zjcb{background-position:0 -1124px;}          /*广东南粤银行*/
+.bank-sdrcu{background-position:0 -1154px;}         /* 山东省农村信用社 */
+.bank-jshbank{background-position:0 -1185px;}       /*晋商银行*/
+.bank-klb{background-position:0 -1220px;}           /*昆仑银行*/
+.bank-hrbcb{background-position:0 -1250px;}         /*哈尔滨银行*/
+.bank-crb{background-position:0 -1285px;}           /*华润银行*/
+.bank-cqcb{background-position:0 -1318px;}          /*重庆银行*/
+.bank-hzb{background-position:0 -1351px;}
+.bank-hkb{background-position:0 -1384px;}
+.bank-sdebank{background-position:0 -1417px;}
+.bank-qlb{background-position:0 -1450px;}
+.bank-hangseng{background-position:0 -1483px;}
+.bank-sznsh{background-position:0 -1516px;}
+.bank-zsxlc{background-position:0 -1549px;}
+.bank-hdcb{background-position:0 -1582px;}
+.bank-xxssh{background-position:0 -1615px;}
+.bank-nycbank{background-position:0 -1648px;}
+.bank-jjccb{background-position:0 -1681px}
+.bank-bankofjdz{background-position:0 -1714px;}
+.bank-bek{background-position:0 -1747px;}
+.bank-zjtlcb{background-position:0 -1780px;}
+.bank-bocd{background-position:0 -1813px}
+.bank-zjnx{background-position:0 -1846px;}
+.bank-ljbank{background-position:0 -1880px;}          /*  龙江银行  */
+.bank-fdbank{background-position:0 -1913px;}          /*  富滇银行  */
+
+.ico-cop{background-position:0 0;position:absolute;right:2px;top:9px;width:26px;height:16px;}    /* 企业图标 */
+.ico-ydt{background-position:-26px 0;position:absolute;right:0;top:9px;width:35px;height:16px;}  /* 一点通图标 */
+/*
+   银行logo(小版)
+   用法： 给银行列表父节点加class "bank-mini"
+*/
+.tid-bank-mini,.bank-mini .bank-icbc, .bank-mini .bank-cmb, .bank-mini .bank-ccb, .bank-mini .bank-abc,
+.bank-mini .bank-boc, .bank-mini .bank-spdb, .bank-mini .bank-sdb, .bank-mini .bank-cib,
+.bank-mini .bank-bob, .bank-mini .bank-cebb, .bank-mini .bank-boco, .bank-mini .bank-cmbc,
+.bank-mini .bank-ecitic, .bank-mini .bank-gdb, .bank-mini .bank-pingan, .bank-mini .bank-post, .bank-mini .bank-jsb,
+.bank-mini .ico-cop, .bank-mini .ico-ydt,.bank-mini .bank-srcb,.bank-mini .bank-hkbea,.bank-mini .bank-ordos,.bank-mini .bank-gdrcu,
+.bank-mini .bank-nccb,.bank-mini .bank-glccb,.bank-mini .bank-bsb,.bank-mini .bank-ynrcc,.bank-mini .bank-gzcb,.bank-mini .bank-cqrcb,.bank-mini .bank-zjcb,.bank-mini .bank-sdrcu,.bank-mini .bank-jshbank,.bank-mini  .bank-klb,.bank-mini .bank-hrbcb,.bank-mini .bank-crb,.bank-mini .bank-cqcb, .bank-mini .bank-shbank, .bank-mini .bank-hzb, .bank-mini .bank-hkb, .bank-mini .bank-sdebank, .bank-mini .bank-qlb, .bank-mini .bank-hangseng,  .bank-mini .bank-sznsh, .bank-mini .bank-zsxlc, .bank-mini .bank-hdcb, .bank-mini .bank-xxssh, .bank-mini .bank-nycbank, .bank-mini .bank-jjccb, .bank-mini .bank-bankofjdz, .bank-mini .bank-bek,
+.bank-mini .bank-ljbank, .bank-mini .bank-fdbank{background:url("static/finabao/images/bank_mini.png?v=20130828") no-repeat;display:inline-block;position:relative;height:22px;width:99px;overflow:hidden;line-height:999px;vertical-align:top;}
+.bank-mini .bank-icbc{background-position:0 -22px;}
+.bank-mini .bank-cmb{background-position:0 -44px;}
+.bank-mini .bank-ccb{background-position:0 -66px;}
+.bank-mini .bank-abc{background-position:0 -88px;}
+.bank-mini .bank-boc{background-position:0 -110px;}
+.bank-mini .bank-spdb{background-position:0 -132px;}
+.bank-mini .bank-sdb{background-position:0 -154px;}
+.bank-mini .bank-cib{background-position:0 -176px;}
+.bank-mini .bank-bob{background-position:0 -198px;}
+.bank-mini .bank-cebb{background-position:0 -220px;}
+.bank-mini .bank-boco{background-position:0 -242px;}
+.bank-mini .bank-cmbc{background-position:0 -264px;}
+.bank-mini .bank-ecitic{background-position:0 -286px;}
+.bank-mini .bank-gdb{background-position:0 -308px;}
+.bank-mini .bank-pingan{background-position:0 -330px;}
+.bank-mini .bank-post{background-position:0 -352px;}
+.bank-mini .bank-jsb{background-position:0 -374px;}
+.bank-mini .bank-srcb{background-position:0 -396px;}
+.bank-mini .bank-hkbea{background-position:0 -418px;}
+.bank-mini .bank-ordos{background-position:0 -440px;}
+.bank-mini .bank-gdrcu{background-position:0 -462px;}
+.bank-mini .bank-nccb{background-position:0 -484px;}
+.bank-mini .bank-glccb{background-position:0 -506px;}
+.bank-mini .bank-bsb{background-position:0 -528px;}
+.bank-mini .bank-ynrcc{background-position:0 -550px;}
+.bank-mini .bank-gzcb{background-position:0 -572px;}
+.bank-mini .bank-cqrcb{background-position:0 -594px;}
+.bank-mini .bank-zjcb{background-position:0 -594px;}
+.bank-mini .bank-sdrcu{background-position:0 -638px;}
+.bank-mini .bank-jshbank{background-position:0 -660px;}
+.bank-mini .bank-klb{background-position:0 -682px;}
+.bank-mini .bank-hrbcb{background-position:0 -704px;}
+.bank-mini .bank-crb{background-position:0 -726px;}
+.bank-mini .bank-cqcb{background-position:0 -748px;}
+.bank-mini .bank-hzb{background-position:0 -770px;}
+.bank-mini .bank-hkb{background-position:0 -792px;}
+.bank-mini .bank-sdebank{background-position:0 -814px;}
+.bank-mini .bank-qlb{background-position:0 -836px;}
+.bank-mini .bank-hangseng{background-position:0 -858px;}
+.bank-mini .bank-sznsh{background-position:0 -880px;}
+.bank-mini .bank-zsxlc{background-position:0 -902px;}
+.bank-mini .bank-hdcb{background-position:0 -924px;}
+.bank-mini .bank-xxssh{background-position:0 -946px;}
+.bank-mini .bank-nycbank{background-position:0 -968px;}
+.bank-mini .bank-jjccb{background-position:0 -990px}
+.bank-mini .bank-bankofjdz{background-position:0 -1012px;}
+.bank-mini .bank-bek{background-position:0 -1034px;}
+.bank-mini .bank-ljbank{background-position:0 -1056px;}         /*  龙江银行  */
+.bank-mini .bank-fdbank{background-position:0 -1078px;}         /*  富滇银行  */
+
+.bank-mini .ico-cop{background-position:0 0;position:absolute;right:2px;top:5px;width:18px;height:11px;}
+.bank-mini .ico-ydt{background-position:-18px 0;position:absolute;right:0;top:5px;width:24px;height:11px;}
+</style>

@@ -16,17 +16,14 @@ function errormessage(id, msg) {
 		if($('tip_' + id)) {
 			if(msg == 'succeed') {
 				msg = '';
-				$('tip_' + id).parentNode.className = $('tip_' + id).parentNode.className.replace(/ p_right/, '');
-				$('tip_' + id).parentNode.className += ' p_right';
+				jQuery("#group_"+id).removeClass('has-error').addClass('has-success');
 			} else if(msg !== '') {
-				$('tip_' + id).parentNode.className = $('tip_' + id).parentNode.className.replace(/ p_right/, '');
+				jQuery("#group_"+id).removeClass('has-success').addClass('has-error');
 			}
 		}
 		if($('chk_' + id)) {
 			$('chk_' + id).innerHTML = msg;
 		}
-		$(id).className = $(id).className.replace(/ er/, '');
-		$(id).className += !msg ? '' : ' er';
 	}
 }
 
@@ -57,7 +54,16 @@ function addFormEvent(formid, focus){
 			addMailEvent(formNode[stmp[3]]);
 		}
 	} catch(e) {}
-
+	try {
+		formNode[stmp[4]].onblur = function () {
+			checkmobile(formNode[stmp[4]].id);
+		};
+	} catch(e) {}
+	try {
+		formNode[stmp[5]].onblur = function () {
+			checksign(formNode[stmp[5]].id);
+		};
+	} catch(e) {}
 	try {
 		if(focus) {
 			$('invitecode').focus();
@@ -354,6 +360,22 @@ function checkemail(id) {
 	x.get('forum.php?mod=ajax&inajax=yes&infloat=register&handlekey=register&ajaxmenu=1&action=checkemail&email=' + email, function(s) {
 		errormessage(id, s);
 	});
+}
+
+function checkmobile(id){
+	errormessage(id);
+	var mobile = trim($(id).value);
+	if(mobile.length == 11 && (/^1[3|5|8][0-9]\d{4,8}$/.test(mobile))){
+		var x = new Ajax();
+		$('tip_' + id).parentNode.className = $('tip_' + id).parentNode.className.replace(/ p_right/, '');
+		x.get('index.php?mod=ajax&inajax=yes&infloat=register&handlekey=register&ajaxmenu=1&action=checkmobile&mobile=' + mobile, function(s) {
+			errormessage(id, s);
+		});
+	} else {
+		errormessage(id, '手机号码格式错误');
+		return;
+	}
+	return true;
 }
 
 function checkinvite() {

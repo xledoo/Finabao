@@ -1,0 +1,14 @@
+    			<div class="f-fl m-ccardl">
+                	<div class="info">
+                    	<p style="font-size:14px; font-weight:bold; color:#666;">个人资料设置</p>
+                	</div>
+				</div>
+    			<ul>
+                	<li<!--{if $op == 'base'}--> class="z-crt"<!--{/if}-->><a href="home.php?mod=spacecp&ac=profile&op=base">基本资料</a></li>
+        			<li<!--{if $op == 'password'}--> class="z-crt"<!--{/if}-->><a href="home.php?mod=spacecp&ac=profile&op=password">密码安全</a></li>
+                    <li<!--{if getgpc('mod') == 'paypass'}--> class="z-crt"<!--{/if}-->><a href="index.php?mod=paypass">支付密码</a></li>
+        			<li<!--{if $ac == 'avatar'}--> class="z-crt"<!--{/if}-->><a href="home.php?mod=spacecp&ac=avatar">修改头像</a></li>
+        			<li><a href="javascript:void(0);">我的积分</a></li>
+                    <li><a href="javascript:void(0);">微信绑定</a></li>
+                    <li><a href="javascript:void(0);">QQ绑定</a></li>
+    			</ul>

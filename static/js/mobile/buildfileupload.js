@@ -331,7 +331,7 @@ jQuery.extend({
 			var canvas = document.createElement('canvas');
 			var ctx = canvas.getContext('2d');
 
-			var img = new Image();
+			var img = document.createElement('img');
 			img.onload = function() {
 				$this = $(this);
 				var imgwidth = this.width ? this.width : $this.width();
@@ -377,6 +377,8 @@ jQuery.extend({
 					picupload(jQuery.base64decode(newdataurl));
 				}
 			};
+			$('body').append(img);
+			$(img).css('display', 'none');
 
 			reader.index = 0;
 			reader.onloadend = function(e) {

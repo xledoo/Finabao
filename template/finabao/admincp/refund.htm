@@ -1,0 +1,152 @@
+<!--{template admincp/header}-->
+<style type="text/css">
+tr:hover	{ cursor:pointer;}
+.container	{ width:100%;}
+input		{ height:20px;}
+</style>
+<form method="post" name="refund_submit" action="$adminscript?identifier=finabao&pmod=admin_refund">
+<input type="hidden" name="action" value="plugins" />
+<input type="hidden" name="operation" value="config" />
+<input type="hidden" name="do" value="13" />
+<input type="hidden" name="anchor" value="authstr" />
+<input type="hidden" name="formhash" value="{echo formhash();}" />
+<table cellspacing="3" cellpadding="3" class="tb tb2" width="500">
+<tr>
+	<th width="80">用户名* </th><td><input type="text" name="username" value=""></td>
+	<th width="80">用户 UID</th><td><input type="text" name="uid" value=""> *表示支持模糊查询</td>
+</tr>
+<tr>
+	<th>提交时间</th>
+    <td>
+		<input type="text" name="dateline1" value="$today" size="10" onclick="showcalendar(event, this)"> ~
+		<input type="text" name="dateline2" value="$today" size="10" onclick="showcalendar(event, this)"> (YYYY-MM-DD)
+	</td>
+    <td>结果排序</td>
+    <td><select name="orderby">
+      <option value="dateline">提交时间</option>
+      <option value="predictime" selected="selected">打款时间</option>
+    </select>
+      <select name="ordersc">
+        <option value="desc">递减</option>
+        <option value="asc">递增</option>
+      </select>
+      <select name="perpage">
+        <option value="10">每页显示10个</option>
+        <option value="20">每页显示20个</option>
+        <option value="50">每页显示50个</option>
+        <option value="100" selected="selected">每页显示100个</option>
+      </select>
+    <input type="submit" name="refund_search_submit" value="搜索" class="btn" style="font-size:12px; padding:0px 10px; height:20px; position:relative; top:-1px;" /></td>
+</tr>
+</table>
+</form>
+
+<table cellspacing="0" cellpadding="0" class="dt table table-hover">
+<thead>
+<th class="xw1" width="43">序号</th>
+<th class="xw1">订单时间</th>
+<th class="xw1">订单号</th>
+<th class="xw1">提现类型</th>
+<th class="xw1">订单金额</th>
+<th class="xw1">用户</th>
+<th class="xw1">预计打款时间</th>
+<th class="xw1">备注</th>
+<th class="xw1">当前状态</th>
+<th class="xw1">详情</th>
+</thead>
+<tbody>
+<!--{loop $refundarr $key $var}-->
+<tr class="{eval echo $refundstatus[$var['status']]['class']}" data-toggle="modal" data-target="#modal-dialog-$key">
+<td>{eval echo $key+1;}</td>
+<td>$var['dateline']</td>
+<td>$var['trade']</td>
+<td>$var['type']</td>
+<td>$var['money']</td>
+<td>$var['member']['username']</td>
+<td>$var['predictime']</td>
+<td>$var['remark']</td>
+<td><span class="text-$var['status']['class']">$var['statustext']</span></td>
+<td>[<a href="javascript:void(0);">订单详情</a>]</td>
+</tr>
+<!--{/loop}-->
+</tbody>
+</table>
+$multipage
+
+<!--{loop $refundarr $key $var}-->
+<form method="post" action="$suburl&trade=$var['trade']" name="setrade">
+<input type="hidden" name="formhash" value="$formhash" />
+<div class="modal fade" id="modal-dialog-$key">
+  <div class="modal-dialog" style="width:70%; margin-top:120px;">
+    <div class="modal-content">
+      <div class="modal-header" style="height:39px; padding:10px 20px 0px 15px;">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" style="font-size:14px;">您正在对订单<span style="color:#F30; font-size:16px; font-weight:bold; margin:0px 5px; position:relative; top:1px;">$var['trade']</span> <!--{if $var[status] == 0}-->进行审核<!--{elseif $var['status'] == 1}-->进行打款<!--{else}--><!--{/if}--></h4>
+      </div>
+      <div class="modal-body">
+<table cellspacing="0" cellpadding="0" class="dt table table-hover">
+<thead>
+<th class="xw1">用户名</th>
+<th class="xw1">联系电话</th>
+<th class="xw1">账户总额</th>
+<th class="xw1">可用余额</th>
+<th class="xw1">冻结金额</th>
+<th class="xw1">充值总额</th>
+<th class="xw1">提现金额</th>
+</thead>
+<tbody>
+<tr>
+<td>$var['member']['username']</td>
+<td><span style="color:#F30; cursor:pointer;" onclick="clipboardData.setData('Text', '$var['member']['mobile']');">$var['member']['mobile']</span></td>
+<td>$var['settle']['total']</td>
+<td>$var['settle']['usable']</td>
+<td>$var['settle']['freeze']</td>
+<td>$var['topup']</td>
+<td>$var['refund']</td>
+</tr>
+<tr>
+<th class="xw1">提现金额</th>
+<th class="xw1">提现方式</th>
+<th class="xw1">打款金额</th>
+<th class="xw1">手续费用</th>
+<th class="xw1">打款时间</th>
+<th class="xw1">提交时间</th>
+<th class="xw1">数据验证</th>
+</tr>
+<tr>
+<td>$var['money']</td>
+<td>$var['type']</td>
+<td><span style="color:#f30; cursor:pointer;" onclick="clipboardData.setData('Text', '$var['deal']');">$var['deal']</span></td>
+<td>$var['factorage'] ($var['rate'])</td>
+<td>$var['predictime']</td>
+<td>$var['dateline']</td>
+<td></td>
+</tr>
+<tr>
+<th class="xw1">开户名称</th>
+<th class="xw1">所属银行</th>
+<th colspan="2" class="xw1">银行卡号手续费用</th>
+<th colspan="2" class="xw1">开户行地址</th>
+<th class="xw1">订单状态</th>
+</tr>
+<tr>
+<td><span style="color:#F30; cursor:pointer;" onclick="clipboardData.setData('Text', '$var['rebank']['cardname']');">$var['rebank']['cardname']</span></td>
+<td><i class="tid-bank-ico ico-$trade['rebank']['banksign']" style="margin-right:5px;"></i> $var['rebank']['bankname']</td>
+<td colspan="2"><span style="color:#F30; cursor:pointer;" onclick="clipboardData.setData('Text', '$var['rebank']['cardid']');">$var['rebank']['cardid']</span></td>
+<td colspan="2">$var['rebank']['openaddr']</td>
+<td>$var['statustext']</td>
+</tr>
+</tbody>
+</tbody>
+</table>
+      </div>
+      <div class="modal-footer" style="height:44px; padding:5px;">
+      	<!--<input type="password" name="paypass" class="form-control" id="verpass" style="height:22px; width:100px; padding:4px; display:inline-block; margin-right:5px; position:relative; top:1px;" tabindex="0" maxlength="10" />-->
+        <!--{if $var[status] == 0}--><input type="submit" class="btn btn-primary" name="refund_verify_submit" style="height:32px; font-size:12px;" value="审核通过" /><!--{elseif $var['status'] == 1}--><input type="submit" class="btn btn-primary" name="refund_enter_submit" style="height:32px; font-size:12px;" value="确认打款" /><!--{else}--><!--{/if}-->
+        <button type="button" class="btn btn-default" style="height:32px; font-size:12px; background-color:#06C; border:1px solid #333;" data-dismiss="modal">关闭</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</form>
+<!--{/loop}-->

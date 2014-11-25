@@ -1,0 +1,61 @@
+<script type="text/javascript" src="static/finabao/javascript/jquery-1.10.2.min.js"></script>
+<style type="text/css">
+#btype label	{ display:inline; width:150px; height:20px; border:1px solid #ccc; float:left; margin-right:20px; padding:8px; margin-bottom:10px;}
+.banklist		{ width:900px; margin-top:15px;}
+.banklist	li	{ width:130px; border:1px solid #e8e8e8; float:left; margin-right:10px; margin-bottom:10px; }
+.banklist	li:hover	{ border-color:#F60;}
+.bank-mini	{ cursor:pointer;}
+</style>
+<form name="pos_setup1_form" id="pos_setup1_form" method="post" action="admin.php?action=finabao&operation=pos">
+<input type="hidden" name="formhash" value="{echo formhash();}" />
+<input type="hidden" name="order" value="$setup['order']" />
+<input type="hidden" name="trade" value="$setup['trade']" />
+<input type="hidden" name="banksign" id="bank" value="" />
+<table cellspacing="3" cellpadding="3" class="tb tb2">
+<tr><td class="td27" s="1">内部单号: <span style="padding-left:15px; color:#F60;">$setup['order']</span></td><td class="td27" s="1">业务单号: <span style="padding-left:15px; color:#F60;">$setup['trade']</span></td><td colspan="2" class="td27" s="1">业务类型: <span style="padding-left:15px; color:#F60;"><!--{if $setup['type'] == 'SK'}-->SK 信用卡刷卡消费<!--{elseif $_POST['type'] == 'DH'}-->DH 信用卡代还<!--{/if}--></span></td></tr>
+<tr><td class="td27" s="1" style="position:relative;">发卡银行：<div class="bank-mini bank-$setup['c_banksign']" style="position:absolute; top:0px;"></div></td><td class="td27" s="1">信用卡号: <span style="padding-left:15px; color:#F60;">$setup['c_bankcard']</span></td><td></td></tr>
+<tr><td class="td27" s="1">客户姓名: <span style="padding-left:15px;">$setup['realname']</span></td><td class="td27" s="1">联系电话: <span style="padding-left:15px; color:#F60;">$setup['mobile']</span></td><td></td></tr>
+<tr><td class="td27" s="1">刷卡金额: <span style="padding-left:15px; color:#F60; font-size:16px;">$setup['money']</span></td><td class="td27" s="1">到账方式: <span style="padding-left:15px; color:#F60;">$retype[$setup['retype']]['title']</span></td><td colspan="2" class="td27" s="1">设备信息: <span style="padding-left:15px; color:#F60;">$devinfo[$setup['device']]['devtitle']</span></td></tr>
+<tr><td class="td27" s="1">实际到账: <span style="padding-left:15px; color:#F60; font-size:16px;">$setup['realmoney']</span></td><td class="td27" s="1">手续费用: <span style="padding-left:15px; color:#F60;">$setup['factorage']</span></td><td></td></tr>
+<tr><td colspan="4" class="td27" s="1">到款银行：<ul class="banklist">
+            <!--{eval $banklist = finacache('plugin_finabao_banks', 'finabao_banks', 'sign');}-->
+        	<!--{loop $banklist $key $var}-->
+            <li><a href="javascript:;"><div class="bank-mini bank-$var['sign']" onclick="setbank('$var['sign']');"></div></a></li>
+            <!--{/loop}-->
+		</ul></td>
+</tr>
+<tr><td colspan="2" class="td27" s="1">到款卡号: <span style="padding-left:15px; position:relative;"><input type="text" name="bankcard" id="bankcard" maxlength="26" style=" padding-left:40px; width:290px; height:22px; font-size:18px; color:#F60; font-weight:bold;" onkeyup="convertSpace(this);" /><span id="bank-import" style="position:relative; top:-2px;"></span><span id="bank-import-mini" style="position:absolute; top:6px; left:25px;"></span></span></td></tr>
+<tr><td class="td27" s="1">开户名称: <span style="padding-left:15px; color:#F60; font-size:16px;"><input type="text" name="cardname" class="u-ipt" style=" width:150px;" /></span></td></tr>
+<td class="td27" s="1"><input type="submit" name="pos_setup4" class="btn btn-default" value="下一步" /></td></tr>
+
+</table>
+</form>
+<script type="text/javascript">
+function convertSpace(obj)
+{
+    var val = obj.value.replace(/\s/g, '');
+    var val2 = "";
+    var len = 0;
+    for (var i = 0; i < val.length; i++) {
+        var ch = val.charAt(i);
+        if(ch >= 0 && ch <= 9) {
+            val2 += ch;
+            ++len;
+            if (len % 4 == 0) {
+                val2 += ' ';
+            }
+        }
+    }
+    if(val2.substring(val2.length-1,val2.length)== ' ')
+    {
+        val2 = val2.substring(0,val2.length-1)
+    }
+    obj.value = val2;
+}
+function setbank(bank){
+	jQuery("#bank-import").removeClass().addClass("bank-"+bank);
+	jQuery("#bank-import-mini").removeClass().addClass("ico-"+bank);
+	jQuery("#bank").val(bank);
+}
+</script>
+

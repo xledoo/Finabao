@@ -1,0 +1,54 @@
+<style type="text/css">
+.m-risk-box		{ border:1px solid #DBDBDB;border-top-color:#C7CDD3;background-color:#F8F8F8; height:135px;overflow:visible; margin-top:5px; color:#666; position:relative; right:0px;}
+.m-risk-box .member	{ height:23px; border-bottom:1px solid #E0E3E6; padding:13px 0 0;}
+.m-risk-box .content	{ min-height:150px; margin-top:70px;}
+.m-risk-box .vip-title{_display:inline;float:left;margin:0 2px 0 20px;margin-top:2px\9;*margin-top:2px;_margin-top:1px;font-weight:400; position:relative;}
+.icon-dort-bestseller	{ background:url("static/finabao/images/pc.de-cologne-icon-pack/16x16/bestseller.png"); width:16px; height:16px; display:block; position:absolute; top:-3px; }
+
+.risk-ico		{ width:16px; height:16px; position:absolute; left:-25px; display:block; background:url("static/finabao/images/pc.de-cologne-icon-pack/16x16/suppliers.png"); z-index:999;}
+.risk-level		{ position:absolute; top:-2px; left:25px; display:inline-block; width:90px;}
+.risk-level-ico	{ position:absolute; left:110px; top:-1px; font-size:14px; cursor:pointer;}
+.risk-level-progress		{ position:absolute; left:225px; width:130px;}
+.progress		{ height:10px;}
+.risk-level-slv	{ position:absolute; font-size:10px; top:0; cursor:pointer;}
+.risk-level-slvl{ left:-30px;}
+.risk-level-slvr{ left:137px; width:40px;}
+.risk-rule		{ position:absolute; top:-3px; left:660px; width:120px;}
+.rule-ico		{ width:16px; height:16px; display:block; background-image:url(static/finabao/images/pc.de-cologne-icon-pack/16x16/publish.png); position:absolute; left:-20px; top:1px; }
+
+.con-new-member	{ position:absolute; top:50px; left:60px;}
+.con-last-member	{ position:absolute; top:50px; right:60px;}
+</style>
+<div class="m-risk-box">
+    <div class="member f-cb">
+        <h3 class="vip-title f-cb">
+            <div class="icon-dort-bestseller"></div>
+            <div class="risk-level f-cb">我的信用等级：</div>
+            <div class="risk-level-ico"><!--{eval echo C::t('finabao_risk_member')->showintpic($_G['uid']);}--></div>
+            <div class="risk-level-progress">
+                <span class="risk-level-slv risk-level-slvl">LV D1</span>
+                <div class="progress"><div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"></div></div>
+                <span class="risk-level-slv risk-level-slvr">LV D2</span>
+            </div>
+            <div class="risk-rule f-fr f-cb"><span class="rule-ico"></span><span class="f-ff1 f-fs2" style="color:#630; cursor:pointer;">查看信用规则</span></div>
+        </h3>
+        <div class="content">
+        	<div class="con-new-member"><span class="btn">新用户</span></div><div class="con-last-member"><span class="btn">信用达人</span></div>
+			<div class="progress" style="height:20px; width:650px; margin:0 auto;">
+				<div class="progress-bar progress-bar-danger" style="width: 25%">
+					<span class="sr-only">信用等级 LV D</span>
+				</div>
+				<div class="progress-bar progress-bar-warning" style="width: 25%">
+					<span class="sr-only">信用等级 LV C</span>
+				</div>
+				<div class="progress-bar progress-bar-info" style="width: 25%">
+					<span class="sr-only">信用等级 LV B</span>
+				</div>
+				<div class="progress-bar progress-bar-success" style="width: 25%">
+					<span class="sr-only">信用等级 LV A</span>
+				</div>
+			</div>  
+        </div>
+    </div>
+</div>
+<div class="f-line"></div>

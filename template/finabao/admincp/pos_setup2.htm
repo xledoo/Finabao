@@ -1,0 +1,52 @@
+<script type="text/javascript" src="static/finabao/javascript/jquery-1.10.2.min.js"></script>
+<style type="text/css">
+#btype label	{ display:inline; width:150px; height:20px; border:1px solid #ccc; float:left; margin-right:20px; padding:8px; margin-bottom:10px;}
+.banklist		{ width:800px;}
+.banklist	li	{ width:130px; border:1px solid #e8e8e8; float:left; margin-right:10px; margin-bottom:10px; }
+.banklist	li:hover	{ border-color:#F60;}
+.bank-mini	{ cursor:pointer;}
+</style>
+<form name="pos_setup1_form" id="pos_setup1_form" method="post" action="admin.php?action=finabao&operation=pos">
+<input type="hidden" name="formhash" value="{echo formhash();}" />
+<input type="hidden" name="order" value="$setup['order']" />
+<input type="hidden" name="trade" value="$setup['trade']" />
+<table cellspacing="3" cellpadding="3" class="tb tb2">
+<tr><td colspan="2" class="td27" s="1">内部单号: <span style="padding-left:15px; color:#F60;">$setup['order']</span></td><td colspan="2" class="td27" s="1">业务单号: <span style="padding-left:15px; color:#F60;">$setup['trade']</span></td><td colspan="2" class="td27" s="1">业务类型: <span style="padding-left:15px; color:#F60;"><!--{if $setup['type'] == 'SK'}-->SK 信用卡刷卡消费<!--{elseif $_POST['type'] == 'DH'}-->DH 信用卡代还<!--{/if}--></span></td></tr>
+<tr><td colspan="2" class="td27" s="1" style="position:relative;">发卡银行：<div class="bank-mini bank-$setup['c_banksign']" style="position:absolute; top:0px;"></div></td><td colspan="2" class="td27" s="1">信用卡号: <span style="padding-left:15px; color:#F60;">$setup['c_bankcard']</span></td></tr>
+<tr><td colspan="2" class="td27" s="1">客户姓名: <span style="padding-left:15px;">$setup['realname']</span></td><td colspan="2" class="td27" s="1">联系电话: <span style="padding-left:15px; color:#F60;">$setup['mobile']</span></td></tr>
+<tr><td colspan="2" class="td27" s="1">刷卡金额: <span style="padding-left:15px; color:#F60; font-size:16px;"><input type="text" name="money" maxlength="10" class="u-ipt" value="$setup['money']" onfocus="if(this.value=='0.00') {this.value='';}" /></span></td></tr>
+<tr><td colspan="2" class="td27" s="1">到账方式: <span style="padding-left:15px; color:#F60; font-size:16px;"><select name="retype" <!--{if $setup['type'] == 'DH'}-->disabled="disabled"<!--{/if}-->><!--{loop $retype $k $v}--><option value="$v['retype']"<!--{if $setup['retype'] == $v['retype']}--> selected="selected"<!--{/if}-->>$v['title']</option><!--{/loop}--></select></span></td></tr>
+<tr><td colspan="2" class="td27" s="1">到账方式: <span style="padding-left:15px; color:#F60; font-size:16px;"><select name="device"><!--{loop $devinfo $k $v}--><option value="$v['devcode']"<!--{if $setup['device'] == $v['devcode']}--> selected="selected"<!--{/if}-->>$v['devtitle']</option><!--{/loop}--></select></span></td></tr>
+<tr><td colspan="2" class="td27" s="1"><input type="submit" name="pos_setup2" class="btn btn-default" value="下一步" /></td></tr>
+
+</table>
+</form>
+<script type="text/javascript">
+function convertSpace(obj)
+{
+    var val = obj.value.replace(/\s/g, '');
+    var val2 = "";
+    var len = 0;
+    for (var i = 0; i < val.length; i++) {
+        var ch = val.charAt(i);
+        if(ch >= 0 && ch <= 9) {
+            val2 += ch;
+            ++len;
+            if (len % 4 == 0) {
+                val2 += ' ';
+            }
+        }
+    }
+    if(val2.substring(val2.length-1,val2.length)== ' ')
+    {
+        val2 = val2.substring(0,val2.length-1)
+    }
+    obj.value = val2;
+}
+function setbank(bank){
+	jQuery("#bank-import").removeClass().addClass("bank-"+bank);
+	jQuery("#bank-import-mini").removeClass().addClass("ico-"+bank);
+	jQuery("#bank").val(bank);
+}
+</script>
+

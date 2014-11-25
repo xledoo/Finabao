@@ -1,0 +1,170 @@
+<!--{template common/header}-->
+<style type="text/css">
+.m-addc-title	{
+	font-size:16px;
+	color:#666;
+	border-bottom:1px solid #CCC;
+	padding-bottom:8px;
+}
+.m-addc-title span	{
+	border-bottom:2px solid #F60;
+	padding-bottom:10px;
+}
+.ui-bankpicker-banklist-cnt{background:#fff;font-size:16px;border:1px solid #ccc;padding:20px 5px 5px 20px;_padding-bottom:20px;width:540px;z-index:99;}
+.ui-bankpicker-head{font-size:16px;border:1px solid #ccc;padding:7px 20px; _padding:2px 20px;background:#fff;position:relative;color:#999;zoom:1;outline:　0 none}
+.ui-bankpicker-head:focus{outline:0;color:#999}
+.ui-bankpicker-head:active{color:#999}
+.ui-bankpicker-head:hover{color:#999;text-decoration:none}
+.ui-bankpicker-bankitem{display:block;width:120px;height:40px;float:left;margin:0 15px 15px 0; z-index:9999; _margin:0 12px 15px 0;}
+.ui-bankpicker-bankitem-icon{display:block;width:120px;height:33px;text-align:center;border:1px solid #e6e6e6; overflow:hidden;}
+.ui-bankpicker-bankitem-hover{border:1px solid #b3b3b3;}
+.ui-bankpicker-banklist-cnt .selected{border:1px solid #b3b3b3;}
+.ui-bankpicker-banklist{z-index:6;position:relative}
+.ui-bankpicker-head-open{border-style:solid solid none;border-width:1px 1px 0;z-index:11}
+</style>
+<div class="f-line"></div>
+<div class="container">
+<div class="row">
+	<div class="span3">
+        <!--{template common/sidebar_common}-->
+    </div>
+    <div class="span9">
+    	<div class="f-line"></div>
+		<!--{template creditcard/headbar}-->
+		<div class="f-line"></div>
+        <div id="ajax_show"></div>
+        <div class="m-form">
+        	<h2 class="m-addc-title f-ff1"><span>添加新的信用卡</span></h2>
+            <form method="post" name="cardaddform" id="cardaddform" action="index.php?mod=creditcard&action=cardadd">
+            	<input type="hidden" name="formhash" value="{echo formhash();}" />
+                <fieldset>
+                	<div class="f-line"></div>
+            		<div class="formitm">
+                		<label class="lab f-fs2">发卡银行：</label>
+                		<div class="ipt"  style="position:relative;">
+                        	<input type="hidden" id="bank" name="cardBank" class="ui-form-input" value="" ui-form-explain="">
+                        	<a id="bankPickerHead" href="javascript:void(0);" class="ui-bankpicker-head" onclick="display('bankListCnt');"><span id="span_select"> - 请选择银行 - </span></a>
+							<div id="bankListCnt" class="ui-bankpicker-banklist-cnt f-cb" style=" position:absolute; top:31px; _left:0px; _top:36px; display:none;">
+								<ul class="ui-bankpicker-banklist f-cb" style="_position:relative;">
+                                <!--{loop $banklist $key $var}-->
+                                	<li class="ui-bankpicker-bankitem"><a href="javascript:void(0);" class="ui-bankpicker-bankitem-icon" onclick="setbank('$var['sign']');"><span class="bank-$var['sign']" style="display:block;"></span></a></li>
+                                <!--{/loop}-->
+		    					</ul>
+                                <iframe src="javascript:'';" style="zoom: 1; position: absolute; z-index: 5; border: none; left: 0px; top: 1px; width: 540px; height: 220px; display: block; "></iframe>
+                        	</div>
+						</div>
+					</div>
+                    <div class="formitm  f-cb">
+                    	<label class="lab f-fs2">信用卡卡号：</label>
+                        <div class="ipt"><input name="cardid" id="cardid" tabindex="1" class="u-ipt" style="color:#F30; font-weight:bold; font-size:18px; width:220px;" onkeyup="convertSpace(this);" onblur="verifycardid(this);" value="" maxlength="26" /></div>
+                    </div>
+                    <div class="formitm" style="display:none;" id="recardform">
+                    	<label class="lab f-fs2">确认卡号：</label>
+                        <div class="ipt"><input name="recardid" id="recardid" tabindex="2" class="u-ipt" style="color:#F30; font-weight:bold; font-size:18px; width:220px;" onkeyup="convertSpace(this);" onblur="reverifycardid(this);" value="" maxlength="26" /></div>
+                    </div>  
+                    <div class="formitm f-cb">
+                    	<label class="lab f-fs2">持卡人姓名：</label>
+                        <div class="ipt"><input name="cardname" id="cardname" tabindex="3" class="u-ipt u-ipt-1" value="" maxlength="10" /></div>
+                    </div>
+                    <div class="formitm f-cb">
+                    	<label class="lab f-fs2">账单日/还款日：</label>
+                        <div class="ipt">
+                        	<select name="billdate" class="u-ipt u-ipt-1" tabindex="4" style="height:30px;">
+                            	<option value="0">账单日</option>
+								<!--{loop $datewarp $var}-->
+                                <option value="$var">$var</option>
+                                <!--{/loop}-->
+                            </select>
+                            <span style="padding:0px 10px;">-</span>
+                        	<select name="givedate" class="u-ipt u-ipt-1" tabindex="5" style="height:30px;">
+                            	<option value="0">还款日</option>
+								<!--{loop $datewarp $var}-->
+                                <option value="$var">$var</option>
+                                <!--{/loop}-->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="formitm f-cb">
+                    	<label class="lab f-fs2">授信额度：</label>
+                        <div class="ipt"><input name="limit" id="limit" tabindex="6" class="u-ipt u-ipt-1" style="color:#F30; font-weight:bold; font-size:18px;" /></div>
+                    </div>
+                    <div class="formitm f-cb">
+                    	<label class="lab f-fs2">备注：</label>
+                        <div class="ipt"><input name="remark" id="remark" tabindex="9" class="u-ipt" /></div>
+                    </div> 
+                    <div class="formitm f-cb">
+                    	<label class="lab f-fs2"></label>
+                        <div class="ipt"><input type="submit" name="cardadd_submit" tabindex="10" class="btn btn-info" style="width:130px;" value=" 确认提交 " /></div>
+                    </div>                  
+                </fieldset>
+            </form>
+            <div class="f-line"></div>
+            <div class="f-line"></div>
+            <div class="f-line"></div>
+        </div>
+    </div>
+</div>
+</div>
+<script type="text/javascript">
+// 输入银行卡号时的分段处理效果(如：6225 7687 0971 2222)
+function convertSpace(obj)
+{
+    var val = obj.value.replace(/\s/g, '');
+    var val2 = "";
+    var len = 0;
+    for (var i = 0; i < val.length; i++) {
+        var ch = val.charAt(i);
+        if(ch >= 0 && ch <= 9) {
+            val2 += ch;
+            ++len;
+            if (len % 4 == 0) {
+                val2 += ' ';
+            }
+        }
+    }
+    if(val2.substring(val2.length-1,val2.length)== ' ')
+    {
+        val2 = val2.substring(0,val2.length-1)
+    }
+    obj.value = val2;
+}
+
+function verifycardid(obj){
+	valcard	=	removeAllSpace(obj.value);
+
+	if(/^[0-9]+$/.test(valcard) && valcard.length >=15 && valcard.length <= 16) {
+		display('recardform');
+		jQuery("#recardid").focus();
+		return true;	
+	}
+	return false;
+}
+
+function reverifycardid(obj){
+	valcard	=	removeAllSpace(obj.value);
+
+	if(/^[0-9]+$/.test(valcard) && valcard.length >=15 && valcard.length <= 16) {
+		var cardno = removeAllSpace(jQuery("#cardid").val());
+		if(valcard == cardno){
+			display('recardform');
+			jQuery("#cardid").removeClass('u-ipt-err').addClass('u-ipt-succeed');
+			jQuery("#recardid").removeClass('u-ipt-err').addClass('u-ipt-succeed');
+			return true;			
+		}
+	}
+	jQuery("#cardid").removeClass('u-ipt-succeed').addClass('u-ipt-err');
+	jQuery("#recardid").removeClass('u-ipt-succeed').addClass('u-ipt-err');
+	return false;
+}
+
+function setbank(bank){
+	jQuery("#span_select").removeClass().addClass("bank-"+bank);
+	jQuery("#bankPickerHead").addClass('u-ipt-succeed');
+	jQuery("#bank").val(bank);
+	display('bankListCnt');
+}
+
+function removeAllSpace(str) {  return str.replace(/\s+/g, "");}
+
+</script>
+<!--{template common/footer}-->

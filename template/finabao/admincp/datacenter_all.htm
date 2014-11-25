@@ -1,0 +1,28 @@
+<script type="text/javascript" src="static/finabao/javascript/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript">
+jQuery(function () {
+	jQuery('#allMonth').highcharts({
+		title: {text: '云南云井电子商务有限公司月度交易量总表',x: -20},
+		subtitle: {text: 'www.finabao.com',x: -20},
+		xAxis: {categories: [$allMonthOutput]},
+		yAxis: {title: {text: '交易量（元）'},plotLines: [{value: 0,width: 1,color: '#808080'}]},
+		tooltip: {valueSuffix: ' 元'},
+		legend: {layout: 'vertical',align: 'right',verticalAlign: 'middle',borderWidth: 0},
+		series: [{name: '交易量',data: [$allMonthDataOutput]}]
+	});
+	jQuery('#thisMonth').highcharts({
+		title: {text: '云南云井电子商务有限公司当月充值交易量总表',x: -20},
+		subtitle: {text: 'www.finabao.com',x: -20},
+		xAxis: {categories: [$monthDays]},
+		yAxis: {title: {text: '交易量（元）'},plotLines: [{value: 0,width: 1,color: '#808080'}]},
+		tooltip: {valueSuffix: ' 元'},
+		legend: {layout: 'vertical',align: 'right',verticalAlign: 'middle',borderWidth: 0},
+		series: [{name: '$yestMonth['title']',data: [$yestMonthData]}, {name: '$thisMonth['title']',data: [$thisMonthData]}]
+	});
+});
+</script>
+<div id="allMonth" style="min-width: 1100px; height: 200px; margin: 0 auto"></div>
+<div id="thisMonth" style="min-width: 1100px; height: 300px; margin: 0 auto"></div>
+
+<script src="static/finabao/highcharts/highcharts.js"></script>
+<script src="static/finabao/highcharts/modules/exporting.js"></script>

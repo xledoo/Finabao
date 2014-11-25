@@ -1,0 +1,209 @@
+<!--{template admincp/header}-->
+<style type="text/css">
+/* 银行ico */
+.tid-bank-ico, .ico-icbc, .ico-cmb, .ico-ccb, .ico-abc,
+.ico-boc, .ico-spdb, .ico-sdb, .ico-cib,
+.ico-bob, .ico-cebb, .ico-boco, .ico-cmbc,
+.ico-ecitic, .ico-gdb, .ico-pingan, .ico-post, .ico-union,
+.ico-jsb,.ico-srcb,.ico-hkb,.ico-nbcb,.ico-njcb,.ico-bosh,.ico-hxb,.ico-hzb,.ico-hkbea,.ico-ordos,.ico-cbhb,.ico-jzb,
+.ico-gdrcu,.ico-nccb,.ico-glccb,.ico-bsb,.ico-ynrcc,.ico-gzcb,.ico-cqrcb,.ico-zjcb,.ico-sdrcu,.ico-jshbank,.ico-klb,.ico-hrbcb,.ico-crb,.ico-cqcb, .ico-sdebank, .ico-qlb, .ico-hangseng,  .ico-sznsh, .ico-zsxlc, .ico-hdcb, .ico-xxssh, .ico-nycbank, .ico-jjccb, .ico-bankofjdz, .ico-bek, .ico-zjtlcb, .ico-bocd, .ico-zjnx,
+.ico-ljbank, .ico-fdbank{background:url("static/finabao/images/bank_ico.png?v=20130828") no-repeat;display:inline-block;position:relative;height:18px;width:18px;overflow:hidden;line-height:999px;vertical-align:top;}
+.ico-icbc{background-position:0 0;}                       /* 中国工商银行 */
+.ico-cmb{background-position:-18px 0;}                    /* 招商银行 */
+.ico-ccb{background-position:-36px 0;}                    /* 中国建设银行 */
+.ico-abc{background-position:-54px 0;}                    /* 中国农业银行 */
+.ico-boc{background-position:-72px 0;}                    /* 中国银行 */
+.ico-spdb{background-position:-54px -18px;}               /* 上海浦东发展银行 */
+.ico-sdb{background-position:-108px -18px;}               /* 深圳发展银行   */
+.ico-cib{background-position:0 -18px;}                    /* 兴业银行 */
+.ico-bob{background-position:-126px -18px;}               /* 北京银行 */
+.ico-cebb{background-position:-90px 0;}                   /* 中国光大银行 */
+.ico-boco{background-position:-36px -18px;}               /* 交通银行 */
+.ico-cmbc{background-position:-90px -18px;}               /* 中国民生银行 */
+.ico-ecitic{background-position:-126px 0;}                /* 中信银行 */
+.ico-gdb{background-position:-72px -18px;}                /* 广发银行 */
+.ico-pingan{background-position:0 -36px;}                 /* 平安银行 */
+.ico-post{background-position:-18px -18px;}               /* 中国邮政储蓄银行 */
+.ico-union{background-position:-27px -36px;width:27px;}   /* 银联 */
+.ico-jsb{background-position:-54px -36px;}                /* 江苏银行 */
+.ico-srcb{background-position:-72px -37px;}               /* 上海农商行 */
+.ico-nbcb{background-position:-90px -36px;}               /* 宁波银行 */
+.ico-njcb{background-position:-108px -36px;}               /* 南京银行 */
+.ico-hkb{background-position:-126px -36px;}               /* 汉口银行 */
+.ico-bosh{background-position:0 -54px;}                   /* 上海银行 */
+.ico-hxb{background-position:-18px -54px;}                /* 华夏银行 */
+.ico-hzb{background-position:-36px -54px;}                /* 杭州银行 */
+.ico-hkbea{background-position:-54px -54px;}              /* 东亚银行 */
+.ico-ordos{background-position:-72px -54px;}              /* 鄂尔多斯银行 */
+.ico-cbhb{background-position:-108px -54px;}              /* 渤海银行 */
+.ico-jzb{background-position:-90px -54px;}                /* 晋中商业银行 */
+.ico-gdrcu{background-position:0 -73px;}                  /* 广东农村信用社 */
+.ico-nccb{background-position:-18px -73px;}               /* 南昌银行 */
+.ico-glccb{background-position:-36px -73px;}              /* 桂林银行 */
+.ico-bsb{background-position:-54px -73px;}                /* 包商银行 */
+.ico-ynrcc{background-position:-72px -73px;}              /* 云南省农村信用社 */
+.ico-gzcb{background-position:-90px -73px;}               /* 广州银行 */
+.ico-cqrcb{background-position:-108px -73px;}              /* 重庆农村商业银行 */
+.ico-zjcb{background-position:-126px -73px;}              /*广东南粤银行*/
+.ico-sdrcu{background-position:0 -91px;}                  /* 山东省农村信用社 */
+.ico-jshbank{background-position:-18px -91px;}            /*晋商银行*/
+.ico-klb{background-position:-35px -91px;}                /*昆仑银行*/
+.ico-hrbcb{background-position:-54px -91px;width:20px;}   /*哈尔滨银行*/
+.ico-crb{background-position:-74px -91px;width:16px;}     /*华润银行*/
+.ico-cqcb{background-position:-90px -91px;}               /*重庆银行*/
+.ico-sdebank{background-position:-126px -91px;}
+.ico-qlb{background-position:0 -109px;}
+.ico-hangseng{background-position:-18px -109px;}
+.ico-sznsh{background-position:-36px -109px;}
+.ico-zsxlc{background-position:-54px -109px;}
+.ico-hdcb{background-position:-72px -109px;}
+.ico-xxssh{background-position:-90px -109px;}
+.ico-nycbank{background-position:-108px -109px;}
+.ico-jjccb{background-position:-126px -109px}
+.ico-bankofjdz{background-position:0 -127px;}
+.ico-bek{background-position:-18px -127px;}
+.ico-zjtlcb{background-position:-36px -127px;}
+.ico-bocd{background-position:-54px -128px}
+.ico-zjnx{background-position:-72px -127px;}
+.ico-ljbank{background-position:-90px -128px;}                /*  龙江银行  */
+.ico-fdbank{background-position:-108px -128px;}                /*  富滇银行  */
+
+
+</style>
+<div class="tbmu bw0" style="font-size:14px;">订单号: <span style="color:#F30; font-size:16px; position:relative; top:1px; font-weight:bold;">$trade['trade']</span></div>
+<table cellspacing="0" cellpadding="0" class="dt table table-hover">
+<thead>
+<th class="xw1">用户名</th>
+<th class="xw1">联系电话</th>
+<th class="xw1">账户总额</th>
+<th class="xw1">可用余额</th>
+<th class="xw1">冻结金额</th>
+<th class="xw1">充值总额</th>
+<th class="xw1">提现金额</th>
+</thead>
+<tbody>
+<tr>
+<td>$member['username']</td>
+<td><span style="color:#F30; cursor:pointer;" onclick="clipboardData.setData('Text', '$member['mobile']');">$member['mobile']</span></td>
+<td>$settle['total']</td>
+<td>$settle['usable']</td>
+<td>$settle['freeze']</td>
+<td>$topup</td>
+<td>$refund</td>
+</tr>
+<tr>
+<th class="xw1">提现金额</th>
+<th class="xw1">提现方式</th>
+<th class="xw1">打款金额</th>
+<th class="xw1">手续费用</th>
+<th class="xw1">打款时间</th>
+<th class="xw1">提交时间</th>
+<th class="xw1">数据验证</th>
+</tr>
+<tr>
+<td>$trade['money']</td>
+<td>$trade['type']</td>
+<td><span style="color:#f30; cursor:pointer;" onclick="clipboardData.setData('Text', '$trade['deal']');">$trade['deal']</span></td>
+<td>$trade['factorage'] ($trade['rate'])</td>
+<td>$trade['predictime']</td>
+<td>$trade['dateline']</td>
+<td></td>
+</tr>
+<tr>
+<th class="xw1">开户名称</th>
+<th class="xw1">所属银行</th>
+<th colspan="2" class="xw1">银行卡号手续费用</th>
+<th colspan="2" class="xw1">开户行地址</th>
+<th class="xw1">订单状态</th>
+</tr>
+<tr>
+<td><span style="color:#F30; cursor:pointer;" onclick="clipboardData.setData('Text', '$trade['rebank']['cardname']');">$trade['rebank']['cardname']</span></td>
+<td><i class="tid-bank-ico ico-$trade['rebank']['banksign']" style="margin-right:5px;"></i> $trade['rebank']['bankname']</td>
+<td colspan="2"><span style="color:#F30; cursor:pointer;" onclick="clipboardData.setData('Text', '$trade['rebank']['cardid']');">$trade['rebank']['cardid']</span></td>
+<td colspan="2">$trade['rebank']['openaddr']</td>
+<td>$trade['statustext']</td>
+</tr>
+</tbody>
+</tbody>
+</table>
+<form method="post" action="$suburl" name="refundverify">
+<input type="hidden" name="forumhash" value="$formhash" />
+<div style="margin:0 auto; text-align:center;"><!--{if $trade['status'] == 0}--><input type="submit" class="btn btn-primary" name="refund_verify_submit" data-toggle="modal" data-target="#modal-dialog" value="提交并通过审核" /><!--{elseif $trade['status'] == 1}--><input type="submit" class="btn btn-primary" name="refund_enter_submit" value="打款已完成提交确认" /><!--{/if}--></div>
+</form>
+<div class="modal fade" id="modal-dialog">
+  <div class="modal-dialog" style="width:70%; margin-top:120px;">
+    <div class="modal-content">
+      <div class="modal-header" style="height:30px; padding:10px 20px 0px 15px;">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" style="font-size:14px;">您正在对订单<span style="color:#F30; font-size:16px; font-weight:bold; margin:0px 5px; position:relative; top:1px;">$trade['trade']</span> 进行审核</h4>
+      </div>
+      <div class="modal-body">
+<table cellspacing="0" cellpadding="0" class="dt table table-hover">
+<thead>
+<th class="xw1">用户名</th>
+<th class="xw1">联系电话</th>
+<th class="xw1">账户总额</th>
+<th class="xw1">可用余额</th>
+<th class="xw1">冻结金额</th>
+<th class="xw1">充值总额</th>
+<th class="xw1">提现金额</th>
+</thead>
+<tbody>
+<tr>
+<td>$member['username']</td>
+<td><span style="color:#F30; cursor:pointer;" onclick="clipboardData.setData('Text', '$member['mobile']');">$member['mobile']</span></td>
+<td>$settle['total']</td>
+<td>$settle['usable']</td>
+<td>$settle['freeze']</td>
+<td>$topup</td>
+<td>$refund</td>
+</tr>
+<tr>
+<th class="xw1">提现金额</th>
+<th class="xw1">提现方式</th>
+<th class="xw1">打款金额</th>
+<th class="xw1">手续费用</th>
+<th class="xw1">打款时间</th>
+<th class="xw1">提交时间</th>
+<th class="xw1">数据验证</th>
+</tr>
+<tr>
+<td>$trade['money']</td>
+<td>$trade['type']</td>
+<td><span style="color:#f30; cursor:pointer;" onclick="clipboardData.setData('Text', '$trade['deal']');">$trade['deal']</span></td>
+<td>$trade['factorage'] ($trade['rate'])</td>
+<td>$trade['predictime']</td>
+<td>$trade['dateline']</td>
+<td></td>
+</tr>
+<tr>
+<th class="xw1">开户名称</th>
+<th class="xw1">所属银行</th>
+<th colspan="2" class="xw1">银行卡号手续费用</th>
+<th colspan="2" class="xw1">开户行地址</th>
+<th class="xw1">订单状态</th>
+</tr>
+<tr>
+<td><span style="color:#F30; cursor:pointer;" onclick="clipboardData.setData('Text', '$trade['rebank']['cardname']');">$trade['rebank']['cardname']</span></td>
+<td><i class="tid-bank-ico ico-$trade['rebank']['banksign']" style="margin-right:5px;"></i> $trade['rebank']['bankname']</td>
+<td colspan="2"><span style="color:#F30; cursor:pointer;" onclick="clipboardData.setData('Text', '$trade['rebank']['cardid']');">$trade['rebank']['cardid']</span></td>
+<td colspan="2">$trade['rebank']['openaddr']</td>
+<td>$trade['statustext']</td>
+</tr>
+</tbody>
+</tbody>
+</table>
+      </div>
+      <div class="modal-footer" style="height:35px; padding:5px;">
+      	<!--<input type="password" name="paypass" class="form-control" id="verpass" style="height:22px; width:100px; padding:4px; display:inline-block; margin-right:5px; position:relative; top:1px;" tabindex="0" maxlength="10" />-->
+        <button type="button" class="btn btn-primary" style="height:32px; font-size:12px;">审核通过</button>
+        <button type="button" class="btn btn-default" style="height:32px; font-size:12px;" data-dismiss="modal">关闭</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<script type="text/javascript">
+jQuery(document).ready(function(){
+jQuery("#verpass").focus();								
+});
+</script>

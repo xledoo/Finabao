@@ -1,0 +1,116 @@
+<script type="text/javascript" src="static/finabao/javascript/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="static/finabao/jquery-autocomplete/jquery.autocomplete.js"></script>
+<link rel="stylesheet" href="static/finabao/jquery-autocomplete/jquery.autocomplete.css?wVn" />
+<style type="text/css">
+#btype label	{ display:inline; width:150px; height:20px; border:1px solid #ccc; float:left; margin-right:20px; padding:8px; margin-bottom:10px;}
+.banklist		{ width:800px;}
+.banklist	li	{ width:130px; border:1px solid #e8e8e8; float:left; margin-right:10px; margin-bottom:10px; }
+.banklist	li:hover	{ border-color:#F60;}
+.bank-mini	{ cursor:pointer;}
+.serachtable	{ border:1px solid #ccc; padding:0px;}
+.serachtable	th{ background:#6CF; padding:0px; margin:0px; height:10px;}
+</style>
+<form name="pos_setup1_form" id="pos_setup1_form" method="post" action="admin.php?action=finabao&operation=pos">
+<input type="hidden" name="formhash" value="{echo formhash();}" />
+<input type="hidden" name="token" value="{echo random(16);}" />
+<input type="hidden" name="bank" id="bank" value="" />
+<table cellspacing="3" cellpadding="3" class="tb tb2">
+<tr><td colspan="3" class="td27" s="1">业务类型:</td></tr>
+<tr>
+    <td colspan="3" id="btype">
+    	<label><input type="radio" name="type" class="radio" value="SK" checked="checked" /> SK 信用卡刷卡消费</label> <label><input type="radio" class="radio" name="type" value="DH" />DH 信用卡代还款</label> 
+    </td>
+</tr>
+<tr><td colspan="3" class="td27" s="1">选择发卡行</td></tr>
+<tr>
+    <td colspan="3">
+		<ul class="banklist">
+            <!--{eval $banklist = finacache('plugin_finabao_banks', 'finabao_banks', 'sign');}-->
+        	<!--{loop $banklist $key $var}-->
+            <li><a href="javascript:;"><div class="bank-mini bank-$var['sign']" onclick="setbank('$var['sign']');"></div></a></li>
+            <!--{/loop}-->
+		</ul>
+    </td>
+</tr>
+<tr><td colspan="3" class="td27" s="1">信用卡卡号</td></tr>
+<tr>
+    <td colspan="2" style="position:relative;">
+		<input type="text" name="bankcard" id="bankcard" maxlength="20" style=" padding-left:40px; width:260px; height:22px; font-size:18px; color:#F60; font-weight:bold;" onkeyup="convertSpace(this);" /><span id="bank-import" style="position:relative; top:-2px;"></span><span id="bank-import-mini" style="position:absolute; top:11px; left:15px;"></span>
+    </td>
+    <td style="position:relative;"><input type="text" name="limit" id="limit" maxlength="9" class="u-ipt" /></td>
+</tr>
+<tr><td width="190" class="td27" s="1">客户姓名</td>
+  <td width="190" class="td27" s="1">联系电话</td>
+  <td width="589" class="td27" s="1">经纪人ID</td>
+</tr>
+<tr>
+    <td>
+		<input type="text" name="realname" id="realname" maxlength="10" class="u-ipt" />
+    </td>
+    <td><input type="text" name="mobile" id="mobile" maxlength="11" placeholder="手机号码" class="u-ipt" /></td>
+    <td><input type="text" name="broker" id="broker" maxlength="11" class="u-ipt" /></td>
+</tr>
+<tr><td colspan="3" class="td27" s="1"><input type="submit" name="pos_setup1" class="btn btn-default" value="下一步" /></td></tr>
+
+</table>
+</form>
+<script type="text/javascript">
+/*
+(function($) {
+	var passValue	=	'';
+	var show	=	function(obj){
+		alert(obj.id);
+	}
+	$.fn.suggest = function() {
+    	this.keyup(function(){
+			passValue	=	this.value;	
+			if(passValue.length > 3)
+				show(this);
+		});
+	};
+
+})(jQuery);
+
+
+
+jQuery("#mobile").suggest();
+*/
+$("#mobile").autocomplete(["c++","java", "php", "coldfusion","javascript"], { 
+width: 320, 
+max: 4, 
+highlight: false, 
+multiple: true, 
+multipleSeparator: "", 
+scroll: true, 
+scrollHeight: 300 
+}); 
+
+function convertSpace(obj)
+{
+    var val = obj.value.replace(/\s/g, '');
+    var val2 = "";
+    var len = 0;
+    for (var i = 0; i < val.length; i++) {
+        var ch = val.charAt(i);
+        if(ch >= 0 && ch <= 9) {
+            val2 += ch;
+            ++len;
+            if (len % 4 == 0) {
+                val2 += ' ';
+            }
+        }
+    }
+    if(val2.substring(val2.length-1,val2.length)== ' ')
+    {
+        val2 = val2.substring(0,val2.length-1)
+    }
+    obj.value = val2;
+}
+function setbank(bank){
+	jQuery("#bank-import").removeClass().addClass("bank-"+bank);
+	jQuery("#bank-import-mini").removeClass().addClass("ico-"+bank);
+	jQuery("#bank").val(bank);
+}
+
+</script>
+

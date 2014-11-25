@@ -1,0 +1,28 @@
+<!--{template common/header}-->
+<div class="f-line"></div>
+<div class="container">
+<div class="row">
+	<div class="span3">
+        <!--{template common/sidebar_common}-->
+    </div>
+    <div class="span9">
+    	<div class="f-line"></div>
+		<!--{template creditcard/headbar}-->
+        <div class="m-ccard-list f-ff1">
+			<table class="ccr-card-table" id="history_list">
+				<thead><th style="width:80px">信用卡发卡行</th><th>信用卡卡号<span class="f-vbar">|</span>持卡人姓名</th><th>还款日</th><th>账单日</th><th>授信额度</th><th>可执行操作</th></thead>
+                <tbody>
+                	<!--{loop $ccardlist $key $var}-->
+                	<tr class="f-fs1">
+                    	<td><i class="bank-$var['banksign']"></i></td><td><span title="$var['cardid']" class="f-csp">* $var['sortid']</span><span class="f-vbar">|</span>$var['cardname']<!--{if !empty($var['remark'])}--><span class="f-vbar">|</span>$var['remark']<!--{/if}--></td><td>$var['billdate']日</td><td>$var['givedate']日</td><td>$var['limit']</td><td><a href="javascript:void(0);" style="color:#888;">立即还款</a><span class="f-vbar">|</span><a href="javascript:void(0);" style="color:#888;">账单</a><span class="f-vbar">|</span><a href="javascript:void(0);" style="color:#888;">记录</a><span class="f-vbar">|</span><a href="index.php?mod=creditcard&action=editcard&id=$var['id']&fromhash={echo formhash();}">修改</a><span class="f-vbar">|</span><a href="index.php?mod=creditcard&action=delcard&id=$var['id']&delcardsubmit=yes&fromhash={echo formhash();}" onclick="if(!window.confirm('确定要删除这张信用卡吗?')) return false;">删除</a></td>
+                    </tr>
+                    <!--{/loop}-->
+                </tbody>
+			</table>
+            <div class="f-line"></div>
+            <a href="index.php?mod=creditcard&action=cardadd" class="btn btn-danger f-fr">添加新的银行卡</a>
+        </div>
+    </div>
+</div>
+</div>
+<!--{template common/footer}-->

@@ -1,0 +1,48 @@
+<style type="text/css">
+.tb2 input{ height: 16px;}
+</style>
+<table cellspacing="3" cellpadding="3" class="tb tb2" width="500">
+<tr>
+    <th>提交时间</th>
+    <td>
+        <input type="text" name="dateline1" value="{eval echo gmdate("Y-m-d", TIMESTAMP + 8 * 3600)}" size="10" style="width:80px;" onclick="showcalendar(event, this)"> ~
+        <input type="text" name="dateline2" value="{eval echo gmdate("Y-m-d", TIMESTAMP + 8 * 3600)}" size="10" style="width:80px;" onclick="showcalendar(event, this)">
+    </td>
+    <th>业务类型</th>
+    <td>
+        <select>
+          <option value="">信用卡POS消费</option>
+          <option value="">信用卡代还</option>
+        </select>
+    </td>
+    <th>设备编号</th>
+    <td>
+        <select>
+          <option value="">1号机</option>
+          <option value="">2号机</option>
+          <option value="">3号机</option>
+          <option value="">4号机</option>
+          <option value="">5号机</option>
+        </select>
+    </td>
+    <td>结果排序</td>
+    <td><select name="orderby">
+      <option value="dateline">提交时间</option>
+    </select>
+      <select name="ordersc">
+        <option value="desc">递减</option>
+        <option value="asc">递增</option>
+      </select>
+      <select name="perpage">
+        <option value="10">每页显示10个</option>
+        <option value="20">每页显示20个</option>
+        <option value="50">每页显示50个</option>
+        <option value="100">每页显示100个</option>
+      </select>
+      <input type="hidden" name="action" value="verify" />
+      <input type="hidden" name="operation" value="verify" />
+      <input type="hidden" name="do" value="0" />
+      <input type="hidden" name="anchor" value="authstr" />
+    <input type="submit" name="search_submit" value="搜索" class="btn" style="font-size:12px; padding:0px 10px; height:20px; position:relative; top:-1px;" /> <input type="submit" name="search_submit" value="导出" class="btn" style="font-size:12px; padding:0px 10px; height:20px; position:relative; top:-1px;" /></td>
+</tr>
+</table>

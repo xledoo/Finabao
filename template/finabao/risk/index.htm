@@ -1,0 +1,26 @@
+<!--{template common/header}-->
+<div class="f-line"></div>
+<div class="container">
+<div class="row">
+	<div class="span3">
+        <!--{template common/sidebar_common}-->
+    </div>
+    <div class="span9">
+    	<div class="f-line"></div>
+		<!--{template risk/headbar}-->
+		<table class="table table-bordered table-condensed table-hover">
+			<thead>
+    			<tr><th>等级类别</th><th>等级</th><th>信用评分</th><th>简述</th><th>借款推荐额度</th></tr>
+			</thead>
+    		<tbody>
+    		<!--{loop $intlist $key $var}-->
+                <!--{loop $var $k $v}-->
+                    <tr class="$signarr[$v['sign']]"><!--{if $k == 0}--><td rowspan="<!--{eval echo count($var);}-->">信用等级 $v['sign']</td><!--{/if}--><td>Lv. $v['sign'].$v['level']</td><td>$v['score']</td><td>$v['suggest']</td><td>$v['limit'] 元</td></tr>
+                <!--{/loop}-->
+        	<!--{/loop}-->
+    		</tbody>
+		</table>
+    </div>
+</div>
+</div>
+<!--{template common/footer}-->

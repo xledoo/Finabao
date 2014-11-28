@@ -1,8 +1,8 @@
 <?php
 
 
-$passages       =   finacache('plugin_finabao_trade_passage', 'finabao_passage', 'sign');
-$banks          =   finacache('plugin_finabao_banks', 'finabao_banks', 'sign');
+$passages       =   finacache('finabao_trade_passage', 'finabao_passage', 'sign');
+$banks          =   finacache('finabao_banks', 'finabao_banks', 'sign');
 
 if($_GET['action'] == 'sendsign'){
 
@@ -86,7 +86,7 @@ if($_GET['action'] == 'sendsign'){
             showmessage('请先选择第三方支付通道', '', array(), array('handle' => false));
         }
 
-        $pbank      =   DB::fetch_all("SELECT * FROM ".DB::table('plugin_finabao_bankbindpassage')." WHERE `passage`='$passage' AND `bank`='$bank'");
+        $pbank      =   DB::fetch_all("SELECT * FROM ".DB::table('finabao_bankbindpassage')." WHERE `passage`='$passage' AND `bank`='$bank'");
 
         include template('finabao/topup_passagebank');
 

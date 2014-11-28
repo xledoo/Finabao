@@ -32,7 +32,7 @@ class register_ctl {
         $_mobile        =   trim(getgpc('mobile'));
         $_signcode      =   trim(getgpc('signcode'));
 
-        $isMobVer   =   DB::fetch_first("SELECT * FROM %t WHERE mobile=%s AND signcode=%s", array('plugin_finabao_checkmobile', $_mobile, $_signcode));
+        $isMobVer   =   DB::fetch_first("SELECT * FROM %t WHERE mobile=%s AND signcode=%s", array('finabao_checkmobile', $_mobile, $_signcode));
         if(!$isMobVer)
         {
             showmessage('短信验证码错误，请接收后重新输入。');

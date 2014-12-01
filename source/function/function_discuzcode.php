@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_discuzcode.php 34308 2014-01-20 09:45:13Z hypowang $
+ *      $Id: function_discuzcode.php 34052 2013-09-25 06:18:43Z andyzheng $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -392,11 +392,7 @@ function parsetrtd($bgcolor, $colspan, $rowspan, $width) {
 }
 
 function parseaudio($url, $width = 400) {
-	$url = addslashes($url);
-        if(!in_array(strtolower(substr($url, 0, 6)), array('http:/', 'https:', 'ftp://', 'rtsp:/', 'mms://')) && !preg_match('/^static\//', $url) && !preg_match('/^data\//', $url)) {
-		return dhtmlspecialchars($url);
-	}
-	$ext = fileext($url);
+	$ext = strtolower(substr(strrchr($url, '.'), 1, 5));
 	switch($ext) {
 		case 'mp3':
 			$randomid = 'mp3_'.random(3);
@@ -420,7 +416,7 @@ function parsemedia($params, $url) {
 
 	$url = addslashes($url);
         if(!in_array(strtolower(substr($url, 0, 6)), array('http:/', 'https:', 'ftp://', 'rtsp:/', 'mms://')) && !preg_match('/^static\//', $url) && !preg_match('/^data\//', $url)) {
-		return dhtmlspecialchars($url);
+		$url = 'http://'.$url;
 	}
 
 	if($flv = parseflv($url, $width, $height)) {

@@ -129,7 +129,7 @@ jQuery("#smscheck").click(function(){
 
 	if(err == 0){
 		var x = new Ajax();
-		x.get('index.php?mod=ajax&inajax=yes&infloat=register&handlekey=register&ajaxmenu=1&action=sendsign&mobile=' + jQuery("#mobile").val(), function(s) {
+		x.get('index.php?c=ajax&inajax=yes&infloat=register&handlekey=register&ajaxmenu=1&action=sendsign&mobile=' + jQuery("#mobile").val(), function(s) {
 			if(s == 'succeed') {
 				$('chk_signcode').innerHTML = '验证短信已经发送成功，请等待。';
 				jQuery("#smscheck").attr("disabled", "disabled");
@@ -148,7 +148,7 @@ function checksign(id){
 	//if(signcode.length == 6 && (/^[1-9]\d*$|^0$/.test(signcode))){
 		var x = new Ajax();
 		$('tip_' + id).parentNode.className = $('tip_' + id).parentNode.className.replace(/ p_right/, '');
-		x.get('index.php?mod=ajax&inajax=yes&infloat=register&handlekey=register&ajaxmenu=1&action=checksign&mobile=' + jQuery("#mobile").val() +'&signcode=' + signcode, function(s) {
+		x.get('index.php?c=ajax&inajax=yes&infloat=register&handlekey=register&ajaxmenu=1&action=checksign&mobile=' + jQuery("#mobile").val() +'&signcode=' + signcode, function(s) {
 			errormessage(id, s);
 		});
 	//} else {

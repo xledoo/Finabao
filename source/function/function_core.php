@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_core.php 34523 2014-05-15 04:22:29Z nemohou $
+ *      $Id: function_core.php 34155 2013-10-25 00:54:00Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -12,12 +12,6 @@ if(!defined('IN_DISCUZ')) {
 }
 
 define('DISCUZ_CORE_FUNCTION', true);
-
-function durlencode($url) {
-	static $fix = array('%21', '%2A','%3B', '%3A', '%40', '%26', '%3D', '%2B', '%24', '%2C', '%2F', '%3F', '%25', '%23', '%5B', '%5D');
-	static $replacements = array('!', '*', ';', ":", "@", "&", "=", "+", "$", ",", "/", "?", "%", "#", "[", "]");
-	return str_replace($fix, $replacements, urlencode($url));
-}
 
 function system_error($message, $show = true, $save = true, $halt = true) {
 	discuz_error::system_error($message, $show, $save, $halt);
@@ -323,17 +317,22 @@ function checkmobile() {
 				'up.link', 'blazer', 'helio', 'hosin', 'huawei', 'novarra', 'coolpad', 'webos', 'techfaith', 'palmsource',
 				'alcatel', 'amoi', 'ktouch', 'nexian', 'ericsson', 'philips', 'sagem', 'wellcom', 'bunjalloo', 'maui', 'smartphone',
 				'iemobile', 'spice', 'bird', 'zte-', 'longcos', 'pantech', 'gionee', 'portalmmm', 'jig browser', 'hiptop',
-				'benq', 'haier', '^lct', '320x320', '240x320', '176x220', 'windows phone');
+				'benq', 'haier', '^lct', '320x320', '240x320', '176x220');
+	static $mobilebrowser_list =array('windows phone');
 	static $wmlbrowser_list = array('cect', 'compal', 'ctl', 'lg', 'nec', 'tcl', 'alcatel', 'ericsson', 'bird', 'daxian', 'dbtel', 'eastcom',
 			'pantech', 'dopod', 'philips', 'haier', 'konka', 'kejian', 'lenovo', 'benq', 'mot', 'soutec', 'nokia', 'sagem', 'sgh',
 			'sed', 'capitel', 'panasonic', 'sonyericsson', 'sharp', 'amoi', 'panda', 'zte');
 
-	static $pad_list = array('ipad');
+	$pad_list = array('pad', 'gt-p1000');
 
 	$useragent = strtolower($_SERVER['HTTP_USER_AGENT']);
 
 	if(dstrpos($useragent, $pad_list)) {
 		return false;
+	}
+	if(($v = dstrpos($useragent, $mobilebrowser_list, true))){
+		$_G['mobile'] = $v;
+		return '1';
 	}
 	if(($v = dstrpos($useragent, $touchbrowser_list, true))){
 		$_G['mobile'] = $v;
@@ -605,8 +604,7 @@ function template($file, $templateid = 0, $tpldir = '', $gettplfile = 0, $primal
 	if(defined('IN_MOBILE') && !defined('TPL_DEFAULT')) {
 		if(strpos($tpldir, 'plugin')) {
 			if(!file_exists(DISCUZ_ROOT.$tpldir.'/'.$file.'.htm') && !file_exists(DISCUZ_ROOT.$tpldir.'/'.$file.'.php')) {
-				$url = $_SERVER['REQUEST_URI'].(strexists($_SERVER['REQUEST_URI'], '?') ? '&' : '?').'mobile=no';
-				showmessage('mobile_template_no_found', '', array('url' => $url));
+				discuz_error::template_error('template_notfound', $tpldir.'/'.$file.'.htm');
 			} else {
 				$mobiletplfile = $tpldir.'/'.$file.'.htm';
 			}
@@ -1515,7 +1513,7 @@ function dreferer($default = '') {
 		$_G['referer'] = $_G['siteurl'].'./'.$_G['referer'];
 	}
 
-	$_G['referer'] = durlencode($_G['referer']);
+	$_G['referer'] = fixurl($_G['referer']);
 	return$_G['referer'];
 }
 
@@ -1602,7 +1600,7 @@ function sizecount($size) {
 	} elseif($size >= 1024) {
 		$size = round($size / 1024 * 100) / 100 . ' KB';
 	} else {
-		$size = intval($size) . ' Bytes';
+		$size = $size . ' Bytes';
 	}
 	return $size;
 }
@@ -2038,6 +2036,12 @@ function strhash($string, $operation = 'DECODE', $key = '') {
 	}
 
 	return base64_encode(gzcompress($string.$vkey));
+}
+
+function fixurl($url) {
+	static $fix = array( '%3A', '%40', '%26', '%3D', '%2B', '%24', '%2C', '%2F', '%3F', '%25', '%23', '%5B', '%5D');
+	static $replacements = array( ":", "@", "&", "=", "+", "$", ",", "/", "?", "%", "#", "[", "]");
+	return str_replace($fix, $replacements, urlencode($url));
 }
 
 function dunserialize($data) {

@@ -4,23 +4,13 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_blog.php 34348 2014-03-19 03:13:00Z hypowang $
+ *      $Id: function_blog.php 34105 2013-10-11 05:38:37Z hypowang $
  */
 
 if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
 }
 
-function blog_check_url($url) {
-	$url = durlencode(trim($url));
-
-	if(preg_match("/^(https?|ftp|gopher|news|telnet|rtsp|mms|callto|bctp|thunder|qqdl|synacast){1}:\/\//i", $url)) {
-		$return = '<a href="'.$url.'" target="_blank">';
-	} else {
-		$return = '<a href="'.(!empty($GLOBALS['_G']['siteurl']) ? $GLOBALS['_G']['siteurl'] : 'http://').$url.'" target="_blank">';
-	}
-	return $return;
-}
 function blog_post($POST, $olds=array()) {
 	global $_G, $space;
 
@@ -73,10 +63,10 @@ function blog_post($POST, $olds=array()) {
 		$POST['message'] = censor($POST['message']);
 		$POST['message'] = preg_replace(array(
 			"/\<div\>\<\/div\>/i",
-			"/\<a\s+href\=\"([^\>]+?)\"\>/ie"
+			"/\<a\s+href\=\"([^\>]+?)\"\>/i"
 		), array(
 			'',
-			'blog_check_url(\'\\1\')'
+			'<a href="\\1" target="_blank">'
 		), $POST['message']);
 	}
 	$message = $POST['message'];

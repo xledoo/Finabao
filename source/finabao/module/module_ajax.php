@@ -24,47 +24,47 @@ if($_GET['action'] == 'sendsign'){
 
 } elseif($_GET['action'] == 'checkmobile'){
 
-    $mobile     =   getgpc('mobile');
+	$mobile     =   getgpc('mobile');
     if(strlen($mobile) != 11 || !preg_match("/^1[3|5|8][0-9]\d{4,8}$/", $mobile)){
         showmessage('手机号码格式输入错误', '', array(), array('handle' => false));
     }
-    
-    if(DB::result_first("SELECT uid FROM %t WHERE mobile=%s", array('common_member_profile', $mobile))){
-        showmessage('该手机号码已经被注册，请重新输入。', '', array(), array('handle' => false));
-    }
+	
+	if(DB::result_first("SELECT uid FROM %t WHERE mobile=%s", array('common_member_profile', $mobile))){
+		showmessage('该手机号码已经被注册，请重新输入。', '', array(), array('handle' => false));
+	}
 
-    showmessage('succeed', '', array(), array('handle' => false));
+	showmessage('succeed', '', array(), array('handle' => false));
 
 
 } elseif($_GET['action'] == 'checksign') {
 
-    $mobile     =   getgpc('mobile');
-    $signcode   =   getgpc('signcode');
+	$mobile     =   getgpc('mobile');
+	$signcode   =   getgpc('signcode');
     if(strlen($mobile) != 11 || !preg_match("/^1[3|5|8][0-9]\d{4,8}$/", $mobile)){
         showmessage('手机号码格式输入错误', '', array(), array('handle' => false));
     }
     if(strlen($signcode) != 6){
         showmessage('短信验证码错误', '', array(), array('handle' => false));
     }
-    if(C::t('#finabao#finabao_checkmobile')->check($mobile, $signcode)){
-        showmessage('succeed', '', array(), array('handle' => false));
-    }
-    showmessage('短信验证码错误', '', array(), array('handle' => false));
+	if(C::t('#finabao#finabao_checkmobile')->check($mobile, $signcode)){
+		showmessage('succeed', '', array(), array('handle' => false));
+	}
+	showmessage('短信验证码错误', '', array(), array('handle' => false));
 
 } elseif($_GET['action'] == 'passagebank'){
 
 
-    if(formcheck('passage', true, 1)){
+	if(formcheck('passage', true, 1)){
 
-        $passage    =   getgpc('passage');
-        if($passage ==  'undefined'){
-            showmessage('请先选择第三方支付通道', '', array(), array('handle' => false));
-        }
+		$passage	=	getgpc('passage');
+		if($passage	==	'undefined'){
+			showmessage('请先选择第三方支付通道', '', array(), array('handle' => false));
+		}
 
 
-        if(!array_key_exists($passage, $passages)){
-            showmessage('没有找到相关支付通道或银行的信息', '', array(), array('handle' => false));
-        }
+		if(!array_key_exists($passage, $passages)){
+			showmessage('没有找到相关支付通道或银行的信息', '', array(), array('handle' => false));
+		}
         finaload('class/trade_'.$passage);
 
         $tradeClassName =   'Trade_'.$passage;
@@ -113,21 +113,21 @@ if($_GET['action'] == 'sendsign'){
 
 } elseif($_GET['action'] == 'setpaypass'){
 
-    if(!$_G['uid']) showmessage('to_login');
+	if(!$_G['uid']) showmessage('to_login');
 
-    if(!submitcheck('setpaypass_submit')){
+	if(!submitcheck('setpaypass_submit')){
 
-        $iset   =   checkpaypass($_G['uid']);
+		$iset	=	checkpaypass($_G['uid']);
 
-        include template('finabao/ajax_setpaypass');
-    } else {
+		include template('finabao/ajax_setpaypass');
+	} else {
 
         if(strlen(getgpc('paypass')) < 3) showmessage('支付密码不得少于 3 位哦！');
         if(getgpc('paypass') != getgpc('repaypass')) showmessage('两次输入的支付密码不一样，请重新输入。');
 
         DB::update('common_member_profile', array('field8' => md5(getgpc('paypass'))), array('uid' => $_G['uid']));
         showmessage('支付密码设置成功', dreferer());
-    }
+	}
 
 } elseif($_GET['action'] == 'bsie'){
 

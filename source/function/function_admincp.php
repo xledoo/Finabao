@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_admincp.php 34645 2014-06-16 09:08:07Z hypowang $
+ *      $Id: function_admincp.php 34217 2013-11-14 04:00:21Z hypowang $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -15,7 +15,7 @@ if(!defined('IN_DISCUZ')) {
 
 function istpldir($dir) {
 	return is_dir(DISCUZ_ROOT.'./'.$dir) && !in_array(substr($dir, -1, 1), array('/', '\\')) &&
-		 strpos(realpath(DISCUZ_ROOT.'./'.$dir), realpath(DISCUZ_ROOT.'./template').DIRECTORY_SEPARATOR) === 0;
+		 strpos(realpath(DISCUZ_ROOT.'./'.$dir), realpath(DISCUZ_ROOT.'./template')) === 0;
 }
 
 function isplugindir($dir) {
@@ -231,8 +231,7 @@ function cpurl($type = 'parameter', $filters = array('sid', 'frames')) {
 function showheader($key, $url) {
 	list($action, $operation, $do) = explode('_', $url.'___');
 	$url = $action.($operation ? '&operation='.$operation.($do ? '&do='.$do : '') : '');
-	$menuname = cplang('header_'.$key) != 'header_'.$key ? cplang('header_'.$key) : $key;
-	echo '<li><em><a href="'.ADMINSCRIPT.'?action='.$url.'" id="header_'.$key.'" hidefocus="true" onmouseover="previewheader(\''.$key.'\')" onmouseout="previewheader()" onclick="toggleMenu(\''.$key.'\', \''.$url.'\');doane(event);">'.$menuname.'</a></em></li>';
+	echo '<li><em><a href="'.ADMINSCRIPT.'?action='.$url.'" id="header_'.$key.'" hidefocus="true" onmouseover="previewheader(\''.$key.'\')" onmouseout="previewheader()" onclick="toggleMenu(\''.$key.'\', \''.$url.'\');doane(event);">'.cplang('header_'.$key).'</a></em></li>';
 }
 
 function shownav($header = '', $menu = '', $nav = '') {
@@ -343,7 +342,7 @@ function cpmsg($message, $url = '', $type = '', $values = array(), $extra = '', 
 				$message = "<br />$message<br /><p class=\"margintop\"><input type=\"submit\" class=\"btn\" name=\"submit\" value=\"".cplang('start')."\" onclick=\"location.href='$url'\" />";
 			} else {
 				$message .= '<p class="marginbot"><a href="'.$url.'" class="lightlink">'.cplang($type == 'download' ? 'message_download' : 'message_redirect').'</a></p>';
-				$timeout = $type != 'loading' ? 3000 : 1000;
+				$timeout = $type != 'loading' ? 10000 : 0;
 				$message .= "<script type=\"text/JavaScript\">setTimeout(\"redirect('$url');\", $timeout);</script>";
 			}
 		} elseif($type != 'succeed') {

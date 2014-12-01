@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_cloudaddons.php 34586 2014-06-05 01:45:26Z nemohou $
+ *      $Id: function_cloudaddons.php 33987 2013-09-13 06:48:25Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -58,8 +58,8 @@ function cloudaddons_check() {
 	}
 }
 
-function cloudaddons_open($extra, $post = '', $timeout = 999) {
-	return dfsockopen(cloudaddons_url('&from=s').$extra, 0, $post, '', false, CLOUDADDONS_DOWNLOAD_IP, $timeout);
+function cloudaddons_open($extra, $post = '') {
+	return dfsockopen(cloudaddons_url('&from=s').$extra, 0, $post, '', false, CLOUDADDONS_DOWNLOAD_IP, 999);
 }
 
 function cloudaddons_pluginlogo_url($id) {
@@ -88,7 +88,9 @@ function cloudaddons_faillog($rid, $type) {
 
 function cloudaddons_removelog($rid) {
 	global $_G;
-	cloudaddons_open('&mod=app&ac=removelog&rid='.$rid);
+	$reason = $_G['cookie']['uninstallreason'];
+	dsetcookie('uninstallreason', '', -1);
+	cloudaddons_open('&mod=app&ac=removelog&rid='.$rid.'&reason='.$reason);
 }
 
 function cloudaddons_validator($addonid) {
@@ -104,7 +106,7 @@ function cloudaddons_upgradecheck($addonids) {
 		$array = cloudaddons_getmd5($addonid);
 		$post[] = 'rid['.$addonid.']='.$array['RevisionID'].'&sn['.$addonid.']='.$array['SN'].'&rd['.$addonid.']='.$array['RevisionDateline'];
 	}
-	return cloudaddons_open('&mod=app&ac=validator&ver=2', implode('&', $post), 15);
+	return cloudaddons_open('&mod=app&ac=validator&ver=2', implode('&', $post));
 }
 
 function cloudaddons_getmd5($md5file) {
@@ -398,7 +400,7 @@ function versioncompatible($versions) {
 	$versions = strip_tags($versions);
 	foreach(explode(',', $versions) as $version) {
 		list($version) = explode(' ', trim($version));
-		if($version && ($currentversion === $version || $version === 'X3' || $version === 'X3.1')) {
+		if($version && ($currentversion === $version || $version === 'X3')) {
 			return true;
 		}
 	}

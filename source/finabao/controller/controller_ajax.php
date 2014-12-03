@@ -46,7 +46,7 @@ if($_GET['action'] == 'sendsign'){
     if(strlen($signcode) != 6){
         showmessage('短信验证码错误', '', array(), array('handle' => false));
     }
-    if(C::t('#finabao#finabao_checkmobile')->check($mobile, $signcode)){
+    if(C::t('#finabao_new#finabao_checkmobile')->check($mobile, $signcode)){
         showmessage('succeed', '', array(), array('handle' => false));
     }
     showmessage('短信验证码错误', '', array(), array('handle' => false));

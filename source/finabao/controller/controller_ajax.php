@@ -145,7 +145,7 @@ function SMSverify($mobile){
 
     if($SMSender->SendSMS($mobile, '您的手机号：'.$mobile.'，注册验证码：'.$random.'，一天内提交有效，如不是本人操作请忽略！', 'register')){
 
-        return C::t('#finabao#finabao_checkmobile')->add($mobile, $random);
+        return C::t('#finabao_new#finabao_checkmobile')->add($mobile, $random);
     }
     return false;
 
